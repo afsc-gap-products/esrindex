@@ -1,2 +1,2 @@
 # esrindex
-Abundance indices for Alaska Ecosystem Status Reports
+Bottom trawl survey abundance trends for Alaska Ecosystem Status Reports
