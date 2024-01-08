@@ -18,11 +18,8 @@
 #'                   error_bars = TRUE)
 #' }
 #'
-#' @import ggplot2
-#' @import dplyr
-#' @import grDevices
+#' @import ggplot2 grDevices
 #' @importFrom grDevices png
-#' @import stats
 #'
 #' @export
 
@@ -34,21 +31,19 @@ make_subarea_plot <- function(indicator_data, indicator_name, bar_color = "#0085
 
   group_name <- chapter_settings[[region]][[indicator_name]][['group_name']]
 
-  timeseries <- dplyr::filter(indicator_data$timeseries,
-                              AREA_ID %in% area_id,
-                              SPECIES_CODE %in% group_name)
+  timeseries <- indicator_data$timeseries[indicator_data$timeseries$AREA_ID %in% area_id &
+                                            indicator_data$timeseries$SPECIES_CODE %in% group_name, ]
 
-  mean_sd <- dplyr::filter(indicator_data$mean_sd,
-                           AREA_ID %in% area_id,
-                           SPECIES_CODE %in% group_name)
+  mean_sd <- indicator_data$mean_sd[indicator_data$mean_sd$AREA_ID %in% area_id &
+                                      indicator_data$mean_sd$SPECIES_CODE %in% group_name, ]
 
 
   suppressWarnings(dir.create(paste0("./plots/", region), recursive = TRUE))
 
   for(ii in 1:length(group_name)) {
 
-    sel_timeseries <- dplyr::filter(timeseries, SPECIES_CODE == group_name[ii])
-    sel_mean_sd <- dplyr::filter(mean_sd, SPECIES_CODE == group_name[ii])
+    sel_timeseries <- timeseries[timeseries$SPECIES_CODE == group_name[ii], ]
+    sel_mean_sd <- mean_sd[mean_sd$SPECIES_CODE == group_name[ii], ]
 
     fig_cols <- length(area_id)
 

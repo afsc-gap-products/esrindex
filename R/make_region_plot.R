@@ -16,11 +16,8 @@
 #'                  bar_color = "#0085CA",
 #'                  error_bars = TRUE)
 #' }
-#' @import ggplot2
-#' @import dplyr
-#' @import grDevices
+#' @import ggplot2 stats
 #' @importFrom grDevices png
-#' @import stats
 #'
 #' @export
 
@@ -32,13 +29,11 @@ make_region_plot <- function(indicator_data, indicator_name, error_bars = TRUE, 
 
   group_name <- chapter_settings[[region]][[indicator_name]][['group_name']]
 
-  timeseries <- dplyr::filter(indicator_data$timeseries,
-                              AREA_ID == area_id,
-                              SPECIES_CODE %in% group_name)
+  timeseries <- indicator_data$timeseries[indicator_data$timeseries$AREA_ID == area_id &
+                                            indicator_data$timeseries$SPECIES_CODE %in% group_name, ]
 
-  mean_sd <- dplyr::filter(indicator_data$mean_sd,
-                           AREA_ID == area_id,
-                           SPECIES_CODE %in% group_name)
+  mean_sd <- indicator_data$mean_sd[indicator_data$mean_sd$AREA_ID == area_id &
+                                      indicator_data$mean_sd$SPECIES_CODE %in% group_name, ]
 
   if(error_bars) {
     p1 <- ggplot() +

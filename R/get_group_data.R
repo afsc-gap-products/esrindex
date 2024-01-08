@@ -16,7 +16,6 @@
 #' If the channel is not provided, the function uses the default connected channel obtained from \code{esrindex::get_connected()}.
 #'
 #' @importFrom gapindex get_data calc_cpue calc_biomass_stratum calc_biomass_subarea
-#' @importFrom dplyr select summarize inner_join mutate
 #' @import RODBC
 #'
 #' @examples
@@ -54,7 +53,7 @@ get_group_data <- function(region, channel = NULL) {
                                              query = paste0("select species_code from racebase.species where species_code >= ",
                                                             min(species_codes), " and ", "species_code <= ", max(species_codes)))
 
-      valid_species_codes <- dplyr::filter(valid_species_codes, SPECIES_CODE %in% species_codes)
+      valid_species_codes <- valid_species_codes[valid_species_codes$SPECIES_CODE %in% species_codes, ]
 
     } else {
 
@@ -111,13 +110,10 @@ get_group_data <- function(region, channel = NULL) {
   }
 
   # Filter to strata and species groups that are used in regional ESRs
-  timeseries <- dplyr::filter(timeseries,
-                              AREA_ID %in% c(esr_area_id, esr_subarea_id),
-                              SPECIES_CODE %in% unname(unlist(chapter_settings[[region]])))
+  timeseries <- timeseries[timeseries$AREA_ID %in% c(esr_area_id, esr_subarea_id) &
+                             timeseries$SPECIES_CODE %in% unname(unlist(chapter_settings[[region]])), ]
 
-  mean_sd <- dplyr::filter(mean_sd,
-                           AREA_ID %in% c(esr_area_id, esr_subarea_id),
-                           SPECIES_CODE %in% unname(unlist(chapter_settings[[region]])))
+  mean_sd <- mean_sd[mean_sd$AREA_ID %in% c(esr_area_id, esr_subarea_id) & mean_sd$SPECIES_CODE %in% unname(unlist(chapter_settings[[region]])), ]
 
 
   # Calculate SEs and fill zeros
