@@ -1,12 +1,11 @@
 Package: esrindex
 Type: Package
 Title: Make index products for Ecosystem Status Reports
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Version: 2023.01.07
+Author@R: c(person("Sean", "Rohan", email = "sean.rohan@noaa.gov", role = c("aut", "cre")))
+Maintainer: Sean Rohan <sean.rohan@noaa.gov>
+Description: Make index products for Ecosystem Status Reports
+License: GPL (>=2)
 Encoding: UTF-8
 LazyData: true
 Depends: gapindex
