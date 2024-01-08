@@ -1,0 +1,28 @@
+---
+title: '[TITLE]'
+output: word_document
+---
+
+```{r setup, include=FALSE}
+library(esrindex)
+library(knitr)
+```
+
+Contributed by [AUTHOR]
+[AFFILIATION] 
+
+**Contact**: [EMAIL]
+
+**Last updated**: [LAST_UPDATE]
+
+**Description of Indicator**: [DESCRIPTION]
+
+**Methodological Changes**: [METHODOLOGICAL CHANGES]
+
+**Status and Trends**: [STATUS_AND_TRENDS]
+
+**Factors influencing observed trends**: [FACTORS]
+
+**Implications**: [IMPLICATIONS]
+
+**Research priorities**: [RESEARCH_PRIORITIES]

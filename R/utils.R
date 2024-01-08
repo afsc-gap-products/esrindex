@@ -41,44 +41,16 @@ get_connected <- function(channel = NULL, schema = NA){
 }
 
 
-#' Blue Strip Theme
+#' Capitalize the first letter of a character string
 #'
-#' Custom theme for ggplot2 with a blue strip at the top and specific styling for axes, legend, and strip text.
+#' This function takes a character string as input and returns a new string where the first letter is capitalized.
 #'
-#' @return A ggplot2 theme object.
+#' @param x A character string.
 #'
-#' @details
-#' This function creates a custom ggplot2 theme with a blue strip at the top, styled axes, legend at the bottom,
-#' and customized strip text appearance. It is designed for aesthetic improvements in data visualization.
-#'
-#' @seealso
-#' \code{\link{ggplot2::theme_bw}}, \code{\link{ggplot2::element_text}}, \code{\link{ggplot2::element_line}},
-#' \code{\link{ggplot2::element_blank}}, \code{\link{ggplot2::element_rect}}, \code{\link{margin}}
-#'
-#' @importFrom ggplot2 theme_bw element_text element_line element_blank element_rect margin
-#'
-#' @examples
-#' \dontrun{
-#' # Example Usage:
-#' ggplot(data, aes(x = variable, y = value, fill = group)) +
-#'   geom_bar(stat = "identity") +
-#'   theme_blue_strip()
-#' }
-#'
+#' @return A character string with the first letter capitalized.
 #' @export
 
-theme_blue_strip <- function() {
-  theme_bw() %+replace%
-    theme(axis.title = element_text(color = "black", face = "bold"),
-          axis.text = element_text(color = "black"),
-          axis.ticks = element_line(color = "black"),
-          panel.grid = element_blank(),
-          legend.title = element_blank(),
-          legend.position = "bottom",
-          strip.text = element_text(size = 9,
-                                    color = "white",
-                                    face = "bold",
-                                    margin = margin(0.5, 0, 0.5, 0, "mm")),
-          strip.background = element_rect(fill = "#0055a4",
-                                          color = NA))
+capitalize_first <- function(x) {
+    x <- paste(toupper(substr(x, 1, 1)), substr(x, 2, nchar(x)), sep = "")
+    return(x)
 }
