@@ -2,7 +2,7 @@
 % Please edit documentation in R/themes.R
 \name{theme_blue_strip}
 \alias{theme_blue_strip}
-\title{Blue Strip Theme}
+\title{Blue strip theme}
 \usage{
 theme_blue_strip()
 }

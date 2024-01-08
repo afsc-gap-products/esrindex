@@ -1,13 +1,13 @@
 #' Create ESR Chapter Document
 #'
-#' This function generates an R Markdown document for an ESR chapter using an ESR XML template file then renders as a docx.
+#' This function generates an R Markdown document for an ESR chapter using an ESR XML template file then renders as a .docx.
 #'
-#' @param xml_path Path to the XML file containing ESR chapter information.
+#' @param xml_path Path to the ESR template file containing ESR chapter information.
 #' @param output_path Path to save the generated R Markdown document. If not specified, a default path will be used.
 #' @return None
 #' @examples
 #' \dontrun{
-#' make_esr_chapter(xml_path = "esr_template.xml")
+#' make_esr_chapter(xml_path = "./chapters/AI_misc_species.xml")
 #' }
 #'
 #' @import rmarkdown
@@ -27,6 +27,19 @@ make_esr_chapter <- function(xml_path, output_path = NULL) {
   suppressWarnings(dir.create(dirname(output_path)))
 
   lines <- readLines(system.file("extdata/esr_index_template.Rmd", package = "esrindex"))
+
+  replace_lines <- function(x, pattern, replacement) {
+
+    ind <- grep(x = x, pattern = "\\[AUTHOR\\]")
+
+    leading <- x[1:(ind-1)]
+    trailing <- x[(ind+1):length(ind)]
+
+    output <- c(leading, replacement, trailing)
+
+    return(output)
+
+  }
 
   lines <- gsub(pattern = "\\[AUTHOR\\]",
        replacement = chapter_data$text_data$authors,

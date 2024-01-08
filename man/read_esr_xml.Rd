@@ -10,7 +10,7 @@ read_esr_xml(xml_path)
 \item{xml_path}{The path to the ESR XML template file.}
 }
 \value{
-A list containing information extracted from various XML tags.
+A list containing information extracted from XML tags.
 }
 \description{
 This function reads tag data from an ESR (Ecosystem Status Report) XML template file.

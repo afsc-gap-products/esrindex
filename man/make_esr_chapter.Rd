@@ -7,7 +7,7 @@
 make_esr_chapter(xml_path, output_path = NULL)
 }
 \arguments{
-\item{xml_path}{Path to the XML file containing ESR chapter information.}
+\item{xml_path}{Path to the ESR template file containing ESR chapter information.}
 
 \item{output_path}{Path to save the generated R Markdown document. If not specified, a default path will be used.}
 }
@@ -15,11 +15,11 @@ make_esr_chapter(xml_path, output_path = NULL)
 None
 }
 \description{
-This function generates an R Markdown document for an ESR chapter using an ESR XML template file then renders as a docx.
+This function generates an R Markdown document for an ESR chapter using an ESR XML template file then renders as a .docx.
 }
 \examples{
 \dontrun{
-make_esr_chapter(xml_path = "esr_template.xml")
+make_esr_chapter(xml_path = "./chapters/AI_misc_species.xml")
 }
 
 }

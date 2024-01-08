@@ -1,142 +1,49 @@
-library(ggplot2)
 library(esrindex)
 
-indicator_data = AI_INDICATOR
-indicator_name = "misc_species"
-bar_color = "#0085CA"
-error_bars = TRUE
-
-
 # AI
-make_region_plot(indicator_data = AI_INDICATOR,
-                 indicator_name = "misc_species",
-                 bar_color = "#0085CA",
-                 error_bars = TRUE)
-
-make_region_plot(indicator_data = AI_INDICATOR,
-                 indicator_name = "jellyfish",
-                 bar_color = "#0085CA",
-                 error_bars = TRUE)
-
-make_region_plot(indicator_data = AI_INDICATOR,
-                 indicator_name = "structural_epifauna",
-                 bar_color = "#0085CA",
-                 error_bars = TRUE)
-
-make_subarea_plot(indicator_data = AI_INDICATOR,
-                  indicator_name = "misc_species",
-                  bar_color = "#0085CA",
-                  error_bars = TRUE)
-
-make_subarea_plot(indicator_data = AI_INDICATOR,
-                  indicator_name = "jellyfish",
-                  bar_color = "#0085CA",
-                  error_bars = TRUE)
-
-make_subarea_plot(indicator_data = AI_INDICATOR,
-                  indicator_name = "structural_epifauna",
-                  bar_color = "#0085CA",
-                  error_bars = TRUE)
+for(ii in 1:length(chapter_settings$AI)) {
+  make_region_plot(indicator_data = AI_INDICATOR,
+                   indicator_name = names(chapter_settings$AI)[ii],
+                   bar_color = "#0085CA",
+                   error_bars = TRUE)
+  make_subarea_plot(indicator_data = AI_INDICATOR,
+                    indicator_name = names(chapter_settings$AI)[ii],
+                    bar_color = "#0085CA",
+                    error_bars = TRUE)
+}
 
 # GOA
-make_region_plot(indicator_data = GOA_INDICATOR,
-                 indicator_name = "misc_species",
-                 bar_color = "#0085CA",
-                 error_bars = TRUE)
-
-make_region_plot(indicator_data = GOA_INDICATOR,
-                 indicator_name = "jellyfish",
-                 bar_color = "#0085CA",
-                 error_bars = TRUE)
-
-make_region_plot(indicator_data = GOA_INDICATOR,
-                 indicator_name = "structural_epifauna",
-                 bar_color = "#0085CA",
-                 error_bars = TRUE)
-
-make_region_plot(indicator_data = GOA_INDICATOR,
-                 indicator_name = "forage_fish",
-                 bar_color = "#0085CA",
-                 error_bars = TRUE)
-
-make_subarea_plot(indicator_data = GOA_INDICATOR,
-                  indicator_name = "misc_species",
-                  bar_color = "#0085CA",
-                  error_bars = TRUE)
-
-make_subarea_plot(indicator_data = GOA_INDICATOR,
-                  indicator_name = "jellyfish",
-                  bar_color = "#0085CA",
-                  error_bars = TRUE)
-
-make_subarea_plot(indicator_data = GOA_INDICATOR,
-                  indicator_name = "structural_epifauna",
-                  bar_color = "#0085CA",
-                  error_bars = TRUE)
-
-make_subarea_plot(indicator_data = GOA_INDICATOR,
-                  indicator_name = "forage_fish",
-                  bar_color = "#0085CA",
-                  error_bars = TRUE)
+for(ii in 1:length(chapter_settings$GOA)) {
+  make_region_plot(indicator_data = GOA_INDICATOR,
+                   indicator_name = names(chapter_settings$GOA)[ii],
+                   bar_color = "#0085CA",
+                   error_bars = TRUE)
+  make_subarea_plot(indicator_data = GOA_INDICATOR,
+                    indicator_name = names(chapter_settings$GOA)[ii],
+                    bar_color = "#0085CA",
+                    error_bars = TRUE)
+}
 
 # EBS
-make_region_plot(indicator_data = EBS_INDICATOR,
-                 indicator_name = "misc_species",
-                 bar_color = "#0085CA",
-                 error_bars = TRUE)
-
-make_region_plot(indicator_data = EBS_INDICATOR,
-                 indicator_name = "jellyfish",
-                 bar_color = "#0085CA",
-                 error_bars = TRUE)
-
-make_region_plot(indicator_data = EBS_INDICATOR,
-                 indicator_name = "structural_epifauna",
-                 bar_color = "#0085CA",
-                 error_bars = TRUE)
-
-make_subarea_plot(indicator_data = EBS_INDICATOR,
-                  indicator_name = "misc_species",
-                  bar_color = "#0085CA",
-                  error_bars = TRUE)
-
-make_subarea_plot(indicator_data = EBS_INDICATOR,
-                  indicator_name = "jellyfish",
-                  bar_color = "#0085CA",
-                  error_bars = TRUE)
-
-make_subarea_plot(indicator_data = EBS_INDICATOR,
-                  indicator_name = "structural_epifauna",
-                  bar_color = "#0085CA",
-                  error_bars = TRUE)
+for(ii in 1:length(chapter_settings$EBS)) {
+  make_region_plot(indicator_data = EBS_INDICATOR,
+                   indicator_name = names(chapter_settings$EBS)[ii],
+                   bar_color = "#0085CA",
+                   error_bars = TRUE)
+  make_subarea_plot(indicator_data = EBS_INDICATOR,
+                    indicator_name = names(chapter_settings$EBS)[ii],
+                    bar_color = "#0085CA",
+                    error_bars = TRUE)
+}
 
 # NBS
-make_region_plot(indicator_data = NBS_INDICATOR,
-                 indicator_name = "misc_species",
-                 bar_color = "#0085CA",
-                 error_bars = TRUE)
-
-make_region_plot(indicator_data = NBS_INDICATOR,
-                 indicator_name = "jellyfish",
-                 bar_color = "#0085CA",
-                 error_bars = TRUE)
-
-make_region_plot(indicator_data = NBS_INDICATOR,
-                 indicator_name = "structural_epifauna",
-                 bar_color = "#0085CA",
-                 error_bars = TRUE)
-
-make_subarea_plot(indicator_data = NBS_INDICATOR,
-                  indicator_name = "misc_species",
-                  bar_color = "#0085CA",
-                  error_bars = TRUE)
-
-make_subarea_plot(indicator_data = NBS_INDICATOR,
-                  indicator_name = "jellyfish",
-                  bar_color = "#0085CA",
-                  error_bars = TRUE)
-
-make_subarea_plot(indicator_data = NBS_INDICATOR,
-                  indicator_name = "structural_epifauna",
-                  bar_color = "#0085CA",
-                  error_bars = TRUE)
+for(ii in 1:length(chapter_settings$NBS)) {
+  make_region_plot(indicator_data = NBS_INDICATOR,
+                   indicator_name = names(chapter_settings$NBS)[ii],
+                   bar_color = "#0085CA",
+                   error_bars = TRUE)
+  # make_subarea_plot(indicator_data = NBS_INDICATOR,
+  #                   indicator_name = names(chapter_settings$NBS)[ii],
+  #                   bar_color = "#0085CA",
+  #                   error_bars = TRUE)
+}

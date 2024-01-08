@@ -20,13 +20,13 @@ extract_figures <- function(x) {
   for(ii in 1:n_figs) {
 
     num_range <- grep(x = x, pattern = "<figureNumber>")[ii]:grep(x = x, pattern = "</figureNumber>")[ii]
-    path_range <- grep(x = x, pattern = "<figureBasename>")[ii]:grep(x = x, pattern = "</figureBasename>")[ii]
+    path_range <- grep(x = x, pattern = "<figurePath>")[ii]:grep(x = x, pattern = "</figurePath>")[ii]
     caption_range <- grep(x = x, pattern = "<figureCaption>")[ii]:grep(x = x, pattern = "</figureCaption>")[ii]
 
     fig_list[[ii]] <- list(fig_number = extract_tag(x = x[num_range],
                                                     tag = "figureNumber"),
                            fig_path = extract_tag(x = x[path_range],
-                                                  tag = "figureBasename"),
+                                                  tag = "figurePath"),
                            caption = extract_tag(x = x[caption_range],
                                                  tag = "figureCaption"))
   }

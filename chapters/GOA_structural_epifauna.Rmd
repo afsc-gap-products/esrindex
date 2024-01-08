@@ -1,0 +1,31 @@
+---
+title: 'Structural Epifauna—Gulf of Alaska'
+output: word_document
+---
+
+```{r setup, include=FALSE}
+library(esrindex)
+library(knitr)
+```
+
+Contributed by Ned Laman and Alexandra Dowlin
+Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center, NOAA Fisheries 
+
+**Contact**: Ned.Laman@noaa.gov
+
+**Last updated**: October 2023
+
+**Description of Indicator**: Structural epifauna groups considered to be Habitat Area of Particular Concern (HAPC) biota include sponges, corals (both hard and soft), and anemones. NOAA Alaska Fisheries’ Resource Assessment and Conservation Engineering Division’s Groundfish Assessment Program (RACEGAP) fishery-independent summer bottom trawl surveys in the Gulf of Alaska (GOA) are designed to assess populations of commercially and ecologically important fishes and invertebrates. Since 1990, we have deployed the same standardized trawl gear (footrope and trawl net) as is presently in use in the GOA bottom trawl survey. Epifaunal groups like sponges, corals (both hard and soft), pennatulaceans, and anemones form benthic structure that can be part of the communities that make up Habitat Areas of Particular Concern (HAPC). A HAPC is a specific area designation for a type of habitat that plays an important role in a species’ life cycle, or that is sensitive, rare, or vulnerable. For epifaunal groups collected in our bottom trawls, biomass estimates were scaled each year to the largest estimate in the time series for each group which was then arbitrarily scaled to a value of 100 and all other values were scaled in reference to that. The standard error (± 1) was weighted proportionally to the biomass to yield a relative standard error. Prevalence in survey catches is also presented as the percentage of positive bottom trawl hauls for each group.
+
+**Status and Trends**: A few general patterns are discernible among the epifaunal groups summarized here (Figure 24). Sponges are prevalent in bottom trawl survey hauls throughout the Gulf of Alaska (GOA), occurring in 40–50% of catches in all districts sampled, though their abundance appears to be declining in recent years in at least the Shumagin and Kodiak districts. Sea anemones appear to be more abundant in the western GOA though they are relatively common across the survey area, occurring in 40–50% of trawl catches much of the time. Gorgonian corals are most abundant in southeast Alaska, contrasting with the pattern of abundance observed with sponges and anemones, and are not common in our trawl catches, even where their abundance is higher. The sea pens and sea whips (Pennatulacea) are neither common nor abundant in GOA trawl catches though we have episodically caught them in high abundance in the Chirikof district. Hydrocorals are not abundant or common in the GOA either, though historically they have been caught in higher abundance in the Shumagin district of the western Gulf.
+
+**Factors influencing observed trends**: The Gulf of Alaska Bottom Trawl Survey does not sample any of these fauna well, so some caution is recommended in interpreting these trends in CPUE and abundance indices.
+
+**Implications**: Population trends for these epifaunal groups across the GOA may reflect changes in their habitats or environment. Recent climatic events like the Warm Blob (Bond et al., 2015; Di Lorenzo and Mantua, 2016) have almost certainly impacted some of these sessile populations. Continued monitoring and further studies to better understand the mechanisms and implications of observed trends are key to a better understanding of the ecosystem.
+
+
+```{r fig1, include = TRUE, echo = FALSE, fig.cap='\\label{fig:figs}Figure 1. Relative biomass estimates of echinoderms, shrimps, eelpouts, and poachers collected from International North Pacific Fisheries Commission (INPFC) statistical districts during fishery-independent summer bottom trawl surveys of the Gulf of Alaska (1990–2023). Error bars represent standard errors and the gray lines represent the prevalence (percentage) of non-zero catches of these taxa.'}
+knitr::include_graphics('../plots/GOA/GOA_structural_epifauna_full_region.png')
+```
+
+## References

@@ -4,14 +4,12 @@
 #'
 #' @param xml_path The path to the ESR XML template file.
 #'
-#' @return A list containing information extracted from various XML tags.
+#' @return A list containing information extracted from XML tags.
 #' @export
 
 read_esr_xml <- function(xml_path) {
 
-  xml_path <- "AI_misc_species.xml"
-
-  stopifnot("read_esr_xml: File path (xml_path) not found." = file.exists(xml_path))
+  stopifnot("read_esr: File path (xml_path) not found." = file.exists(xml_path))
 
   lines <- readLines(con = xml_path)
 

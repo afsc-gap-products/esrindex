@@ -1,4 +1,4 @@
-#' Blue Strip Theme
+#' Blue strip theme
 #'
 #' Custom theme for ggplot2 with a blue strip at the top and specific styling for axes, legend, and strip text.
 #'

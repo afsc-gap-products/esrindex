@@ -16,6 +16,7 @@ extract_tag <- function(x, tag, remove_tabs = TRUE) {
   x_sub <- x[min(tag_range):max(tag_range)]
 
   x_sub <- gsub(x = x_sub, pattern = paste0("<", tag, ">"), replacement = "")
+
   x_sub <- gsub(x = x_sub, pattern = paste0("</", tag, ">"), replacement = "")
 
   x_sub <- x_sub[nchar(x_sub) > 0]
