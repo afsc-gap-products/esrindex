@@ -9,6 +9,7 @@ library(knitr)
 ```
 
 Contributed by [AUTHOR]
+
 [AFFILIATION] 
 
 **Contact**: [EMAIL]

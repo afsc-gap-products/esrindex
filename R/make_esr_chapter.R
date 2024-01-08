@@ -27,19 +27,6 @@ make_esr_chapter <- function(xml_path, output_path = NULL) {
 
   lines <- readLines(system.file("extdata/esr_index_template.Rmd", package = "esrindex"))
 
-  replace_lines <- function(x, pattern, replacement) {
-
-    ind <- grep(x = x, pattern = "\\[AUTHOR\\]")
-
-    leading <- x[1:(ind-1)]
-    trailing <- x[(ind+1):length(ind)]
-
-    output <- c(leading, replacement, trailing)
-
-    return(output)
-
-  }
-
   lines <- gsub(pattern = "\\[AUTHOR\\]",
        replacement = chapter_data$text_data$authors,
        x = lines)
@@ -60,38 +47,38 @@ make_esr_chapter <- function(xml_path, output_path = NULL) {
                 replacement = chapter_data$text_data$last_update,
                 x = lines)
 
-  lines <- gsub(pattern = "\\[DESCRIPTION\\]",
-                replacement = chapter_data$text_data$description,
-                x = lines)
+  lines <- replace_lines(x = lines,
+                         pattern = "\\[DESCRIPTION\\]",
+                         replacement = chapter_data$text_data$description)
 
-  lines <- gsub(pattern = "\\[STATUS_AND_TRENDS\\]",
-                replacement = chapter_data$text_data$status_trends,
-                x = lines)
+  lines <- replace_lines(x = lines,
+                         pattern = "\\[STATUS_AND_TRENDS\\]",
+                         replacement = chapter_data$text_data$status_trends)
 
-  lines <- gsub(pattern = "\\[FACTORS\\]",
-                replacement = chapter_data$text_data$factors,
-                x = lines)
+  lines <- replace_lines(x = lines,
+                         pattern = "\\[FACTORS\\]",
+                         replacement = chapter_data$text_data$factors)
 
-  lines <- gsub(pattern = "\\[IMPLICATIONS\\]",
-                replacement = chapter_data$text_data$implications,
-                x = lines)
+  lines <- replace_lines(x = lines,
+                         pattern = "\\[IMPLICATIONS\\]",
+                         replacement = chapter_data$text_data$implications)
 
   if(as.character(chapter_data$text_data$methodological_changes) == "NA") {
     rm_line <- grep(pattern = "\\[METHODOLOGICAL CHANGES\\]", x = lines)
     lines <- lines[-c(rm_line, rm_line+1)]
   } else {
-    lines <- gsub(pattern = "\\[METHODOLOGICAL CHANGES\\]",
-                  replacement = chapter_data$text_data$methodological_changes,
-                  x = lines)
+    lines <- replace_lines(x = lines,
+                           pattern = "\\[METHODOLOGICAL CHANGES\\]",
+                           replacement = chapter_data$text_data$methodological_changes)
   }
 
   if(as.character(chapter_data$text_data$research_priorities) == "NA") {
     rm_line <- grep(pattern = "\\[RESEARCH_PRIORITIES\\]", x = lines)
     lines <- lines[-c(rm_line, rm_line+1)]
   } else {
-    lines <- gsub(pattern = "\\[RESEARCH_PRIORITIES\\]",
-                  replacement = chapter_data$text_data$research_priorities,
-                  x = lines)
+    lines <- replace_lines(x = lines,
+                           pattern = "\\[RESEARCH_PRIORITIES\\]",
+                           replacement = chapter_data$text_data$research_priorities)
   }
 
   for(ii in 1:length(chapter_data$fig_data)) {

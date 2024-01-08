@@ -15,13 +15,31 @@ extract_tag <- function(x, tag, remove_tabs = TRUE) {
 
   x_sub <- x[min(tag_range):max(tag_range)]
 
+  tag_start <- grep(x = x_sub, pattern = paste0("<", tag, ">"))
+
+  tag_end <- grep(x = x_sub, pattern = paste0("</", tag, ">"))
+
   x_sub <- gsub(x = x_sub, pattern = paste0("<", tag, ">"), replacement = "")
 
   x_sub <- gsub(x = x_sub, pattern = paste0("</", tag, ">"), replacement = "")
 
-  x_sub <- x_sub[nchar(x_sub) > 0]
+  flag <- c()
 
-  x_sub <- gsub(x = x_sub, pattern = "\t", replacement = "")
+  if(nchar(x_sub[tag_start]) == 0) {
+    flag <- c(flag, tag_start)
+  }
+
+  if(nchar(x_sub[tag_end]) == 0) {
+    flag <- c(flag, tag_end)
+  }
+
+  if(length(flag) > 0) {
+    x_sub <- x_sub[-flag]
+  }
+
+  if(remove_tabs) {
+    x_sub <- gsub(x = x_sub, pattern = "\t", replacement = "")
+  }
 
   x_sub <- trimws(x_sub, which = "right")
 

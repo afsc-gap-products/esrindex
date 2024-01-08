@@ -9,6 +9,7 @@ library(knitr)
 ```
 
 Contributed by Ned Laman
+
 Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center, NOAA Fisheries 
 
 **Contact**: Ned.Laman@noaa.gov
@@ -24,8 +25,12 @@ Resource Assessment and Conservation Engineering Division, Alaska Fisheries Scie
 **Implications**: AI survey results provide limited information about abundance or abundance trends for these species due to problems in catchability. Therefore, the indices presented are likely of limited value to fisheries management. These species are not typically commercially important, but the trends in shrimp especially should be monitored as these are an important prey base for benthic commercial species.
 
 
+
+
 ```{r fig1, include = TRUE, echo = FALSE, fig.cap='\\label{fig:figs}Figure 1. Relative mean CPUE of miscellaneous species by area from RACE bottom trawl surveys in the Aleutian Islands from 1980 through 2016. Error bars represent standard errors. The gray lines represent the percentage of non-zero catches. The Western, Central, and Eastern Aleutians correspond to management areas 543, 542, and 541, respectively. The Southern Bering Sea corresponds to management areas 519 and 518.'}
 knitr::include_graphics('../plots/AI/AI_misc_species_full_region.png')
 ```
+
+
 
 ## References

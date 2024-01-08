@@ -9,6 +9,7 @@ library(knitr)
 ```
 
 Contributed by Ned Laman
+
 Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center, NOAA Fisheries 
 
 **Contact**: Ned.Laman@noaa.gov
@@ -24,8 +25,12 @@ Resource Assessment and Conservation Engineering Division, Alaska Fisheries Scie
 **Implications**: The two major threats to populations of benthic invertebrates in the AI have been identified as fishing impacts and impacts of climate change (Rooper et al. 2018). Both of these processes are occurring in the Aleutian archipelago. Much of the benthic habitat in the Aleutians (∼ 50% of the shelf and slope to depths of 500 m) has been protected from mobile fishing gear since 2006, however, no studies have been conducted to determine potential recovery or expansion of populations due to the closures. As indicated by the 2022 bottom trawl survey, temperature time series (O’Leary, page 43), temperatures for the last four biennial surveys have been warmer than long-term historical averages. Non-motile HAPC organisms are sensitive to these changes in the benthic environment.
 
 
+
+
 ```{r fig1, include = TRUE, echo = FALSE, fig.cap='\\label{fig:figs}Figure 1.  Mean CPUE of structural epifauna that form Habitat Areas of Particular Concern by area from RACE Groundfish Assessment Program bottom trawl surveys in the Aleutian Islands from 1980 through 2022. Error bars represent standard errors. The gray lines represent the percentage of non-zero catches.'}
 knitr::include_graphics('../plots/AI/AI_structural_epifauna_full_region.png')
 ```
+
+
 
 ## References

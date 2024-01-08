@@ -9,6 +9,7 @@ library(knitr)
 ```
 
 Contributed by Ned Laman and Alexandra Dowlin
+
 Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center, NOAA Fisheries 
 
 **Contact**: Ned.Laman@noaa.gov
@@ -24,8 +25,12 @@ Resource Assessment and Conservation Engineering Division, Alaska Fisheries Scie
 **Implications**: The primary habitat for these animals is open water and, therefore, the observed patterns of abundance and prevalence could reflect differing oceanographic conditions across the GOA survey area. Alternatively, the observed patterns could reflect that the spatial and temporal progression of the bottom trawl survey that begins in the western GOA in May and moves eastward during the summer until the survey is completed in August in southeast Alaska. More directed study of the ecology and biology of the species in this group is needed to develop a mechanistic understanding of their distribution and abundance patterns.
 
 
+
+
 ```{r fig1, include = TRUE, echo = FALSE, fig.cap='\\label{fig:figs}Figure 1. Relative biomass estimates of sea jellies (a.k.a. jellyfishes) collected from International North Pacific Fisheries Commission (INPFC) statistical districts during fishery-independent summer bottom trawl surveys of the Gulf of Alaska (1990–2023). Error bars represent standard errors and the gray lines represent the prevalence (percentage) of non-zero catches for this group.'}
 knitr::include_graphics('../plots/GOA/GOA_jellyfish_full_region.png')
 ```
+
+
 
 ## References

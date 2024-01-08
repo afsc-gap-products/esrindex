@@ -9,6 +9,7 @@ library(knitr)
 ```
 
 Contributed by Ned Laman
+
 Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center, NOAA Fisheries 
 
 **Contact**: Ned.Laman@noaa.gov
@@ -24,8 +25,12 @@ Resource Assessment and Conservation Engineering Division, Alaska Fisheries Scie
 **Implications**: The 2022 increase in CPUE and frequency of occurrence of jellyfish is in contrast to the decline in occurrence and abundance between 2016 and 2018. Some of the warmest mean temperatures recorded on our AI surveys occurred in 2016 and 2018. While water temperatures were relatively cooler in 2022, the mean surface and bottom temperatures measured at the trawl net remained above the long term 20-year average. Temperatures are also indicative of water flow in the AI, where water movement is directly influenced by the Aleutian Passes so that it is difficult to attribute any one environmental factor to the patterns observed in jellyfish CPUE and occurrence.
 
 
+
+
 ```{r fig1, include = TRUE, echo = FALSE, fig.cap='\\label{fig:figs}Figure 1. Relative mean CPUE of jellyfish species by INPFC area from RACE Groundfish Assessment Program bottom trawl surveys in the Aleutian Islands from 1980 through 2022. Error bars represent relative standard errors. The gray lines represent the percentage of non-zero catches.'}
 knitr::include_graphics('../plots/AI/AI_jellyfish_full_region.png')
 ```
+
+
 
 ## References

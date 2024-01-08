@@ -14,9 +14,9 @@ add_figure <- function(x) {
 
   }
 
-  c("",
+  c("", "", "",
     paste0("```{r fig", x$fig_number, ", include = TRUE, echo = FALSE, " ,
            "fig.cap='\\\\label{fig:figs}Figure ", x$fig_number, ". ", x$caption, "'}"),
     paste0("knitr::include_graphics('.", fig_path, "')"),
-    "```")
+    "```", "", "")
 }
