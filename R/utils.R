@@ -2,6 +2,7 @@
 #'
 #' Establishes a connection to an Oracle database channel using the specified schema, username, and password.
 #'
+#' @param channel An open RODBC channel-- only used within functions to handle open connections.
 #' @param schema A character string specifying the Oracle schema. If not provided, it prompts the user to enter the schema.
 #'
 #' @return An RODBC channel object representing the connection to the Oracle database.
@@ -10,18 +11,8 @@
 #' This function connects to an Oracle database using the provided schema, username, and password. If the schema is not provided,
 #' it prompts the user to enter the Oracle schema. The function returns an RODBC channel object representing the connection.
 #'
-#' @seealso
-#' \code{\link{RODBC::odbcConnect}}, \code{\link{getPass::getPass}}
-#'
 #' @importFrom RODBC odbcConnect
 #' @importFrom getPass getPass
-#'
-#' @examples
-#' \dontrun{
-#' # Example Usage:
-#' channel <- get_connected(schema = "AFSC")
-#' }
-#'
 #' @export
 
 get_connected <- function(channel = NULL, schema = NA){

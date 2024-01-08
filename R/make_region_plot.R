@@ -11,7 +11,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' make_region_plot(indicator_data = AI_INDICATOR, indicator_name = "misc_species", bar_color = "#0085CA", error_bars = TRUE)
+#' make_region_plot(indicator_data = AI_INDICATOR,
+#'                  indicator_name = "misc_species",
+#'                  bar_color = "#0085CA",
+#'                  error_bars = TRUE)
 #' }
 #' @import ggplot2
 #' @import dplyr
@@ -99,7 +102,7 @@ make_region_plot <- function(indicator_data, indicator_name, error_bars = TRUE, 
 
   suppressWarnings(dir.create(paste0("./plots/", region), recursive = TRUE))
 
-  png(filename = paste0("./plots/", region, "/", region, "_", indicator_name, "_full_region.png"),
+  png(filename = paste0("./plots/", region, "/", region, "_", gsub(x = indicator_name, pattern = " ", replacement = "_"), "_full_region.png"),
       width = 169,
       height = 40*length(group_name),
       units = "mm",

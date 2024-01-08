@@ -8,20 +8,7 @@
 #' This function creates a custom ggplot2 theme with a blue strip at the top, styled axes, legend at the bottom,
 #' and customized strip text appearance. It is designed for aesthetic improvements in data visualization.
 #'
-#' @seealso
-#' \code{\link{ggplot2::theme_bw}}, \code{\link{ggplot2::element_text}}, \code{\link{ggplot2::element_line}},
-#' \code{\link{ggplot2::element_blank}}, \code{\link{ggplot2::element_rect}}, \code{\link{margin}}
-#'
-#' @importFrom ggplot2 theme_bw element_text element_line element_blank element_rect margin
-#'
-#' @examples
-#' \dontrun{
-#' # Example Usage:
-#' ggplot(data, aes(x = variable, y = value, fill = group)) +
-#'   geom_bar(stat = "identity") +
-#'   theme_blue_strip()
-#' }
-#'
+#' @import ggplot2
 #' @export
 
 theme_blue_strip <- function() {
@@ -43,7 +30,7 @@ theme_blue_strip <- function() {
 
 #' Set stratum plotting order
 #'
-#' @param common_name Vector of stratum names
+#' @param stratum Stratum as a character vector
 #' @param region Character vector of length one indicating whether the region is AI, GOA, or BS
 #' @export
 

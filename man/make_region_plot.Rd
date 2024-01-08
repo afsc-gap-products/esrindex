@@ -28,6 +28,9 @@ This function generates a region-specific biomass plot based on indicator data a
 }
 \examples{
 \dontrun{
-make_region_plot(indicator_data = AI_INDICATOR, indicator_name = "misc_species", bar_color = "#0085CA", error_bars = TRUE)
+make_region_plot(indicator_data = AI_INDICATOR,
+                 indicator_name = "misc_species",
+                 bar_color = "#0085CA",
+                 error_bars = TRUE)
 }
 }

@@ -12,9 +12,3 @@ add_figure(x)
 \description{
 This function uses outputs from esrindex::read_esr_xml to add figures to an RMD or QMD template document.
 }
-\examples{
-# Example usage:
-fig_info <- list(fig_number = 1, caption = "Example Figure", fig_path = "example_plot.png")
-quarto_code <- add_figure(fig_info)
-
-}

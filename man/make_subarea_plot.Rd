@@ -29,7 +29,10 @@ This function generates subarea-specific biomass plots based on indicator data.
 \examples{
 \dontrun{
 # Example Usage:
-make_subarea_plot(indicator_data = AI_INDICATOR, indicator_name = "misc_species", bar_color = "#0085CA", error_bars = TRUE)
+make_subarea_plot(indicator_data = AI_INDICATOR,
+                  indicator_name = "misc_species",
+                  bar_color = "#0085CA",
+                  error_bars = TRUE)
 }
 
 }

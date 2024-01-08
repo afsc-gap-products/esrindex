@@ -10,8 +10,7 @@
 #' make_esr_chapter(xml_path = "./chapters/AI_misc_species.xml")
 #' }
 #'
-#' @import rmarkdown
-#' @import knitr
+#' @import rmarkdown knitr
 #' @export
 
 make_esr_chapter <- function(xml_path, output_path = NULL) {

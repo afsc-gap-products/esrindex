@@ -7,9 +7,9 @@
 set_stratum_order(stratum, region)
 }
 \arguments{
-\item{region}{Character vector of length one indicating whether the region is AI, GOA, or BS}
+\item{stratum}{Stratum as a character vector}
 
-\item{common_name}{Vector of stratum names}
+\item{region}{Character vector of length one indicating whether the region is AI, GOA, or BS}
 }
 \description{
 Set stratum plotting order

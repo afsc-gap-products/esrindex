@@ -2,78 +2,79 @@
 #'
 #' This dataset contains group names and RACEBASE SPECIES_CODE ranges for species groups used in ESRs.
 #'
-#' @name species_groups
 #' @docType data
-#' @format A data frame with 4 variables:
+#' @format A data frame with 3 variables:
 #'   \describe{
 #'     \item{group_name}{Character vector, names of taxonomic groups.}
 #'     \item{min_code}{Numeric vector, minimum SPECIES_CODE for each group.}
 #'     \item{max_code}{Numeric vector, maximum SPECIES_CODE for each group.}
 #'   }
-#' @examples
-#' data(species_groups)
-#'
-#' @usage data(species_groups)
-#'
-#' @export
+'species_groups'
 
+#' Non-sequential species groups
+#'
+#' This named list contains species codes for species categories that are non-sequential.
+#'
+#' @docType data
+'species_groups_ns'
 
 #' ESR region settings
 #'
 #' This dataset contains subarea and area IDs, and the minimum years to use for biomass.
 #'
-#' @name region_settings
 #' @docType data
-#' @format A list with named elements:
+#' @format A list with settings for each region, where each region has 3 variables:
 #'   \describe{
-#'     \item{GOA}{List with elements:
-#'       \item{esr_subarea_id}{Numeric vector, identifiers for the Gulf of Alaska subareas.}
-#'       \item{esr_area_id}{Numeric, area code for the Gulf of Alaska.}
-#'       \item{min_year}{Numeric, minimum year for the Gulf of Alaska.}
-#'     }
-#'     \item{AI}{List with elements:
-#'       \item{esr_subarea_id}{Numeric vector, identifiers for the Aleutian Islands subareas.}
-#'       \item{esr_area_id}{Numeric, area code for the Aleutian Islands.}
-#'       \item{min_year}{Numeric, minimum year for the Aleutian Islands.}
-#'     }
-#'     \item{EBS}{List with elements:
-#'       \item{esr_subarea_id}{Numeric vector, identifiers for the Eastern Bering Sea subareas.}
-#'       \item{esr_area_id}{Numeric, area code for the Eastern Bering Sea.}
-#'       \item{min_year}{Numeric, minimum year for the Eastern Bering Sea.}
-#'     }
-#'     \item{NBS}{List with elements:
-#'       \item{esr_subarea_id}{Numeric vector, identifiers for the Northern Bering Sea subareas.}
-#'       \item{esr_area_id}{Numeric, area code for the Northern Bering Sea.}
-#'       \item{min_year}{Numeric, minimum year for the Northern Bering Sea.}
-#'     }
-#'   }
-#' @examples
-#' data(region_settings)
-#'
-#' @usage data(region_settings)
-#'
-#' @export
 
+#'       \item{esr_subarea_id}{Corresponds with subarea AREA_ID from gapindex.}
+#'       \item{esr_area_id}{Corresponds with region-wide AREA_ID from gapindex.}
+#'       \item{min_year}{Starting year}
+#'     }
+'region_settings'
 
 #' Chapter Settings
 #'
 #' Information about species groups included within different chapters.
 #'
-#' @name region_settings
 #' @docType data
-#' @format A nested list containing settings for ESR chapters chapter settings.
-#' @details
-#' The data is organized hierarchically by region (GOA, AI, EBS) and each chapter has the following settings:
+#' @format A nested list containing species groups included in each ESR chapters
+#'  \describe{
+#'    \item{misc_species}{List of miscellaneous species group names (e.g. Echinoderms, Shrimps, Eelpouts, Poachers).}
+#'    \item{jellyfish}{List of jellyfish group names.}
+#'    \item{structural_epifauna}{List of structural epifauna group names (e.g. Sponges, Sea anemones, Gorgonians, Pennatulaceans, Hydrocorals, Soft corals).}
+#'    \item{forage_fish}{List of forage fish species group names (e.g. eulachon, capelin, pricklebacks, sandlance, Pacific sandfish)}
+#'    }
+'chapter_settings'
+
+
+#' Aleutian Islands Indicator
 #'
-#' \itemize{
-#'   \item \code{misc_species}: List of miscellaneous species group names (e.g. Echinoderms, Shrimps, Eelpouts, Poachers).
-#'   \item \code{jellyfish}: List of jellyfish group names.
-#'   \item \code{structural_epifauna}: List of structural epifauna group names (e.g. Sponges, Sea anemones, Gorgonians, Pennatulaceans, Hydrocorals, Soft corals).
-#'   \item \code{forage_fish}: List of forage fish species group names (e.g. eulachon, capelin, pricklebacks, sandlance, Pacific sandfish)
-#' }
-#' @examples
-#' data(region_settings)
+#' ESR Indicator data for the Aleutian Islands
 #'
-#' @usage data(region_settings)
+#' @docType data
 #'
-#' @export
+'AI_INDICATOR'
+
+#' Gulf of Alaska Indicator
+#'
+#' ESR Indicator data for the Gulf of Alaska
+#'
+#' @docType data
+#'
+'GOA_INDICATOR'
+
+#' Eastern Bering Sea Indicator
+#'
+#' ESR Indicator data for the Eastern Bering Sea
+#'
+#' @docType data
+#'
+'EBS_INDICATOR'
+
+#' Northern Bering Sea Indicator
+#'
+#' ESR Indicator data for the Northern Bering Sea
+#'
+#'@docType data
+#'
+'NBS_INDICATOR'

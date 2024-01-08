@@ -16,16 +16,3 @@ Custom theme for ggplot2 with a blue strip at the top and specific styling for a
 This function creates a custom ggplot2 theme with a blue strip at the top, styled axes, legend at the bottom,
 and customized strip text appearance. It is designed for aesthetic improvements in data visualization.
 }
-\examples{
-\dontrun{
-# Example Usage:
-ggplot(data, aes(x = variable, y = value, fill = group)) +
-  geom_bar(stat = "identity") +
-  theme_blue_strip()
-}
-
-}
-\seealso{
-\code{\link{ggplot2::theme_bw}}, \code{\link{ggplot2::element_text}}, \code{\link{ggplot2::element_line}},
-\code{\link{ggplot2::element_blank}}, \code{\link{ggplot2::element_rect}}, \code{\link{margin}}
-}

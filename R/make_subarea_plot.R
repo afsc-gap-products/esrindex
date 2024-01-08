@@ -12,7 +12,10 @@
 #' @examples
 #' \dontrun{
 #' # Example Usage:
-#' make_subarea_plot(indicator_data = AI_INDICATOR, indicator_name = "misc_species", bar_color = "#0085CA", error_bars = TRUE)
+#' make_subarea_plot(indicator_data = AI_INDICATOR,
+#'                   indicator_name = "misc_species",
+#'                   bar_color = "#0085CA",
+#'                   error_bars = TRUE)
 #' }
 #'
 #' @import ggplot2
@@ -125,7 +128,10 @@ make_subarea_plot <- function(indicator_data, indicator_name, bar_color = "#0085
 
     }
 
-    png(filename = paste0("./plots/", region, "/", region, "_", indicator_name, "_", group_name[ii], "_stratum.png"),
+    png(filename = paste0("./plots/", region, "/", region, "_",
+                          gsub(x = indicator_name, pattern = " ", replacement = "_"),
+                          "_",
+                          gsub(x = group_name[ii], pattern = " ", replacement = "_"), "_stratum.png"),
         width = 169,
         height = ifelse(length(area_id) > 4, 50 + 40 * ceiling(length(area_id)/3) - 1, 50),
         units = "mm",

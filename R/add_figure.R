@@ -3,13 +3,6 @@
 #' This function uses outputs from esrindex::read_esr_xml to add figures to an RMD or QMD template document.
 #'
 #' @param x A list from esrindex::read_esr_xml containing figure number (fig_num), caption (fig_caption), and figure path (fig_path).
-#'
-#' @examples
-#' # Example usage:
-#' fig_info <- list(fig_number = 1, caption = "Example Figure", fig_path = "example_plot.png")
-#' quarto_code <- add_figure(fig_info)
-#'
-#' @importFrom base nchar paste0
 #' @export
 
 add_figure <- function(x) {

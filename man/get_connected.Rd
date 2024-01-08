@@ -7,6 +7,8 @@
 get_connected(channel = NULL, schema = NA)
 }
 \arguments{
+\item{channel}{An open RODBC channel-- only used within functions to handle open connections.}
+
 \item{schema}{A character string specifying the Oracle schema. If not provided, it prompts the user to enter the schema.}
 }
 \value{
@@ -18,14 +20,4 @@ Establishes a connection to an Oracle database channel using the specified schem
 \details{
 This function connects to an Oracle database using the provided schema, username, and password. If the schema is not provided,
 it prompts the user to enter the Oracle schema. The function returns an RODBC channel object representing the connection.
-}
-\examples{
-\dontrun{
-# Example Usage:
-channel <- get_connected(schema = "AFSC")
-}
-
-}
-\seealso{
-\code{\link{RODBC::odbcConnect}}, \code{\link{getPass::getPass}}
 }
