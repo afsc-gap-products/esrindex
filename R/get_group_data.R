@@ -53,6 +53,8 @@ get_group_data <- function(region, channel = NULL) {
                                              query = paste0("select species_code from racebase.species where species_code >= ",
                                                             min(species_codes), " and ", "species_code <= ", max(species_codes)))
 
+      valid_species_codes$GROUP <- species_groups$group_name[ii]
+
       valid_species_codes <- valid_species_codes[valid_species_codes$SPECIES_CODE %in% species_codes, ]
 
     } else {

@@ -43,3 +43,4 @@ vignettes/*.pdf
 /archive/
 /chapters/*.docx
 /chapters/*.Rmd
+/paper/
