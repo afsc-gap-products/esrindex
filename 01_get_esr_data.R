@@ -12,7 +12,6 @@ GOA_INDICATOR <- esrindex::get_group_data(region = "GOA", channel = channel)
 
 AI_INDICATOR <- esrindex::get_group_data(region = "AI", channel = channel)
 
-
 all_complete <- all(length(unique(EBS_INDICATOR$timeseries$SPECIES_CODE)) == length(unname(unlist(chapter_settings$EBS))),
                     length(unique(NBS_INDICATOR$timeseries$SPECIES_CODE)) == length(unname(unlist(chapter_settings$NBS))),
                     length(unique(AI_INDICATOR$timeseries$SPECIES_CODE)) == length(unname(unlist(chapter_settings$AI))),
@@ -36,3 +35,13 @@ if(all_complete) {
   stop("Indicator field names don't match between chapter_settings and at least one time series.")
 
 }
+
+test <- fit_rema_region(x = AI_INDICATOR$timeseries, region = "AI")
+
+
+test[[1]]$parameter_estimates
+test[[2]]$parameter_estimates
+test[[3]]$parameter_estimates
+test[[4]]$parameter_estimates
+test[[5]]$parameter_estimates
+test[[6]]$parameter_estimates

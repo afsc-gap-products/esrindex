@@ -117,16 +117,16 @@ get_group_data <- function(region, channel = NULL) {
 
   mean_sd <- mean_sd[mean_sd$AREA_ID %in% c(esr_area_id, esr_subarea_id) & mean_sd$SPECIES_CODE %in% unname(unlist(chapter_settings[[region]])), ]
 
+  # Calculate SDs and CVs; fill zeros
+  timeseries$BIOMASS_SD <- sqrt(timeseries$BIOMASS_VAR)
+  timeseries$CV <- timeseries$BIOMASS_SD/timeseries$BIOMASS_MT
+  timeseries$BIOMASS_PLUS1_SD <- timeseries$BIOMASS_MT + timeseries$BIOMASS_SD
+  timeseries$BIOMASS_PLUS2_SD <- timeseries$BIOMASS_MT + 2*timeseries$BIOMASS_SD
+  timeseries$BIOMASS_MINUS1_SD <- timeseries$BIOMASS_MT - timeseries$BIOMASS_SD
+  timeseries$BIOMASS_MINUS2_SD <- timeseries$BIOMASS_MT - 2*timeseries$BIOMASS_SD
 
-  # Calculate SEs and fill zeros
-  timeseries$BIOMASS_SE <- sqrt(timeseries$BIOMASS_VAR)
-  timeseries$BIOMASS_PLUS1_SE <- timeseries$BIOMASS_MT + timeseries$BIOMASS_SE
-  timeseries$BIOMASS_PLUS2_SE <- timeseries$BIOMASS_MT + 2*timeseries$BIOMASS_SE
-  timeseries$BIOMASS_MINUS1_SE <- timeseries$BIOMASS_MT - timeseries$BIOMASS_SE
-  timeseries$BIOMASS_MINUS2_SE <- timeseries$BIOMASS_MT - 2*timeseries$BIOMASS_SE
-
-  timeseries$BIOMASS_MINUS1_SE <- ifelse(timeseries$BIOMASS_MINUS1_SE < 0, 0, timeseries$BIOMASS_MINUS1_SE)
-  timeseries$BIOMASS_MINUS2_SE <- ifelse(timeseries$BIOMASS_MINUS2_SE < 0, 0, timeseries$BIOMASS_MINUS2_SE)
+  timeseries$BIOMASS_MINUS1_SD <- ifelse(timeseries$BIOMASS_MINUS1_SD < 0, 0, timeseries$BIOMASS_MINUS1_SD)
+  timeseries$BIOMASS_MINUS2_SD <- ifelse(timeseries$BIOMASS_MINUS2_SD < 0, 0, timeseries$BIOMASS_MINUS2_SD)
 
   mean_sd$MEAN_PLUS1 <- mean_sd$MEAN_BIOMASS + mean_sd$SD_BIOMASS
   mean_sd$MEAN_PLUS2 <- mean_sd$MEAN_BIOMASS + 2*mean_sd$SD_BIOMASS
@@ -136,9 +136,14 @@ get_group_data <- function(region, channel = NULL) {
   mean_sd$MEAN_MINUS1 <- ifelse(mean_sd$MEAN_MINUS1 < 0, 0, mean_sd$MEAN_MINUS1)
   mean_sd$MEAN_MINUS2 <- ifelse(mean_sd$MEAN_MINUS2 < 0, 0, mean_sd$MEAN_MINUS2)
 
+
+  # Fit random effects model to time series
+  rema_fit <- fit_rema_region(x = timeseries)
+
   return(list(timeseries = as.data.frame(timeseries),
               mean_sd = as.data.frame(mean_sd),
+              rema_fit = rema_fit,
               last_update = Sys.Date(),
-              package_version = paste0("esrindex", packageVersion(pkg = "esrindex"))))
+              package_version = paste0("esrindex ", packageVersion(pkg = "esrindex"))))
 
 }

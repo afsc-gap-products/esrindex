@@ -1,51 +1,22 @@
-<indicatorShortName>
-forage_fish
-</indicatorShortName>
-
-<indicatorTitle>
-Fisheries-independent Survey-based Indices of Forage Fishes in the Gulf of Alaska
-</indicatorTitle>
-
-<indicatorRegion>
-GOA
-</indicatorRegion>
-
-<authors>
-Ned Laman and Alexandra Dowlin
-</authors>
-
-<contactEmail>
-Ned.Laman@noaa.gov
-</contactEmail>
-
-<authorAffiliations>
-Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center, NOAA Fisheries
-</authorAffiliations>
-
-<lastUpdate>
-October 2023
-</lastUpdate>
-
-<indicatorDescription>
-The Resource Assessment and Conservation Engineering Division’s Groundfish Assessment Program (RACE-GAP) fishery-independent summer bottom trawl surveys in the Gulf of Alaska (GOA) are designed to assess populations of commercially and ecologically important fishes and invertebrates. Since 1990, we have deployed the same standardized trawl gear (footrope and trawl net) as is presently in use in the GOA bottom trawl survey. The North Pacific Fishery Management Council has identified several forage fish species or groups of species for federal management. The survey catches Pacific sandlance, eulachon, capelin, sandfish, and pricklebacks though the trawl mesh size is sufficiently large to allow escapement for most of these species. Because of the highly variable design-based biomass estimates from the trawl survey, the biomass of each forage fish was log-transformed to better show trends. For each species or species group, the largest log-transformed biomass estimate over the time series was arbitrarily scaled to a value of 100 and all other values were scaled in reference to that. The standard error (± 1) was weighted proportionally to the biomass to get a relative standard error.
-</indicatorDescription>
-
-<methodologicalChanges>NA</methodologicalChanges>
-
-<statusAndTrends>
-The biomass of forage fishes in the GOA is difficult to measure in NOAA Fisheries’ bottom trawl survey catches due to issues such as gear selectivity and catchability. Therefore, we anticipate that the relative biomass estimates presented here for forage fishes are imprecise so that apparent trends should be interpreted cautiously. Eulachon have been most prevalent in the Yakutat survey district though their greatest biomass has historically occurred in the Kodiak district where biomass appears to be increasing in recent surveys after highs recorded between 2000 and 2015 (Figure 57). Capelin biomass has historically been highest in the Kodiak district. Sandfish, prickelbacks, and sand lance are uniformly uncommon in trawl catches across the GOA survey years and districts, though there are episodic years with large biomass estimates for these species over the survey history.
-</statusAndTrends>
-
-<factorsInfluencingTrends>
-Unknown
-</factorsInfluencingTrends>
-
-<implications>
-The NOAA Fisheries’ survey trawl gear has catchability and selectivity issues for forage fishes that impact their catch and retention. Therefore, relative biomass estimates for these species are of limited value for interpreting long-term abundance trends or population status.
-</implications>
-
-<researchPriorities>NA</researchPriorities>
-
+<?xml version="1.0" encoding="UTF-8" ?>
+<header>
+	<docType>ESR Contribution</docType>
+	<indicatorShortName>forage_fish</indicatorShortName>
+	<indicatorTitle>Fisheries-independent Survey-based Indices of Forage Fishes in the Gulf of Alaska</indicatorTitle>
+	<indicatorRegion>GOA</indicatorRegion>
+	<authors>Ned Laman and Alexandra Dowlin</authors>
+	<contactEmail>Ned.Laman@noaa.gov</contactEmail>
+	<authorAffiliations>Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center, NOAA Fisheries</authorAffiliations>
+	<lastUpdate>October 2023</lastUpdate>
+</header>
+<body>
+	<indicatorDescription>The Resource Assessment and Conservation Engineering Division’s Groundfish Assessment Program (RACE-GAP) fishery-independent summer bottom trawl surveys in the Gulf of Alaska (GOA) are designed to assess populations of commercially and ecologically important fishes and invertebrates. Since 1990, we have deployed the same standardized trawl gear (footrope and trawl net) as is presently in use in the GOA bottom trawl survey. The North Pacific Fishery Management Council has identified several forage fish species or groups of species for federal management. The survey catches Pacific sandlance, eulachon, capelin, sandfish, and pricklebacks though the trawl mesh size is sufficiently large to allow escapement for most of these species. Because of the highly variable design-based biomass estimates from the trawl survey, the biomass of each forage fish was log-transformed to better show trends. For each species or species group, the largest log-transformed biomass estimate over the time series was arbitrarily scaled to a value of 100 and all other values were scaled in reference to that. The standard error (± 1) was weighted proportionally to the biomass to get a relative standard error.</indicatorDescription>
+	<methodologicalChanges>NA</methodologicalChanges>
+	<statusAndTrends>The biomass of forage fishes in the GOA is difficult to measure in NOAA Fisheries’ bottom trawl survey catches due to issues such as gear selectivity and catchability. Therefore, we anticipate that the relative biomass estimates presented here for forage fishes are imprecise so that apparent trends should be interpreted cautiously. Eulachon have been most prevalent in the Yakutat survey district though their greatest biomass has historically occurred in the Kodiak district where biomass appears to be increasing in recent surveys after highs recorded between 2000 and 2015 (Figure 57). Capelin biomass has historically been highest in the Kodiak district. Sandfish, prickelbacks, and sand lance are uniformly uncommon in trawl catches across the GOA survey years and districts, though there are episodic years with large biomass estimates for these species over the survey history.</statusAndTrends>
+	<factorsInfluencingTrends>Unknown</factorsInfluencingTrends>
+	<implications>The NOAA Fisheries’ survey trawl gear has catchability and selectivity issues for forage fishes that impact their catch and retention. Therefore, relative biomass estimates for these species are of limited value for interpreting long-term abundance trends or population status.</implications>
+	<researchPriorities>NA</researchPriorities>
+</body>
 <figures>
 	<fig>
 		<figureNumber>1</figureNumber>

@@ -68,14 +68,14 @@ make_subarea_plot <- function(indicator_data, indicator_name, bar_color = "#0085
                    mapping = aes(yintercept = MEAN_MINUS2), linetype = 3) +
         geom_linerange(data = sel_timeseries,
                        mapping = aes(x = YEAR,
-                                     ymax = BIOMASS_PLUS2_SE,
-                                     ymin = BIOMASS_MINUS2_SE),
+                                     ymax = BIOMASS_PLUS2_SD,
+                                     ymin = BIOMASS_MINUS2_SD),
                        color = "black") +
         geom_rect(data = sel_timeseries,
                   mapping = aes(xmin = YEAR+0.4,
                                 xmax = YEAR-0.4,
-                                ymax = BIOMASS_PLUS1_SE,
-                                ymin = BIOMASS_MINUS1_SE),
+                                ymax = BIOMASS_PLUS1_SD,
+                                ymin = BIOMASS_MINUS1_SD),
                   fill = bar_color) +
         geom_segment(data = sel_timeseries,
                      aes(x = YEAR+0.4,

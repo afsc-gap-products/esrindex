@@ -1,59 +1,32 @@
-<indicatorShortName>
-jellyfish
-</indicatorShortName>
-
-<indicatorTitle>
-Eastern and Northern Bering Sea – Jellyfishes
-</indicatorTitle>
-
-<indicatorRegion>
-EBS
-</indicatorRegion>
-
-<authors>
-Thaddaeus Buser
-</authors>
-
-<contactEmail>
-thaddaeus.buser@noaa.gov
-</contactEmail>
-
-<authorAffiliations>
-Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center National Marine Fisheries Service, NOAA
-</authorAffiliations>
-
-<lastUpdate>
-September 2023
-</lastUpdate>
-
-<indicatorDescription>
-The time series for jellyfshes (Scyphozoa, but primarily Chrysaora melanaster) relative CPUE by weight (kg per hectare) was updated for 2023 from both the eastern (Figure 61, top) and northern (Figure 61, bottom) Bering Sea surveys. Catch methods for the Northern Bering Sea (NBS) were standardized in 2010, so the catches from previous years do not provide comparable data and are consequently excluded. Relative CPUE was calculated by setting the largest biomass in the time series to a value of 1 and scaling other annual values proportionally. The standard error (±1) was weighted proportionally to the CPUE to produce a relative standard error.
-</indicatorDescription>
-
-<methodologicalChanges>NA</methodologicalChanges>
-
-<statusAndTrends>
+<?xml version="1.0" encoding="UTF-8" ?>
+<header>
+	<docType>ESR Contribution</docType>
+	<indicatorShortName>jellyfish</indicatorShortName>
+	<indicatorTitle>Eastern and Northern Bering Sea – Jellyfishes</indicatorTitle>
+	<indicatorRegion>EBS</indicatorRegion>
+	<authors>Thaddaeus Buser</authors>
+	<contactEmail>thaddaeus.buser@noaa.gov</contactEmail>
+	<authorAffiliations>Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center National Marine Fisheries Service, NOAA</authorAffiliations>
+	<lastUpdate>September 2023</lastUpdate>
+</header>
+<body>
+	<indicatorDescription>The time series for jellyfshes (Scyphozoa, but primarily _Chrysaora melanaster_) relative CPUE by weight (kg per hectare) was updated for 2023 from both the eastern (Figure 61, top) and northern (Figure 61, bottom) Bering Sea surveys. Catch methods for the Northern Bering Sea (NBS) were standardized in 2010, so the catches from previous years do not provide comparable data and are consequently excluded. Relative CPUE was calculated by setting the largest biomass in the time series to a value of 1 and scaling other annual values proportionally. The standard error (±1) was weighted proportionally to the CPUE to produce a relative standard error.</indicatorDescription>
+	<methodologicalChanges>NA</methodologicalChanges>
+	<statusAndTrends>
 
 
-_Eastern Bering Sea:_
+	_Eastern Bering Sea:_
 
-The relative CPUE for jellyfshes in the eastern Bering Sea in 2023 is virtually unchanged from the 2022 survey estimate, similar to the catch rates observed 1992–1999 and in 2018. There is an apparent pattern of cyclical rise and fall of CPUE values across the time series. The relatively low biomass estimated throughout the 1980’s was followed by a period of increasing biomass of jellyfshes throughout the 1990s (Brodeur et al., 1999). A second period of relatively low CPUE estimates from 2001 to 2008 was then followed by a second period with relatively higher CPUE values from 2009 to 2015. It is worth noting that, prior to this year, jellyfsh CPUE estimates in the EBS have been relatively inconsistent over the past several survey years. 
+	The relative CPUE for jellyfshes in the eastern Bering Sea in 2023 is virtually unchanged from the 2022 survey estimate, similar to the catch rates observed 1992–1999 and in 2018. There is an apparent pattern of cyclical rise and fall of CPUE values across the time series. The relatively low biomass estimated throughout the 1980’s was followed by a period of increasing biomass of jellyfshes throughout the 1990s (Brodeur et al., 1999). A second period of relatively low CPUE estimates from 2001 to 2008 was then followed by a second period with relatively higher CPUE values from 2009 to 2015. It is worth noting that, prior to this year, jellyfsh CPUE estimates in the EBS have been relatively inconsistent over the past several survey years. 
 
-_Northern Bering Sea:_
+	_Northern Bering Sea:_
 
-The relative CPUE for jellyfshes in the northern Bering Sea is inconsistent across the time series. While an apparent pattern of cyclical rise and fall of jellyfsh CPUE values exists in the EBS time series, gaps in sampling years across the northern Bering Sea time series makes identifying multi-year trends difcult.
-</statusAndTrends>
+	The relative CPUE for jellyfshes in the northern Bering Sea is inconsistent across the time series. While an apparent pattern of cyclical rise and fall of jellyfsh CPUE values exists in the EBS time series, gaps in sampling years across the northern Bering Sea time series makes identifying multi-year trends difcult.</statusAndTrends>
 
-<factorsInfluencingTrends>
-The fluctuations in jellyfish biomass and their impacts on forage fish, juvenile walleye pollock (Gadus chalcogrammus), and salmon in relation to other biophysical indices were investigated by Cieciel et al. (2009) and Brodeur et al. (2002, 2008). Ice cover, sea-surface temperatures in the spring and summer, and wind mixing all infuence jellyfsh biomass, and afect jellyfsh sensitivity to prey availability (Brodeur et al., 2008).
-</factorsInfluencingTrends>
-
-<implications>
-Jellyfsh are pelagic consumers of zooplankton, larval and juvenile fshes, and small forage fshes. A large infux of pelagic consumers such as jellyfsh can decrease zooplankton and small fsh abundance, which in turn can afect higher trophic levels causing changes to the community structure of the ecosystem.
-</implications>
-
-<researchPriorities>NA</researchPriorities>
-
+	<factorsInfluencingTrends>The fluctuations in jellyfish biomass and their impacts on forage fish, juvenile walleye pollock (Gadus chalcogrammus), and salmon in relation to other biophysical indices were investigated by Cieciel et al. (2009) and Brodeur et al. (2002, 2008). Ice cover, sea-surface temperatures in the spring and summer, and wind mixing all infuence jellyfsh biomass, and afect jellyfsh sensitivity to prey availability (Brodeur et al., 2008).</factorsInfluencingTrends>
+	<implications>Jellyfsh are pelagic consumers of zooplankton, larval and juvenile fshes, and small forage fshes. A large infux of pelagic consumers such as jellyfsh can decrease zooplankton and small fsh abundance, which in turn can afect higher trophic levels causing changes to the community structure of the ecosystem.</implications>
+	<researchPriorities>NA</researchPriorities>
+</body>
 <figures>
 	<fig>
 		<figureNumber>1</figureNumber>

@@ -1,51 +1,22 @@
-<indicatorShortName>
-jellyfish
-</indicatorShortName>
-
-<indicatorTitle>
-Sea Jellies—Gulf of Alaska Bottom Trawl Survey
-</indicatorTitle>
-
-<indicatorRegion>
-GOA
-</indicatorRegion>
-
-<authors>
-Ned Laman and Alexandra Dowlin
-</authors>
-
-<contactEmail>
-Ned.Laman@noaa.gov
-</contactEmail>
-
-<authorAffiliations>
-Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center, NOAA Fisheries
-</authorAffiliations>
-
-<lastUpdate>
-October 2023
-</lastUpdate>
-
-<indicatorDescription>
-The Resource Assessment and Conservation Engineering Division’s Groundfish Assessment Program (RACE-GAP) fishery-independent summer bottom trawl surveys in the Gulf of Alaska (GOA) are designed to assess populations of commercially and ecologically important fishes and invertebrates. Since 1990, we have deployed the same standardized trawl gear (footrope and trawl net) as is presently in use in the GOA bottom trawl survey. Sea jellies (a.k.a. jellyfish) commonly occur in the water column. Trawling operations attempt to minimize midwater catch by setting and retrieving the net quickly from the bottom. Despite this emphasis on minimizing midwater catches, we commonly collect sea jellies in our trawl catches though our trawl gear is not well suited to the intact capture of sea jellies and we recognize that the relative abundance presented here may not be representative of these organisms’ true abundance in the GOA. Using these data to provide an index of relative sea jelly abundance, annual biomass estimates were scaled to the largest estimate over the time series which was then arbitrarily scaled to a value of 100 and all other values were scaled in reference to that. The standard error (± 1) was weighted proportionally to the biomass estimate to get a relative standard error. The percentage of positive sea jelly catches in the bottom trawl hauls was also calculated.
-</indicatorDescription>
-
-<methodologicalChanges>NA</methodologicalChanges>
-
-<statusAndTrends>
-In much of the GOA, relative sea jelly biomass continues to decline from it’s recent high in 2019 with southeast Alaska as a potential exception to this rule (Figure 48). Sea jelly prevalence in trawl catches increases from west to east across the GOA with prevalence in recent surveys declining in the western GOA survey districts of the Shumagins and Chrikof, increasing in the central survey districts of Kodiak and Yakutat, and remaining fairly stable and high in southeast Alaska.
-</statusAndTrends>
-
-<factorsInfluencingTrends>
-Unknown
-</factorsInfluencingTrends>
-
-<implications>
-The primary habitat for these animals is open water and, therefore, the observed patterns of abundance and prevalence could reflect differing oceanographic conditions across the GOA survey area. Alternatively, the observed patterns could reflect that the spatial and temporal progression of the bottom trawl survey that begins in the western GOA in May and moves eastward during the summer until the survey is completed in August in southeast Alaska. More directed study of the ecology and biology of the species in this group is needed to develop a mechanistic understanding of their distribution and abundance patterns.
-</implications>
-
-<researchPriorities>NA</researchPriorities>
-
+<?xml version="1.0" encoding="UTF-8" ?>
+<header>
+	<docType>ESR Contribution</docType>
+	<indicatorShortName>jellyfish</indicatorShortName>
+	<indicatorTitle>Sea Jellies—Gulf of Alaska Bottom Trawl Survey</indicatorTitle>
+	<indicatorRegion>GOA</indicatorRegion>
+	<authors>Ned Laman and Alexandra Dowlin</authors>
+	<contactEmail>Ned.Laman@noaa.gov</contactEmail>
+	<authorAffiliations>Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center, NOAA Fisheries</authorAffiliations>
+	<lastUpdate>October 2023</lastUpdate>
+</header>
+<body>
+	<indicatorDescription>The Resource Assessment and Conservation Engineering Division’s Groundfish Assessment Program (RACE-GAP) fishery-independent summer bottom trawl surveys in the Gulf of Alaska (GOA) are designed to assess populations of commercially and ecologically important fishes and invertebrates. Since 1990, we have deployed the same standardized trawl gear (footrope and trawl net) as is presently in use in the GOA bottom trawl survey. Sea jellies (a.k.a. jellyfish) commonly occur in the water column. Trawling operations attempt to minimize midwater catch by setting and retrieving the net quickly from the bottom. Despite this emphasis on minimizing midwater catches, we commonly collect sea jellies in our trawl catches though our trawl gear is not well suited to the intact capture of sea jellies and we recognize that the relative abundance presented here may not be representative of these organisms’ true abundance in the GOA. Using these data to provide an index of relative sea jelly abundance, annual biomass estimates were scaled to the largest estimate over the time series which was then arbitrarily scaled to a value of 100 and all other values were scaled in reference to that. The standard error (± 1) was weighted proportionally to the biomass estimate to get a relative standard error. The percentage of positive sea jelly catches in the bottom trawl hauls was also calculated.</indicatorDescription>
+	<methodologicalChanges>NA</methodologicalChanges>
+	<statusAndTrends>In much of the GOA, relative sea jelly biomass continues to decline from it’s recent high in 2019 with southeast Alaska as a potential exception to this rule (Figure 48). Sea jelly prevalence in trawl catches increases from west to east across the GOA with prevalence in recent surveys declining in the western GOA survey districts of the Shumagins and Chrikof, increasing in the central survey districts of Kodiak and Yakutat, and remaining fairly stable and high in southeast Alaska.</statusAndTrends>
+	<factorsInfluencingTrends>Unknown</factorsInfluencingTrends>
+	<implications>The primary habitat for these animals is open water and, therefore, the observed patterns of abundance and prevalence could reflect differing oceanographic conditions across the GOA survey area. Alternatively, the observed patterns could reflect that the spatial and temporal progression of the bottom trawl survey that begins in the western GOA in May and moves eastward during the summer until the survey is completed in August in southeast Alaska. More directed study of the ecology and biology of the species in this group is needed to develop a mechanistic understanding of their distribution and abundance patterns.</implications>
+	<researchPriorities>NA</researchPriorities>
+</body>
 <figures>
 	<fig>
 		<figureNumber>1</figureNumber>

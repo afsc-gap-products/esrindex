@@ -14,12 +14,12 @@
 #   - (11) Update Release on Github.
 
 # Region settings for years to include and area_ids for ESR areas/subareas
-region_settings <- list(GOA = list(esr_subarea_id = c(919, 929, 939, 959),
+region_settings <- list(GOA = list(esr_subarea_id = c(919, 929, 939, 949, 959),
                                    esr_area_id = 99903,
                                    min_year = 1990),
                         AI = list(esr_subarea_id = c(299, 799, 3499, 5699),
                                   esr_area_id = 99904,
-                                  min_year = 1990),
+                                  min_year = 1991),
                         EBS = list(esr_subarea_id = c(1:6),
                                    esr_area_id = 99901,
                                    min_year = 1982),
@@ -32,7 +32,8 @@ save(region_settings, file = "./data/region_settings.rda")
 # Species group code ranges
 species_groups <- data.frame(group_name = c("Sponges", "Sea whips", "Jellyfish", "Sea anemones", "Eelpouts", "Poachers", "Echinoderms", "Shrimps", "pricklebacks", "sandlance", "capelin", "eulachon", "Pacific herring", "Pacific sandfish", "Sea stars", "Gorgonians", "Pennatulaceans", "Hydrocorals", "Soft corals"),
                              min_code = c(91000, 42000, 40500, 43000, 24100, 20000, 80000, 66000, 23800, 20202, 23041, 23010, 21110, 21592, -999, 41500, 42000, 44000, 41100),
-                             max_code = c(91999, 42013, 40599, 43999, 24499, 20099, 85999, 66999, 23866, 20210, 23041, 23010, 21110, 21592, -999, 41500, 42013, 44123, 41106))
+                             max_code = c(91999, 42013, 40599, 43999, 24499, 20099, 85999, 66999, 23866, 20210, 23041, 23010, 21110, 21592, -999, 41500, 42013, 44123, 41106),
+                             complex = c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE))
 
 save(species_groups, file = "./data/species_groups.rda")
 
