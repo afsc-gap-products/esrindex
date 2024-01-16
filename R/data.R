@@ -8,6 +8,7 @@
 #'     \item{group_name}{Character vector, names of taxonomic groups.}
 #'     \item{min_code}{Numeric vector, minimum SPECIES_CODE for each group.}
 #'     \item{max_code}{Numeric vector, maximum SPECIES_CODE for each group.}
+#'     \item{complex}{Logical indicating whether the group is a multi-species complex.}
 #'   }
 'species_groups'
 

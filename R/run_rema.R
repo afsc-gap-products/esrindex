@@ -1,7 +1,6 @@
 #' Wrapper function to fit rema to region level biomass indices
 #'
 #' @param x A data.frame containing SURVEY, YEAR, BIOMASS_MT, and CV columns
-#' @param region A character vector indicating the region  ("AI", "GOA", "EBS", or "NBS")
 #' @import rema
 #' @export
 
@@ -65,9 +64,4 @@ run_rema <- function(x, region, group_name) {
   return(output)
 
 }
-
-
-# vignette(topic = "ex2_cpue")
-# vignette(topic = "ex3_zeros")
-# vignette(topic = "rema_equations") # view technical details offline
 

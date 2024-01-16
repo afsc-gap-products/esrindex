@@ -8,8 +8,6 @@ fit_rema_region(x)
 }
 \arguments{
 \item{x}{A data.frame containing SURVEY, YEAR, BIOMASS_MT, and CV columns}
-
-\item{region}{A character vector indicating the region  ("AI", "GOA", "EBS", or "NBS")}
 }
 \description{
 Wrapper function to fit rema to region level biomass indices
