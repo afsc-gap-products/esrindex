@@ -9,6 +9,6 @@ License: GPL (>=2)
 Encoding: UTF-8
 LazyData: true
 Depends: gapindex, dplyr
-Imports: ggplot2, RODBC, stats, grDevices, getPass, knitr, rmarkdown
+Imports: ggplot2, RODBC, stats, grDevices, getPass, knitr, rmarkdown, rema
 Remotes: afsc-gap-products/gapindex, afsc-assessments/rema
 RoxygenNote: 7.2.3
