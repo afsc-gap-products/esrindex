@@ -45,4 +45,3 @@ vignettes/*.pdf
 /chapters/*.Rmd
 /paper/
 /plots/cvs/
-/analysis/esr_safe_cv/
