@@ -45,3 +45,4 @@ vignettes/*.pdf
 /chapters/*.Rmd
 /paper/
 /plots/cvs/
+/presentation/
