@@ -44,5 +44,4 @@ vignettes/*.pdf
 /chapters/*.docx
 /chapters/*.Rmd
 /paper/
-/plots/
 /presentation/
