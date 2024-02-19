@@ -52,7 +52,8 @@ run_rema <- function(x, region, group_name) {
   input <- prepare_rema_input(model_name = paste0("tmb_rema_", region, "_", group_name),
                               biomass_dat = dat,
                               # zeros = list(assumption = c("NA"))
-                              zeros = list(assumption = 'tweedie', options_tweedie = list(fix_pars = c(1)))
+                              zeros = list(assumption = 'tweedie', 
+                                           options_tweedie = list(fix_pars = c(1)))
                               )
 
   m <- fit_rema(input)
