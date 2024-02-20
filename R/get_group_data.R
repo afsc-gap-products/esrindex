@@ -4,6 +4,7 @@
 #'
 #' @param region A character string specifying the region for which data should be retrieved ("GOA", "AI", "EBS", or "NBS")
 #' @param channel An optional parameter specifying an RODBC database channel. If not provided, a connection is established.
+#' @param zero_assumption Assumption for zero biomass observations ("tweedie", "na", "small_constant"). Default = "na"
 #'
 #' @return A list containing two data frames: timeseries and mean_sd.
 #' \itemize{
@@ -26,7 +27,7 @@
 #'
 #' @export
 
-get_group_data <- function(region, channel = NULL) {
+get_group_data <- function(region, channel = NULL, zero_assumption = "na") {
 
   region <- toupper(region)
 
@@ -38,22 +39,26 @@ get_group_data <- function(region, channel = NULL) {
 
   timeseries <- data.frame()
   mean_sd <- data.frame()
+  
+  region_groups <- dplyr::filter(esrindex::species_groups,
+                                 group_name %in% unname(unlist(chapter_settings[[region]]))
+                                 )
 
-  for(ii in 1:nrow(species_groups)) {
+  for(ii in 1:nrow(region_groups)) {
 
-    message(species_groups$group_name[ii])
+    message(region_groups$group_name[ii])
 
     # Retrieve valid SPECIES_CODES for gapindex
-    if(species_groups$min_code[ii] == -999 & species_groups$max_code[ii] == -999) {
+    if(region_groups$min_code[ii] == -999 & region_groups$max_code[ii] == -999) {
 
-      # Case where species codes are not sequential -- SPECIES_CODE -999 is used as a flag in esrindex::species_groups
-      species_codes <- species_groups_ns[[species_groups$group_name[ii]]]
+      # Case where species codes are not sequential -- SPECIES_CODE -999 is used as a flag in esrindex::region_groups
+      species_codes <- species_groups_ns[[region_groups$group_name[ii]]]
 
       valid_species_codes <- RODBC::sqlQuery(channel = channel,
                                              query = paste0("select species_code from racebase.species where species_code >= ",
                                                             min(species_codes), " and ", "species_code <= ", max(species_codes)))
 
-      valid_species_codes$GROUP <- species_groups$group_name[ii]
+      valid_species_codes$GROUP <- region_groups$group_name[ii]
 
       valid_species_codes <- valid_species_codes[valid_species_codes$SPECIES_CODE %in% species_codes, ]
 
@@ -62,10 +67,10 @@ get_group_data <- function(region, channel = NULL) {
       # Case where species codes are sequential
       valid_species_codes <- RODBC::sqlQuery(channel = channel,
                                              query = paste0("select species_code from racebase.species where species_code >= ",
-                                                            species_groups$min_code[ii], " and ", "species_code <= ", species_groups$max_code[ii]))
+                                                            region_groups$min_code[ii], " and ", "species_code <= ", region_groups$max_code[ii]))
     }
 
-    valid_species_codes$GROUP <- species_groups$group_name[ii]
+    valid_species_codes$GROUP <- region_groups$group_name[ii]
 
     dat <- try(gapindex::get_data(year_set = min_year:as.numeric(format(Sys.Date(), "%Y")),
                               survey_set = region,
@@ -75,7 +80,7 @@ get_group_data <- function(region, channel = NULL) {
     # Warn if there was a gapindex error
     if(class(dat) == "try-error") {
 
-      warning("gapindex::get_data retrieval failed. Skipping ", species_groups$group_name[ii])
+      warning("gapindex::get_data retrieval failed. Skipping ", region_groups$group_name[ii])
 
       next
 
@@ -85,29 +90,33 @@ get_group_data <- function(region, channel = NULL) {
 
     cpue <- gapindex::calc_cpue(racebase_tables = dat)
 
-    biomass_strata <- gapindex::calc_biomass_stratum(racebase_tables = dat, cpue = cpue)
-
-    subarea_biomass <- gapindex::calc_biomass_subarea(racebase_tables = dat,
-                                                      biomass_strata = biomass_strata)
-
-    subarea_biomass_summary <- dplyr::group_by(subarea_biomass, AREA_ID, SPECIES_CODE) |>
-      dplyr::summarize(MEAN_BIOMASS = mean(BIOMASS_MT),
-                       SD_BIOMASS = sd(BIOMASS_MT)) |>
-      dplyr::inner_join(subareas)
-
-    subarea_biomass <- dplyr::inner_join(subarea_biomass,
-                                         subarea_biomass_summary) |>
-      dplyr::inner_join(subareas) |>
-      dplyr::mutate(BIOMASS_MT_ZSCORE = (BIOMASS_MT-MEAN_BIOMASS)/SD_BIOMASS)
-
-    subarea_biomass <- dplyr::select(subarea_biomass, SURVEY, AREA_ID, SPECIES_CODE, YEAR, N_HAUL, N_WEIGHT, CPUE_KGKM2_MEAN, CPUE_KGKM2_VAR, BIOMASS_MT, BIOMASS_VAR, AREA_NAME, DESCRIPTION, BIOMASS_MT_ZSCORE)
-
-
-    timeseries <- rbind(timeseries,
-                        subarea_biomass)
-
-    mean_sd <- rbind(mean_sd,
-                        subarea_biomass_summary)
+    if(nrow(cpue) > 0) {
+      
+      biomass_strata <- gapindex::calc_biomass_stratum(racebase_tables = dat, cpue = cpue)
+      
+      subarea_biomass <- gapindex::calc_biomass_subarea(racebase_tables = dat,
+                                                        biomass_strata = biomass_strata)
+      
+      subarea_biomass_summary <- dplyr::group_by(subarea_biomass, AREA_ID, SPECIES_CODE) |>
+        dplyr::summarize(MEAN_BIOMASS = mean(BIOMASS_MT),
+                         SD_BIOMASS = sd(BIOMASS_MT)) |>
+        dplyr::inner_join(subareas)
+      
+      subarea_biomass <- dplyr::inner_join(subarea_biomass,
+                                           subarea_biomass_summary) |>
+        dplyr::inner_join(subareas) |>
+        dplyr::mutate(BIOMASS_MT_ZSCORE = (BIOMASS_MT-MEAN_BIOMASS)/SD_BIOMASS)
+      
+      subarea_biomass <- dplyr::select(subarea_biomass, SURVEY, AREA_ID, SPECIES_CODE, YEAR, N_HAUL, N_WEIGHT, CPUE_KGKM2_MEAN, CPUE_KGKM2_VAR, BIOMASS_MT, BIOMASS_VAR, AREA_NAME, DESCRIPTION, BIOMASS_MT_ZSCORE)
+      
+      
+      timeseries <- rbind(timeseries,
+                          subarea_biomass)
+      
+      mean_sd <- rbind(mean_sd,
+                       subarea_biomass_summary)
+      
+    }
 
   }
 
@@ -138,7 +147,8 @@ get_group_data <- function(region, channel = NULL) {
 
 
   # Fit random effects model to time series
-  rema_fit <- fit_rema_region(x = timeseries)
+  rema_fit <- fit_rema_region(x = timeseries, 
+                              zero_assumption = zero_assumption)
 
   return(list(timeseries = as.data.frame(timeseries),
               mean_sd = as.data.frame(mean_sd),

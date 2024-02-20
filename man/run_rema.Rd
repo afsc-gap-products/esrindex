@@ -4,7 +4,7 @@
 \alias{run_rema}
 \title{Fit random effects model to biomass index time series}
 \usage{
-run_rema(x, region, group_name)
+run_rema(x, region, group_name, zero_assumption)
 }
 \arguments{
 \item{x}{A data.frame containing SURVEY, YEAR, BIOMASS_MT, and CV columns}
@@ -12,6 +12,8 @@ run_rema(x, region, group_name)
 \item{region}{A character vector indicating the region  ("AI", "GOA", "EBS", or "NBS")}
 
 \item{group_name}{Character vector indicating the name of the group (e.g. "Sponges")}
+
+\item{zero_assumption}{Assumption for zero biomass observations ("tweedie", "na", "small_constant")}
 }
 \description{
 Fit a random effects model using the rema package.

@@ -4,10 +4,12 @@
 \alias{fit_rema_region}
 \title{Wrapper function to fit rema to region level biomass indices}
 \usage{
-fit_rema_region(x)
+fit_rema_region(x, zero_assumption = "na")
 }
 \arguments{
 \item{x}{A data.frame containing SURVEY, YEAR, BIOMASS_MT, and CV columns}
+
+\item{zero_assumption}{Assumption for zero biomass observations ("tweedie", "na", "small_constant")}
 }
 \description{
 Wrapper function to fit rema to region level biomass indices

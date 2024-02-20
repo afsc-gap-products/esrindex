@@ -4,13 +4,21 @@ library(esrindex)
 
 channel <- esrindex::get_connected(schema = "AFSC")
 
-EBS_INDICATOR <- esrindex::get_group_data(region = "EBS", channel = channel)
+EBS_INDICATOR <- esrindex::get_group_data(region = "EBS", 
+                                          channel = channel,
+                                          zero_assumption = "small_constant")
 
-NBS_INDICATOR <- esrindex::get_group_data(region = "NBS", channel = channel)
+NBS_INDICATOR <- esrindex::get_group_data(region = "NBS", 
+                                          channel = channel,
+                                          zero_assumption = "small_constant")
 
-GOA_INDICATOR <- esrindex::get_group_data(region = "GOA", channel = channel)
+GOA_INDICATOR <- esrindex::get_group_data(region = "GOA", 
+                                          channel = channel,
+                                          zero_assumption = "na")
 
-AI_INDICATOR <- esrindex::get_group_data(region = "AI", channel = channel)
+AI_INDICATOR <- esrindex::get_group_data(region = "AI", 
+                                         channel = channel,
+                                         zero_assumption = "na")
 
 all_complete <- all(length(unique(EBS_INDICATOR$timeseries$SPECIES_CODE)) == length(unname(unlist(chapter_settings$EBS))),
                     length(unique(NBS_INDICATOR$timeseries$SPECIES_CODE)) == length(unname(unlist(chapter_settings$NBS))),
@@ -36,12 +44,3 @@ if(all_complete) {
 
 }
 
-test <- fit_rema_region(x = AI_INDICATOR$timeseries, region = "AI")
-
-
-test[[1]]$parameter_estimates
-test[[2]]$parameter_estimates
-test[[3]]$parameter_estimates
-test[[4]]$parameter_estimates
-test[[5]]$parameter_estimates
-test[[6]]$parameter_estimates

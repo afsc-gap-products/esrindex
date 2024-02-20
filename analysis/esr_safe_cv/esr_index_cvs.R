@@ -614,3 +614,4 @@ dev.off()
 png(filename = here::here("plots", "cvs", "esr_safe_autocorrelation_subarea_species.png"), width = 169, height = 200, res = 300, units = "mm")
 print(plot_autocorrelation_subarea_species)
 dev.off()
+

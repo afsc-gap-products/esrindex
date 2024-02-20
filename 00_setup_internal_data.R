@@ -31,14 +31,15 @@ save(region_settings, file = "./data/region_settings.rda")
 
 # Species group code ranges
 species_groups <- data.frame(group_name = c("Sponges", "Sea whips", "Jellyfish", "Sea anemones", "Eelpouts", "Poachers", "Echinoderms", "Shrimps", "pricklebacks", "sandlance", "capelin", "eulachon", "Pacific herring", "Pacific sandfish", "Sea stars", "Gorgonians", "Pennatulaceans", "Hydrocorals", "Soft corals"),
-                             min_code = c(91000, 42000, 40500, 43000, 24100, 20000, 80000, 66000, 23800, 20202, 23041, 23010, 21110, 21592, -999, 41500, 42000, 44000, 41100),
-                             max_code = c(91999, 42013, 40599, 43999, 24499, 20099, 85999, 66999, 23866, 20210, 23041, 23010, 21110, 21592, -999, 41500, 42013, 44123, 41106),
+                             min_code = c(91000, 42000, 40500, 43000, 24100, 20000, 80000, 66000, 23800, 20202, 23041, 23010, 21110, 21592, -999, -999, 42000, 44000, 41100),
+                             max_code = c(91999, 42013, 40599, 43999, 24499, 20099, 85999, 66999, 23866, 20210, 23041, 23010, 21110, 21592, -999, -999, 42013, 44123, 41106),
                              complex = c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE))
 
 save(species_groups, file = "./data/species_groups.rda")
 
 # Species codes for non-sequential groups
-species_groups_ns <- list(`Sea stars` = c(80000:82499, 83000:84999))
+species_groups_ns <- list(`Sea stars` = c(80000:82499, 83000:84999),
+                          `Gorgonians` = c(41099, 41500))
 
 save(species_groups_ns, file = "./data/species_groups_ns.rda")
 

@@ -5,7 +5,7 @@
 \alias{species_groups_ns}
 \title{Non-sequential species groups}
 \format{
-An object of class \code{list} of length 1.
+An object of class \code{list} of length 2.
 }
 \usage{
 species_groups_ns
