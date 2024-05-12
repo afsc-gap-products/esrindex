@@ -6,7 +6,7 @@ channel <- esrindex::get_connected(schema = "AFSC")
 
 EBS_INDICATOR <- esrindex::get_group_data(region = "EBS", 
                                           channel = channel,
-                                          zero_assumption = "small_constant")
+                                          zero_assumption = "na")
 
 NBS_INDICATOR <- esrindex::get_group_data(region = "NBS", 
                                           channel = channel,

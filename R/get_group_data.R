@@ -107,7 +107,20 @@ get_group_data <- function(region, channel = NULL, zero_assumption = "na") {
         dplyr::inner_join(subareas) |>
         dplyr::mutate(BIOMASS_MT_ZSCORE = (BIOMASS_MT-MEAN_BIOMASS)/SD_BIOMASS)
       
-      subarea_biomass <- dplyr::select(subarea_biomass, SURVEY, AREA_ID, SPECIES_CODE, YEAR, N_HAUL, N_WEIGHT, CPUE_KGKM2_MEAN, CPUE_KGKM2_VAR, BIOMASS_MT, BIOMASS_VAR, AREA_NAME, DESCRIPTION, BIOMASS_MT_ZSCORE)
+      subarea_biomass <- dplyr::select(subarea_biomass, 
+                                       SURVEY, 
+                                       AREA_ID, 
+                                       SPECIES_CODE, 
+                                       YEAR, 
+                                       N_HAUL, 
+                                       N_WEIGHT, 
+                                       CPUE_KGKM2_MEAN, 
+                                       CPUE_KGKM2_VAR, 
+                                       BIOMASS_MT, 
+                                       BIOMASS_VAR, 
+                                       AREA_NAME, 
+                                       DESCRIPTION, 
+                                       BIOMASS_MT_ZSCORE)
       
       
       timeseries <- rbind(timeseries,
@@ -124,7 +137,8 @@ get_group_data <- function(region, channel = NULL, zero_assumption = "na") {
   timeseries <- timeseries[timeseries$AREA_ID %in% c(esr_area_id, esr_subarea_id) &
                              timeseries$SPECIES_CODE %in% unname(unlist(chapter_settings[[region]])), ]
 
-  mean_sd <- mean_sd[mean_sd$AREA_ID %in% c(esr_area_id, esr_subarea_id) & mean_sd$SPECIES_CODE %in% unname(unlist(chapter_settings[[region]])), ]
+  mean_sd <- mean_sd[mean_sd$AREA_ID %in% c(esr_area_id, esr_subarea_id) & 
+                       mean_sd$SPECIES_CODE %in% unname(unlist(chapter_settings[[region]])), ]
 
   # Calculate SDs and CVs; fill zeros
   timeseries$BIOMASS_SD <- sqrt(timeseries$BIOMASS_VAR)

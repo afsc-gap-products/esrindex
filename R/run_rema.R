@@ -2,11 +2,12 @@
 #'
 #' @param x A data.frame containing SURVEY, YEAR, BIOMASS_MT, and CV columns
 #' @param zero_assumption Assumption for zero biomass observations ("tweedie", "na", "small_constant")
+#' @param rema_by_stratum Logical indicating whether to estimate biomass by survey stratum (TRUE) or estimate biomass from the total biomass index (FALSE).
 #' @import rema
 #' @export
 
 
-fit_rema_region <- function(x, zero_assumption = "na") {
+fit_rema_region <- function(x, zero_assumption = "na", rema_by_stratum = TRUE) {
   
   zero_assumption <- tolower(zero_assumption)
 
@@ -19,17 +20,21 @@ fit_rema_region <- function(x, zero_assumption = "na") {
   names(output) <- unique_group_name
 
   for(ii in 1:length(unique_group_name)) {
+    
+    select_strata <- switch(as.character(rema_by_stratum),
+                            "TRUE" = esrindex::region_settings[[region]]$esr_subarea_id,
+                            "FALSE" = esrindex::region_settings[[region]]$esr_area_id)
 
     dat <- dplyr::filter(x,
                          SPECIES_CODE == unique_group_name[ii],
-                         AREA_ID == esrindex::region_settings[[region]]$esr_area_id)
+                         AREA_ID %in% select_strata)
     
     rema_out <- try(run_rema(x = dat, 
                         region = region, 
                         group_name = unique_group_name[ii], 
                         zero_assumption = zero_assumption),
                    silent = TRUE)
-    
+
     if(class(rema_out) == "try-error") {
       next
     }
@@ -56,12 +61,13 @@ fit_rema_region <- function(x, zero_assumption = "na") {
 #' @export
 
 run_rema <- function(x, region, group_name, zero_assumption) {
-
+  
   dat <- x |>
-    dplyr::select(strata = SURVEY,
+    dplyr::select(strata = AREA_ID,
                   year = YEAR,
                   biomass = BIOMASS_MT,
-                  cv = CV)
+                  cv = CV) |>
+    dplyr::mutate(strata = as.character(strata))
   
   if(zero_assumption == "tweedie") {
     zero_list <- list(assumption = 'tweedie',
