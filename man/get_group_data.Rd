@@ -39,5 +39,4 @@ If the channel is not provided, the function uses the default connected channel 
 # Example Usage:
 data <- get_group_data(region = "GOA")
 }
-
 }

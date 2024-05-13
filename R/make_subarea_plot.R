@@ -18,7 +18,7 @@
 #'                   error_bars = TRUE)
 #' }
 #'
-#' @import ggplot2 grDevices
+#' @import ggplot2
 #' @importFrom grDevices png
 #'
 #' @export

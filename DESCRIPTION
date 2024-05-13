@@ -8,7 +8,7 @@ Description: Make index products for Ecosystem Status Reports.
 License: GPL (>=2)
 Encoding: UTF-8
 LazyData: true
-Depends: gapindex, dplyr, scales
-Imports: ggplot2, RODBC, stats, grDevices, getPass, knitr, rmarkdown, rema
+Depends: R (>= 4.1), gapindex
+Imports: dplyr, ggplot2, RODBC, getPass, knitr, rmarkdown, rema, scales
 Remotes: afsc-gap-products/gapindex, afsc-assessments/rema
 RoxygenNote: 7.3.1

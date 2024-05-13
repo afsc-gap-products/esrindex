@@ -15,9 +15,8 @@
 #'                   error_bar = TRUE, 
 #'                   benchmarks = "zscore")
 #' }
-#' @import ggplot2 grDevices scales dplyr
+#' @import ggplot2 scales
 #' @export
-
 
 plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_filename = "") {
   
@@ -81,7 +80,10 @@ plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_fi
                    mapping = aes(x = YEAR, y = BIOMASS_MT)) +
         geom_path(data = fit_dat,
                   mapping = aes(x = year, y = pred)) +
-        scale_y_continuous(name = "Biomass Index (mt)", expand = expansion(mult = c(0, 0.05)), labels = scales::scientific) +
+        scale_y_continuous(name = "Biomass Index (mt)", 
+                           expand = expansion(mult = c(0, 0.05)), 
+                           labels = scales::label_scientific(digits = 2, 
+                                                             trim = FALSE)) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
@@ -120,7 +122,10 @@ plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_fi
         geom_hline(data = ts_summary,
                    mapping = aes(yintercept = minus2), 
                    linetype = 3) +
-        scale_y_continuous(name = "Biomass Index (mt)", expand = expansion(mult = c(0, 0.05)), labels = scales::scientific) +
+        scale_y_continuous(name = "Biomass Index (mt)", 
+                           expand = expansion(mult = c(0, 0.05)), 
+                           labels = scales::label_scientific(digits = 2, 
+                                                             trim = FALSE)) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
@@ -153,7 +158,10 @@ plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_fi
         geom_hline(data = ts_summary,
                    mapping = aes(yintercept = minus2), 
                    linetype = 3) +
-        scale_y_continuous(name = "Biomass Index (mt)", expand = expansion(mult = c(0, 0.05)), labels = scales::scientific) +
+        scale_y_continuous(name = "Biomass Index (mt)", 
+                           expand = expansion(mult = c(0, 0.05)), 
+                           labels = scales::label_scientific(digits = 2, 
+                                                             trim = FALSE)) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
@@ -192,7 +200,10 @@ plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_fi
         geom_hline(data = ts_summary,
                    mapping = aes(yintercept = q0), 
                    linetype = 3) +
-        scale_y_continuous(name = "Biomass Index (mt)", expand = expansion(mult = c(0, 0.05)), labels = scales::scientific) +
+        scale_y_continuous(name = "Biomass Index (mt)", 
+                           expand = expansion(mult = c(0, 0.05)), 
+                           labels = scales::label_scientific(digits = 2, 
+                                                             trim = FALSE)) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
@@ -225,7 +236,10 @@ plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_fi
         geom_hline(data = ts_summary,
                    mapping = aes(yintercept = q0), 
                    linetype = 3) +
-        scale_y_continuous(name = "Biomass Index (mt)", expand = expansion(mult = c(0, 0.05)), labels = scales::scientific) +
+        scale_y_continuous(name = "Biomass Index (mt)", 
+                           expand = expansion(mult = c(0, 0.05)), 
+                           labels = scales::label_scientific(digits = 2, 
+                                                             trim = FALSE)) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
@@ -238,7 +252,7 @@ plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_fi
                           gsub(x = indicator_name[ii], pattern = " ", replacement = "_"), 
                           "_full_region", append_filename, ".png"),
         width = 169,
-        height = 40*length(group_name),
+        height = 20+40*length(group_name),
         units = "mm",
         res = 300)
     print(p1)

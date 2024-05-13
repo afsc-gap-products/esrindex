@@ -16,7 +16,6 @@ theme_blue_strip <- function() {
     theme(axis.title = element_text(color = "black", face = "bold"),
           axis.text = element_text(color = "black"),
           axis.ticks = element_line(color = "black"),
-          # panel.grid = element_blank(),
           legend.title = element_blank(),
           legend.position = "bottom",
           strip.text = element_text(size = 9,

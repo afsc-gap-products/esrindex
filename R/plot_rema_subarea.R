@@ -16,7 +16,8 @@
 #'                    benchmarks = "zscore")
 #' }
 #' 
-#' @import ggplot2 grDevices scales dplyr
+#' @import ggplot2
+#' @importFrom grDevices png
 #' @export
 
 plot_rema_subarea <- function(x, error_bar = TRUE, benchmarks = "none", append_filename = "") {
@@ -140,7 +141,8 @@ plot_rema_subarea <- function(x, error_bar = TRUE, benchmarks = "none", append_f
                   mapping = aes(x = year, y = pred)) +
         scale_y_continuous(name = "Biomass Index (mt)", 
                            expand = expansion(mult = c(0, 0.05)), 
-                           labels = scales::scientific) +
+                           labels = scales::label_scientific(digits = 2, 
+                                                             trim = FALSE)) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
         facet_wrap(~taxa_stratum, 
@@ -183,7 +185,8 @@ plot_rema_subarea <- function(x, error_bar = TRUE, benchmarks = "none", append_f
                    linetype = 3) +
         scale_y_continuous(name = "Biomass Index (mt)", 
                            expand = expansion(mult = c(0, 0.05)), 
-                           labels = scales::scientific) +
+                           labels = scales::label_scientific(digits = 2, 
+                                                             trim = FALSE)) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
         facet_wrap(~taxa_stratum, 
@@ -222,7 +225,8 @@ plot_rema_subarea <- function(x, error_bar = TRUE, benchmarks = "none", append_f
                    linetype = 3) +
         scale_y_continuous(name = "Biomass Index (mt)", 
                            expand = expansion(mult = c(0, 0.05)), 
-                           labels = scales::scientific) +
+                           labels = scales::label_scientific(digits = 2, 
+                                                             trim = FALSE)) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
         facet_wrap(~taxa_stratum, 
@@ -267,7 +271,8 @@ plot_rema_subarea <- function(x, error_bar = TRUE, benchmarks = "none", append_f
                    linetype = 3) +
         scale_y_continuous(name = "Biomass Index (mt)", 
                            expand = expansion(mult = c(0, 0.05)), 
-                           labels = scales::scientific) +
+                           labels = scales::label_scientific(digits = 2, 
+                                                             trim = FALSE)) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
         facet_wrap(~taxa_stratum, 
@@ -305,7 +310,8 @@ plot_rema_subarea <- function(x, error_bar = TRUE, benchmarks = "none", append_f
                    linetype = 3) +
         scale_y_continuous(name = "Biomass Index (mt)", 
                            expand = expansion(mult = c(0, 0.05)), 
-                           labels = scales::scientific) +
+                           labels = scales::label_scientific(digits = 2, 
+                                                             trim = FALSE)) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
         facet_wrap(~taxa_stratum, 
@@ -327,23 +333,24 @@ plot_rema_subarea <- function(x, error_bar = TRUE, benchmarks = "none", append_f
       facet_wrap(~group_name, scales = "free_y", nrow = length(group_name)) +
       scale_y_continuous(name = "Mean Biomass Index (mt)", 
                          expand = expansion(mult = c(0, 0.05)), 
-                         labels = scales::scientific) +
+                         labels = scales::label_scientific(digits = 2, 
+                                                           trim = FALSE)) +
       scale_fill_manual(name = fill_label, values = fill_colors) +
       scale_x_continuous(name = "Year") +
       theme_blue_strip() +
       theme(legend.title = element_text())
     
-    
+    # Save plots
     suppressWarnings(dir.create(paste0("./plots/", region), recursive = TRUE))
     
     png(filename = paste0("./plots/", region, "/", region, "_rema_", 
                           gsub(x = indicator_name[ii], pattern = " ", replacement = "_"), 
                           "_subarea_point", append_filename, ".png"),
         width = 169,
-        height = 40*length(group_name),
+        height = 20+40*length(group_name),
         units = "mm",
         res = 300)
-    print(p1)
+    print(p1 + theme(axis.text = element_text(size = 6.5)))
     dev.off()
     
     

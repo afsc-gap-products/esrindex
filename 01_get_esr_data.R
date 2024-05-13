@@ -36,10 +36,10 @@ AI_INDICATOR <- esrindex::get_group_data(region = "AI",
 if(all_complete) {
 
   message("Writing indicators files to /data/")
-  save(EBS_INDICATOR, file = "./data/EBS_INDICATOR.rda")
-  save(NBS_INDICATOR, file = "./data/NBS_INDICATOR.rda")
-  save(GOA_INDICATOR, file = "./data/GOA_INDICATOR.rda")
-  save(AI_INDICATOR, file = "./data/AI_INDICATOR.rda")
+  save(EBS_INDICATOR, file = "./data/EBS_INDICATOR.rda", compress = "xz")
+  save(NBS_INDICATOR, file = "./data/NBS_INDICATOR.rda", compress = "xz")
+  save(GOA_INDICATOR, file = "./data/GOA_INDICATOR.rda", compress = "xz")
+  save(AI_INDICATOR, file = "./data/AI_INDICATOR.rda", compress = "xz")
 
 } else {
 

@@ -25,7 +25,6 @@
 #' # Example Usage:
 #' data <- get_group_data(region = "GOA")
 #' }
-#'
 #' @export
 
 get_group_data <- function(region, 

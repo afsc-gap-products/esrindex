@@ -28,7 +28,6 @@ plot_rema_region(x = NBS_INDICATOR, error_bar = TRUE, benchmarks = "zscore", app
 # plot_rema_region(x = EBS_INDICATOR, error_bar = TRUE, benchmarks = "quantile", append_filename = "qe_")
 # plot_rema_region(x = NBS_INDICATOR, error_bar = TRUE, benchmarks = "quantile", append_filename = "qe_")
 
-
 # Subarea/Stratum plots ----------------------------------------------------------------------------
 
 plot_rema_subarea(x = AI_INDICATOR, error_bar = TRUE, benchmarks = "zscore")

@@ -16,9 +16,8 @@
 #'                  bar_color = "#0085CA",
 #'                  error_bars = TRUE)
 #' }
-#' @import ggplot2 stats
+#' @import ggplot2
 #' @importFrom grDevices png
-#'
 #' @export
 
 make_region_plot <- function(indicator_data, indicator_name, error_bars = TRUE, bar_color = "#0085CA") {
@@ -99,7 +98,7 @@ make_region_plot <- function(indicator_data, indicator_name, error_bars = TRUE, 
 
   png(filename = paste0("./plots/", region, "/", region, "_", gsub(x = indicator_name, pattern = " ", replacement = "_"), "_full_region.png"),
       width = 169,
-      height = 40*length(group_name),
+      height = 20+40*length(group_name),
       units = "mm",
       res = 300)
   print(p1)
