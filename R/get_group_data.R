@@ -5,6 +5,7 @@
 #' @param region A character string specifying the region for which data should be retrieved ("GOA", "AI", "EBS", or "NBS")
 #' @param channel An optional parameter specifying an RODBC database channel. If not provided, a connection is established.
 #' @param zero_assumption Assumption for zero biomass observations ("tweedie", "na", "small_constant"). Default = "na"
+#' @param rema_by_stratum Logical indicating whether to estimate biomass by survey stratum (TRUE) or estimate biomass from the total biomass index (FALSE).
 #'
 #' @return A list containing two data frames: timeseries and mean_sd.
 #' \itemize{
@@ -27,7 +28,10 @@
 #'
 #' @export
 
-get_group_data <- function(region, channel = NULL, zero_assumption = "na") {
+get_group_data <- function(region, 
+                           channel = NULL, 
+                           zero_assumption = "na", 
+                           rema_by_stratum = TRUE) {
 
   region <- toupper(region)
 
@@ -97,15 +101,19 @@ get_group_data <- function(region, channel = NULL, zero_assumption = "na") {
       subarea_biomass <- gapindex::calc_biomass_subarea(racebase_tables = dat,
                                                         biomass_strata = biomass_strata)
       
-      subarea_biomass_summary <- dplyr::group_by(subarea_biomass, AREA_ID, SPECIES_CODE) |>
+      subarea_biomass_summary <- suppressMessages(
+        dplyr::group_by(subarea_biomass, AREA_ID, SPECIES_CODE) |>
         dplyr::summarize(MEAN_BIOMASS = mean(BIOMASS_MT),
                          SD_BIOMASS = sd(BIOMASS_MT)) |>
         dplyr::inner_join(subareas)
+        )
       
-      subarea_biomass <- dplyr::inner_join(subarea_biomass,
+      subarea_biomass <- suppressMessages(
+        dplyr::inner_join(subarea_biomass,
                                            subarea_biomass_summary) |>
         dplyr::inner_join(subareas) |>
         dplyr::mutate(BIOMASS_MT_ZSCORE = (BIOMASS_MT-MEAN_BIOMASS)/SD_BIOMASS)
+      )
       
       subarea_biomass <- dplyr::select(subarea_biomass, 
                                        SURVEY, 
@@ -148,8 +156,13 @@ get_group_data <- function(region, channel = NULL, zero_assumption = "na") {
   timeseries$BIOMASS_MINUS1_SD <- timeseries$BIOMASS_MT - timeseries$BIOMASS_SD
   timeseries$BIOMASS_MINUS2_SD <- timeseries$BIOMASS_MT - 2*timeseries$BIOMASS_SD
 
-  timeseries$BIOMASS_MINUS1_SD <- ifelse(timeseries$BIOMASS_MINUS1_SD < 0, 0, timeseries$BIOMASS_MINUS1_SD)
-  timeseries$BIOMASS_MINUS2_SD <- ifelse(timeseries$BIOMASS_MINUS2_SD < 0, 0, timeseries$BIOMASS_MINUS2_SD)
+  timeseries$BIOMASS_MINUS1_SD <- ifelse(timeseries$BIOMASS_MINUS1_SD < 0, 
+                                         0, 
+                                         timeseries$BIOMASS_MINUS1_SD)
+  
+  timeseries$BIOMASS_MINUS2_SD <- ifelse(timeseries$BIOMASS_MINUS2_SD < 0, 
+                                         0, 
+                                         timeseries$BIOMASS_MINUS2_SD)
 
   mean_sd$MEAN_PLUS1 <- mean_sd$MEAN_BIOMASS + mean_sd$SD_BIOMASS
   mean_sd$MEAN_PLUS2 <- mean_sd$MEAN_BIOMASS + 2*mean_sd$SD_BIOMASS
@@ -162,7 +175,8 @@ get_group_data <- function(region, channel = NULL, zero_assumption = "na") {
 
   # Fit random effects model to time series
   rema_fit <- fit_rema_region(x = timeseries, 
-                              zero_assumption = zero_assumption)
+                              zero_assumption = zero_assumption,
+                              rema_by_stratum = rema_by_stratum)
 
   return(list(timeseries = as.data.frame(timeseries),
               mean_sd = as.data.frame(mean_sd),

@@ -4,7 +4,12 @@
 \alias{get_group_data}
 \title{Get index data for ESR species and groups}
 \usage{
-get_group_data(region, channel = NULL, zero_assumption = "na")
+get_group_data(
+  region,
+  channel = NULL,
+  zero_assumption = "na",
+  rema_by_stratum = TRUE
+)
 }
 \arguments{
 \item{region}{A character string specifying the region for which data should be retrieved ("GOA", "AI", "EBS", or "NBS")}
@@ -12,6 +17,8 @@ get_group_data(region, channel = NULL, zero_assumption = "na")
 \item{channel}{An optional parameter specifying an RODBC database channel. If not provided, a connection is established.}
 
 \item{zero_assumption}{Assumption for zero biomass observations ("tweedie", "na", "small_constant"). Default = "na"}
+
+\item{rema_by_stratum}{Logical indicating whether to estimate biomass by survey stratum (TRUE) or estimate biomass from the total biomass index (FALSE).}
 }
 \value{
 A list containing two data frames: timeseries and mean_sd.

@@ -4,13 +4,22 @@
 \alias{set_stratum_order}
 \title{Set stratum plotting order}
 \usage{
-set_stratum_order(stratum, region)
+set_stratum_order(
+  stratum = NULL,
+  area_id = NULL,
+  region,
+  use_abbreviation = FALSE
+)
 }
 \arguments{
-\item{stratum}{Stratum as a character vector}
+\item{stratum}{GAP_PRODUCTS stratum as a character vector.}
+
+\item{area_id}{GAP_PRODUCTS AREA_ID as a character vector.}
 
 \item{region}{Character vector of length one indicating whether the region is AI, GOA, or BS}
+
+\item{use_abbreviation}{Should stratum labels be abbreviated?}
 }
 \description{
-Set stratum plotting order
+Set stratum plotting order based on AREA_ID or STRATUM
 }

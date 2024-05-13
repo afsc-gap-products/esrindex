@@ -1,6 +1,6 @@
-#' Make ESR region plots with rema output
+#' Make ESR subarea/stratum plots with rema output
 #'
-#' This function writes full region ESR abundance indicators for rema fits and writes them to ./plots/[region]/[indicator]_full_region.png
+#' This function writes full region ESR abundance indicators for rema fits and writes them to ./plots/[region]/[indicator]_subarea_bar.png and ./plots/[region]/[indicator]_subarea_point.png
 #'
 #' @param x Indicator list (e.g. esrindex::AI_INDICATOR)
 #' @param error_bar Should annual observations include error bars?
@@ -11,15 +11,15 @@
 #' @examples
 #' \dontrun{
 #' # Example:
-# ' plot_rema_region(x = AI_INDICATOR, 
-#'                   error_bar = TRUE, 
-#'                   benchmarks = "zscore")
+# ' plot_rema_subarea(x = AI_INDICATOR, 
+#'                    error_bar = TRUE, 
+#'                    benchmarks = "zscore")
 #' }
+#' 
 #' @import ggplot2 grDevices scales dplyr
 #' @export
 
-
-plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_filename = "") {
+plot_rema_subarea <- function(x, error_bar = TRUE, benchmarks = "none", append_filename = "") {
   
   region <- x$timeseries$SURVEY[1]
   
@@ -35,19 +35,23 @@ plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_fi
     for(jj in 1:length(group_name)) {
       
       fit_dat <- rbind(fit_dat, 
-                        x$rema_fit[[group_name[jj]]]$total_predicted_biomass)
+                       x$rema_fit[[group_name[jj]]]$biomass_by_strata |>
+                         dplyr::filter(strata %in% region_settings[[region]]$esr_subarea_id))
       
       obs_dat <- rbind(obs_dat, 
                        dplyr::filter(x$timeseries, 
                                      SPECIES_CODE == group_name[jj],
-                                     AREA_ID %in% region_settings[[region]]$esr_area_id))
+                                     AREA_ID %in% region_settings[[region]]$esr_subarea_id))
       
     }
+    
+    bar_dat <- fit_dat |>
+      dplyr::filter(year %in% unique(obs_dat$YEAR))
     
     obs_dat$group_name <- obs_dat$SPECIES_CODE
     
     ts_summary <- fit_dat |>
-      dplyr::group_by(group_name) |>
+      dplyr::group_by(group_name, strata) |>
       dplyr::summarise(z_mean = mean(pred, na.rm = TRUE),
                        sd = sd(pred, na.rm = TRUE),
                        q100 = max(pred, na.rm = TRUE),
@@ -64,6 +68,59 @@ plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_fi
     ts_summary$minus1[ts_summary$minus1 < 0] <- 0
     ts_summary$minus2[ts_summary$minus2 < 0] <- 0
     
+    fill_colors <- esrindex_pal()(length(unique(ts_summary$strata)))
+    n_facet_row <- length(unique(obs_dat$SPECIES_CODE))
+    
+    
+    grid_levels <- c()
+    
+    taxa_levels <- chapter_settings[[region]][[indicator_name[ii]]]$group_name
+    
+    stratum_levels <- levels(esrindex::set_stratum_order(area_id = unique(fit_dat$strata), 
+                                                         region = region,
+                                                         use_abbreviation = TRUE))
+    for(kk in 1:length(taxa_levels)){
+      
+      grid_levels <- c(grid_levels, paste(stratum_levels, taxa_levels[kk]))
+      
+    }
+    
+    fill_label <- "Subarea"
+    
+    if(region %in% "EBS") {
+      fill_label <- "Stratum"
+    }
+    
+    
+    # Setup plot order
+    obs_dat$taxa_stratum <- factor(
+      paste(esrindex::set_stratum_order(area_id = obs_dat$AREA_ID, 
+                                        region = region,
+                                        use_abbreviation = TRUE), 
+            obs_dat$SPECIES_CODE), 
+      levels = grid_levels)
+    
+    bar_dat$taxa_stratum <- factor(
+      paste(esrindex::set_stratum_order(area_id = bar_dat$strata, 
+                                        region = region,
+                                        use_abbreviation = TRUE), 
+            bar_dat$group_name), 
+      levels = grid_levels)
+    
+    fit_dat$taxa_stratum <- factor(
+      paste(esrindex::set_stratum_order(area_id = fit_dat$strata, 
+                                        region = region,
+                                        use_abbreviation = TRUE), 
+            fit_dat$group_name), 
+      levels = grid_levels)
+    
+    ts_summary$taxa_stratum <- factor(
+      paste(esrindex::set_stratum_order(area_id = ts_summary$strata, 
+                                        region = region,
+                                        use_abbreviation = TRUE), 
+            ts_summary$group_name), 
+      levels = grid_levels)
+    
     if(error_bar & benchmarks == "none") {
       
       p1 <- ggplot() +
@@ -72,19 +129,23 @@ plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_fi
                                   ymin = pred_lci,
                                   ymax = pred_uci),
                     alpha = 0.3) +
-        geom_errorbar(data = obs_dat,
-                      mapping = aes(x = YEAR,
-                                    ymin = BIOMASS_PLUS2_SD,
-                                    ymax = BIOMASS_MINUS2_SD), 
+        geom_errorbar(data = fit_dat,
+                      mapping = aes(x = year,
+                                    ymin = obs_lci,
+                                    ymax = obs_uci), 
                       width = 0.5) +
-        geom_point(data = obs_dat,
-                   mapping = aes(x = YEAR, y = BIOMASS_MT)) +
+        geom_point(data = fit_dat,
+                   mapping = aes(x = year, y = obs)) +
         geom_path(data = fit_dat,
                   mapping = aes(x = year, y = pred)) +
-        scale_y_continuous(name = "Biomass Index (mt)", expand = expansion(mult = c(0, 0.05)), labels = scales::scientific) +
+        scale_y_continuous(name = "Biomass Index (mt)", 
+                           expand = expansion(mult = c(0, 0.05)), 
+                           labels = scales::scientific) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
-        facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
+        facet_wrap(~taxa_stratum, 
+                   scales = "free_y",
+                   nrow = n_facet_row) +
         theme_blue_strip()
       
     }
@@ -97,13 +158,13 @@ plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_fi
                                   ymin = pred_lci,
                                   ymax = pred_uci),
                     alpha = 0.3) +
-        geom_errorbar(data = obs_dat,
-                      mapping = aes(x = YEAR,
-                                    ymin = BIOMASS_PLUS2_SD,
-                                    ymax = BIOMASS_MINUS2_SD), 
+        geom_errorbar(data = fit_dat,
+                      mapping = aes(x = year,
+                                    ymin = obs_lci,
+                                    ymax = obs_uci), 
                       width = 0.5) +
-        geom_point(data = obs_dat,
-                   mapping = aes(x = YEAR, y = BIOMASS_MT)) +
+        geom_point(data = fit_dat,
+                   mapping = aes(x = year, y = obs)) +
         geom_path(data = fit_dat,
                   mapping = aes(x = year, y = pred)) +
         geom_hline(data = ts_summary,
@@ -120,23 +181,29 @@ plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_fi
         geom_hline(data = ts_summary,
                    mapping = aes(yintercept = minus2), 
                    linetype = 3) +
-        scale_y_continuous(name = "Biomass Index (mt)", expand = expansion(mult = c(0, 0.05)), labels = scales::scientific) +
+        scale_y_continuous(name = "Biomass Index (mt)", 
+                           expand = expansion(mult = c(0, 0.05)), 
+                           labels = scales::scientific) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
-        facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
+        facet_wrap(~taxa_stratum, 
+                   scales = "free_y",
+                   nrow = n_facet_row) +
         theme_blue_strip()
       
     }
     
+    
     if(!error_bar & benchmarks == "zscore") {
+      
       p1 <- ggplot() +
         geom_ribbon(data = fit_dat,
                     mapping = aes(x = year,
                                   ymin = pred_lci,
                                   ymax = pred_uci),
                     alpha = 0.3) +
-        geom_point(data = obs_dat,
-                   mapping = aes(x = YEAR, y = BIOMASS_MT)) +
+        geom_point(data = fit_dat,
+                   mapping = aes(x = year, y = obs)) +
         geom_path(data = fit_dat,
                   mapping = aes(x = year, y = pred)) +
         geom_hline(data = ts_summary,
@@ -153,11 +220,17 @@ plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_fi
         geom_hline(data = ts_summary,
                    mapping = aes(yintercept = minus2), 
                    linetype = 3) +
-        scale_y_continuous(name = "Biomass Index (mt)", expand = expansion(mult = c(0, 0.05)), labels = scales::scientific) +
+        scale_y_continuous(name = "Biomass Index (mt)", 
+                           expand = expansion(mult = c(0, 0.05)), 
+                           labels = scales::scientific) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
-        facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
+        facet_wrap(~taxa_stratum, 
+                   scales = "free_y",
+                   nrow = n_facet_row) +
         theme_blue_strip()
+      
+      
     }
     
     
@@ -169,13 +242,13 @@ plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_fi
                                   ymin = pred_lci,
                                   ymax = pred_uci),
                     alpha = 0.3) +
-        geom_errorbar(data = obs_dat,
-                      mapping = aes(x = YEAR,
-                                    ymin = BIOMASS_PLUS2_SD,
-                                    ymax = BIOMASS_MINUS2_SD), 
+        geom_errorbar(data = fit_dat,
+                      mapping = aes(x = year,
+                                    ymin = obs_lci,
+                                    ymax = obs_uci), 
                       width = 0.5) +
-        geom_point(data = obs_dat,
-                   mapping = aes(x = YEAR, y = BIOMASS_MT)) +
+        geom_point(data = fit_dat,
+                   mapping = aes(x = year, y = obs)) +
         geom_path(data = fit_dat,
                   mapping = aes(x = year, y = pred)) +
         geom_hline(data = ts_summary,
@@ -192,23 +265,28 @@ plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_fi
         geom_hline(data = ts_summary,
                    mapping = aes(yintercept = q0), 
                    linetype = 3) +
-        scale_y_continuous(name = "Biomass Index (mt)", expand = expansion(mult = c(0, 0.05)), labels = scales::scientific) +
+        scale_y_continuous(name = "Biomass Index (mt)", 
+                           expand = expansion(mult = c(0, 0.05)), 
+                           labels = scales::scientific) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
-        facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
+        facet_wrap(~taxa_stratum, 
+                   scales = "free_y",
+                   nrow = n_facet_row) +
         theme_blue_strip()
       
     }
     
     if(!error_bar & benchmarks == "quantile") {
+      
       p1 <- ggplot() +
         geom_ribbon(data = fit_dat,
                     mapping = aes(x = year,
                                   ymin = pred_lci,
                                   ymax = pred_uci),
                     alpha = 0.3) +
-        geom_point(data = obs_dat,
-                   mapping = aes(x = YEAR, y = BIOMASS_MT)) +
+        geom_point(data = fit_dat,
+                   mapping = aes(x = year, y = obs)) +
         geom_path(data = fit_dat,
                   mapping = aes(x = year, y = pred)) +
         geom_hline(data = ts_summary,
@@ -225,23 +303,60 @@ plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_fi
         geom_hline(data = ts_summary,
                    mapping = aes(yintercept = q0), 
                    linetype = 3) +
-        scale_y_continuous(name = "Biomass Index (mt)", expand = expansion(mult = c(0, 0.05)), labels = scales::scientific) +
+        scale_y_continuous(name = "Biomass Index (mt)", 
+                           expand = expansion(mult = c(0, 0.05)), 
+                           labels = scales::scientific) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
-        facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
+        facet_wrap(~taxa_stratum, 
+                   scales = "free_y",
+                   nrow = n_facet_row) +
         theme_blue_strip()
+      
     }
+    
+    p2 <- ggplot() +
+      geom_bar(data = bar_dat,
+               mapping = aes(x = year,
+                             y = pred,
+                             fill = esrindex::set_stratum_order(area_id = strata, 
+                                                                region = region,
+                                                                use_abbreviation = TRUE)),
+               position = "stack",
+               stat = "identity", width = 1) +
+      facet_wrap(~group_name, scales = "free_y", nrow = length(group_name)) +
+      scale_y_continuous(name = "Mean Biomass Index (mt)", 
+                         expand = expansion(mult = c(0, 0.05)), 
+                         labels = scales::scientific) +
+      scale_fill_manual(name = fill_label, values = fill_colors) +
+      scale_x_continuous(name = "Year") +
+      theme_blue_strip() +
+      theme(legend.title = element_text())
+    
     
     suppressWarnings(dir.create(paste0("./plots/", region), recursive = TRUE))
     
     png(filename = paste0("./plots/", region, "/", region, "_rema_", 
                           gsub(x = indicator_name[ii], pattern = " ", replacement = "_"), 
-                          "_full_region", append_filename, ".png"),
+                          "_subarea_point", append_filename, ".png"),
         width = 169,
         height = 40*length(group_name),
         units = "mm",
         res = 300)
     print(p1)
+    dev.off()
+    
+    
+    suppressWarnings(dir.create(paste0("./plots/", region), recursive = TRUE))
+    
+    png(filename = paste0("./plots/", region, "/", region, "_rema_", 
+                          gsub(x = indicator_name[ii], pattern = " ", replacement = "_"), 
+                          "_subarea_bar", append_filename, ".png"),
+        width = 169,
+        height = 40+40*length(group_name),
+        units = "mm",
+        res = 300)
+    print(p2)
     dev.off()
     
   }

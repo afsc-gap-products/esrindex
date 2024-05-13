@@ -13,6 +13,8 @@
 #   - (10) Push final version with remote.
 #   - (11) Update Release on Github.
 
+library(devtools)
+
 # Region settings for years to include and area_ids for ESR areas/subareas
 region_settings <- list(GOA = list(esr_subarea_id = c(919, 929, 939, 949, 959),
                                    esr_area_id = 99903,
@@ -70,3 +72,19 @@ chapter_settings <- list(
 )
 
 save(chapter_settings, file = "./data/chapter_settings.rda")
+
+# Reinstall the package
+devtools::install()
+
+
+# Make spreadsheets showing species groups
+write.csv(species_groups, 
+          here::here("assets", "species_groups.csv"), 
+          row.names = FALSE)
+
+write.csv(dplyr::bind_rows(data.frame(group_name = "Sea stars", 
+                                      SPECIES_CODE = as.numeric(species_groups_ns[["Sea stars"]])),
+                           data.frame(group_name = "Gorgonians", 
+                                      SPECIES_CODE = as.numeric(species_groups_ns[["Gorgonians"]]))),
+          here::here("assets", "species_groups_ns.csv"),
+          row.names = FALSE)

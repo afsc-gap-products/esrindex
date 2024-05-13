@@ -29,6 +29,15 @@ fit_rema_region <- function(x, zero_assumption = "na", rema_by_stratum = TRUE) {
                          SPECIES_CODE == unique_group_name[ii],
                          AREA_ID %in% select_strata)
     
+    # Remove strata with 0 biomass or less than 3 years with biomass
+    sufficient_data <- (dat |>
+      dplyr::group_by(AREA_ID) |>
+      dplyr::summarise(n = sum(BIOMASS_MT) > 3,
+                       cv = !is.na(mean(CV, na.rm = TRUE))) |>
+      dplyr::filter(n, cv))$AREA_ID
+    
+    dat <- dplyr::filter(dat, AREA_ID %in% sufficient_data)
+    
     rema_out <- try(run_rema(x = dat, 
                         region = region, 
                         group_name = unique_group_name[ii], 
@@ -36,6 +45,7 @@ fit_rema_region <- function(x, zero_assumption = "na", rema_by_stratum = TRUE) {
                    silent = TRUE)
 
     if(class(rema_out) == "try-error") {
+      warning("fit_rema_region: ", unique_group_name[ii], " did not run.")
       next
     }
 
@@ -83,7 +93,7 @@ run_rema <- function(x, region, group_name, zero_assumption) {
                      constant = 0.01)
   }
 
-  input <- prepare_rema_input(model_name = paste0("tmb_rema_", region, "_", group_name),
+  input <- prepare_rema_input(model_name = paste0("tmb_rema_", region, "_", paste(group_name, collapse = "_")),
                               biomass_dat = dat,
                               zeros = zero_list
                               )
@@ -93,6 +103,9 @@ run_rema <- function(x, region, group_name, zero_assumption) {
   output <- tidy_rema(rema_model = m)
 
   output$biomass_by_strata$group_name <- group_name
+  output$total_predicted_biomass$group_name <- group_name
+  output$proportion_biomass_by_strata$group_name <- group_name
+  output$parameter_estimates$group_name <- group_name
 
   return(output)
 

@@ -1,26 +1,29 @@
-# Run this then build to reinstall the package
-
 library(esrindex)
+library(devtools)
 
 channel <- esrindex::get_connected(schema = "AFSC")
 
 EBS_INDICATOR <- esrindex::get_group_data(region = "EBS", 
                                           channel = channel,
-                                          zero_assumption = "na")
+                                          zero_assumption = "na",
+                                          rema_by_stratum = TRUE)
 
 NBS_INDICATOR <- esrindex::get_group_data(region = "NBS", 
                                           channel = channel,
-                                          zero_assumption = "small_constant")
+                                          zero_assumption = "na",
+                                          rema_by_stratum = FALSE) # Use single stratum RE model
 
 GOA_INDICATOR <- esrindex::get_group_data(region = "GOA", 
                                           channel = channel,
-                                          zero_assumption = "na")
+                                          zero_assumption = "na",
+                                          rema_by_stratum = TRUE)
 
 AI_INDICATOR <- esrindex::get_group_data(region = "AI", 
                                          channel = channel,
-                                         zero_assumption = "na")
+                                         zero_assumption = "na",
+                                         rema_by_stratum = TRUE)
 
-all_complete <- all(length(unique(EBS_INDICATOR$timeseries$SPECIES_CODE)) == length(unname(unlist(chapter_settings$EBS))),
+(all_complete <- all(length(unique(EBS_INDICATOR$timeseries$SPECIES_CODE)) == length(unname(unlist(chapter_settings$EBS))),
                     length(unique(NBS_INDICATOR$timeseries$SPECIES_CODE)) == length(unname(unlist(chapter_settings$NBS))),
                     length(unique(AI_INDICATOR$timeseries$SPECIES_CODE)) == length(unname(unlist(chapter_settings$AI))),
                     length(unique(GOA_INDICATOR$timeseries$SPECIES_CODE)) == length(unname(unlist(chapter_settings$GOA))),
@@ -28,11 +31,11 @@ all_complete <- all(length(unique(EBS_INDICATOR$timeseries$SPECIES_CODE)) == len
                     length(unique(NBS_INDICATOR$mean_sd$SPECIES_CODE)) == length(unname(unlist(chapter_settings$NBS))),
                     length(unique(AI_INDICATOR$mean_sd$SPECIES_CODE)) == length(unname(unlist(chapter_settings$AI))),
                     length(unique(GOA_INDICATOR$mean_sd$SPECIES_CODE)) == length(unname(unlist(chapter_settings$GOA)))
-                    )
+                    ))
 
 if(all_complete) {
 
-  message("Writing indicators to /data/")
+  message("Writing indicators files to /data/")
   save(EBS_INDICATOR, file = "./data/EBS_INDICATOR.rda")
   save(NBS_INDICATOR, file = "./data/NBS_INDICATOR.rda")
   save(GOA_INDICATOR, file = "./data/GOA_INDICATOR.rda")
@@ -44,3 +47,5 @@ if(all_complete) {
 
 }
 
+# Reinstall the package
+devtools::install()
