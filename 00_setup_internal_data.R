@@ -80,10 +80,6 @@ chapter_settings <- list(
 
 save(chapter_settings, file = "./data/chapter_settings.rda")
 
-# Reinstall the package
-devtools::install()
-
-
 # Make spreadsheets showing species groups
 write.csv(species_groups, 
           here::here("assets", "species_groups.csv"), 
@@ -97,3 +93,7 @@ write.csv(dplyr::bind_rows(data.frame(group_name = "Sea stars",
                                       SPECIES_CODE = as.numeric(species_groups_ns[["Sponges"]]))),
           here::here("assets", "species_groups_ns.csv"),
           row.names = FALSE)
+
+# Reinstall the package
+devtools::install()
+

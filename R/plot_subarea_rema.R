@@ -11,7 +11,7 @@
 #' @examples
 #' \dontrun{
 #' # Example:
-# ' plot_rema_subarea(x = AI_INDICATOR, 
+# ' plot_subarea_rema(x = AI_INDICATOR, 
 #'                    error_bar = TRUE, 
 #'                    benchmarks = "zscore")
 #' }
@@ -20,7 +20,7 @@
 #' @importFrom grDevices png
 #' @export
 
-plot_rema_subarea <- function(x, error_bar = TRUE, benchmarks = "none", append_filename = "") {
+plot_subarea_rema <- function(x, error_bar = TRUE, benchmarks = "none", append_filename = "") {
   
   region <- x$timeseries$SURVEY[1]
   
@@ -347,7 +347,7 @@ plot_rema_subarea <- function(x, error_bar = TRUE, benchmarks = "none", append_f
                           gsub(x = indicator_name[ii], pattern = " ", replacement = "_"), 
                           "_subarea_point", append_filename, ".png"),
         width = 169,
-        height = 20+40*length(group_name),
+        height = min(c(20+40*length(group_name), 225)),
         units = "mm",
         res = 300)
     print(p1 + theme(axis.text = element_text(size = 6.5)))
@@ -360,7 +360,7 @@ plot_rema_subarea <- function(x, error_bar = TRUE, benchmarks = "none", append_f
                           gsub(x = indicator_name[ii], pattern = " ", replacement = "_"), 
                           "_subarea_bar", append_filename, ".png"),
         width = 169,
-        height = 40+40*length(group_name),
+        height = min(c(40+40*length(group_name), 225)),
         units = "mm",
         res = 300)
     print(p2)

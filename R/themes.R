@@ -131,11 +131,11 @@ set_stratum_order <- function(stratum = NULL, area_id = NULL, region, use_abbrev
   if(use_abbreviation) {
     
     set_labels <- switch(region,
-                         "GOA" = c("Shu.",
-                                   "Chi.",
-                                   "Kod.",
-                                   "Yak.",
-                                   "SEA"),
+                         "GOA" = c("Shu",
+                                   "Chi",
+                                   "Kod",
+                                   "Yak",
+                                   "SE"),
                          "EBS" = c("10", 
                                    "20", 
                                    "30", 

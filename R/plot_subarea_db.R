@@ -12,7 +12,7 @@
 #' @examples
 #' \dontrun{
 #' # Example Usage:
-#' make_subarea_plot(indicator_data = AI_INDICATOR,
+#' plot_subarea_db(indicator_data = AI_INDICATOR,
 #'                   indicator_name = "misc_species",
 #'                   bar_color = "#0085CA",
 #'                   error_bars = TRUE)
@@ -23,7 +23,7 @@
 #'
 #' @export
 
-make_subarea_plot <- function(indicator_data, indicator_name, bar_color = "#0085CA", error_bars = TRUE) {
+plot_subarea_db <- function(indicator_data, indicator_name, bar_color = "#0085CA", error_bars = TRUE) {
 
   region <- indicator_data$timeseries$SURVEY[1]
 
@@ -126,9 +126,10 @@ make_subarea_plot <- function(indicator_data, indicator_name, bar_color = "#0085
     png(filename = paste0("./plots/", region, "/", region, "_",
                           gsub(x = indicator_name, pattern = " ", replacement = "_"),
                           "_",
-                          gsub(x = group_name[ii], pattern = " ", replacement = "_"), "_stratum.png"),
+                          gsub(x = group_name[ii], pattern = " ", replacement = "_"), 
+                          "_stratum.png"),
         width = 169,
-        height = ifelse(length(area_id) > 4, 50 + 40 * ceiling(length(area_id)/3) - 1, 50),
+        height = min(c(ifelse(length(area_id) > 4, 50 + 40 * ceiling(length(area_id)/3) - 1, 50), 225)),
         units = "mm",
         res = 300)
     print(p1 + theme(axis.text = element_text(size = 7),

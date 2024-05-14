@@ -1,4 +1,4 @@
-#' Create indicator plots for a region
+#' Create design-based index indicator plots for a region
 #'
 #' This function generates a region-specific biomass plot based on indicator data and saves the plot as a png.
 #'
@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' make_region_plot(indicator_data = AI_INDICATOR,
+#' plot_region_db(indicator_data = AI_INDICATOR,
 #'                  indicator_name = "misc_species",
 #'                  bar_color = "#0085CA",
 #'                  error_bars = TRUE)
@@ -20,7 +20,7 @@
 #' @importFrom grDevices png
 #' @export
 
-make_region_plot <- function(indicator_data, indicator_name, error_bars = TRUE, bar_color = "#0085CA") {
+plot_region_db <- function(indicator_data, indicator_name, error_bars = TRUE, bar_color = "#0085CA") {
 
   region <- indicator_data$timeseries$SURVEY[1]
 
@@ -96,9 +96,11 @@ make_region_plot <- function(indicator_data, indicator_name, error_bars = TRUE, 
 
   suppressWarnings(dir.create(paste0("./plots/", region), recursive = TRUE))
 
-  png(filename = paste0("./plots/", region, "/", region, "_", gsub(x = indicator_name, pattern = " ", replacement = "_"), "_full_region.png"),
+  png(filename = paste0("./plots/", region, "/", region, "_", 
+                        gsub(x = indicator_name, pattern = " ", replacement = "_"), 
+                        "_full_region.png"),
       width = 169,
-      height = 20+40*length(group_name),
+      height = min(c(20+40*length(group_name), 225)),
       units = "mm",
       res = 300)
   print(p1)

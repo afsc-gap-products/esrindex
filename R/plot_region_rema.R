@@ -11,14 +11,14 @@
 #' @examples
 #' \dontrun{
 #' # Example:
-# ' plot_rema_region(x = AI_INDICATOR, 
+# ' plot_region_rema(x = AI_INDICATOR, 
 #'                   error_bar = TRUE, 
 #'                   benchmarks = "zscore")
 #' }
 #' @import ggplot2 scales
 #' @export
 
-plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_filename = "") {
+plot_region_rema <- function(x, error_bar = TRUE, benchmarks = "none", append_filename = "") {
   
   region <- x$timeseries$SURVEY[1]
   
@@ -252,7 +252,7 @@ plot_rema_region <- function(x, error_bar = TRUE, benchmarks = "none", append_fi
                           gsub(x = indicator_name[ii], pattern = " ", replacement = "_"), 
                           "_full_region", append_filename, ".png"),
         width = 169,
-        height = 20+40*length(group_name),
+        height = min(c(20+40*length(group_name), 225)),
         units = "mm",
         res = 300)
     print(p1)
