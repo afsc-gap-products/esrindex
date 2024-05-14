@@ -6,6 +6,12 @@
 #' @param error_bar Should annual observations include error bars?
 #' @param benchmarks "none", "zscore", or "quantile"
 #' @param append_filename Character vector to include in file name.
+#' @param set_unit Set units to use for output ("kt" = kiloton, "mt" = metric tons)
+#' @param point_color Color for points.
+#' @param errorbar_color Color for error bar.
+#' @param timeseries_color Color for time series line.
+#' @param ribbon_fill Color for time series ribbon.
+#' @param hline_color Color for Z-score/quantile lines.
 #' @return The function doesn't return any value; it generates and saves plots based on the input data.
 #'
 #' @examples
@@ -20,7 +26,16 @@
 #' @importFrom grDevices png
 #' @export
 
-plot_subarea_rema <- function(x, error_bar = TRUE, benchmarks = "none", append_filename = "") {
+plot_subarea_rema <- function(x, 
+                              error_bar = TRUE, 
+                              point_color = "#0085CA",
+                              timeseries_color = "#000000",
+                              errorbar_color = "#000000",
+                              ribbon_fill = "grey50",
+                              hline_color = "grey50",
+                              benchmarks = "none", 
+                              append_filename = "", 
+                              set_unit = "kt") {
   
   region <- x$timeseries$SURVEY[1]
   
@@ -50,6 +65,31 @@ plot_subarea_rema <- function(x, error_bar = TRUE, benchmarks = "none", append_f
       dplyr::filter(year %in% unique(obs_dat$YEAR))
     
     obs_dat$group_name <- obs_dat$SPECIES_CODE
+    
+    if(set_unit == "kt") {
+      
+      fit_dat$pred <- fit_dat$pred/1000
+      fit_dat$obs <- fit_dat$obs/1000
+      fit_dat$obs_lci <- fit_dat$obs_lci/1000
+      fit_dat$obs_uci <- fit_dat$obs_uci/1000
+      fit_dat$pred_lci <- fit_dat$pred_lci/1000
+      fit_dat$pred_uci <- fit_dat$pred_uci/1000
+      
+      bar_dat$pred <- bar_dat$pred/1000
+      
+      lab_fun <- scales::label_comma
+      lab_trim <- FALSE
+      lab_digits <- NULL
+      
+    }
+    
+    if(set_unit == "mt") {
+      
+      lab_fun <- scales::label_comma
+      lab_trim <- TRUE
+      lab_digits <- 2
+      
+    }
     
     ts_summary <- fit_dat |>
       dplyr::group_by(group_name, strata) |>
@@ -129,20 +169,23 @@ plot_subarea_rema <- function(x, error_bar = TRUE, benchmarks = "none", append_f
                     mapping = aes(x = year,
                                   ymin = pred_lci,
                                   ymax = pred_uci),
-                    alpha = 0.3) +
+                    alpha = 0.3,
+                    fill = ribbon_fill) +
         geom_errorbar(data = fit_dat,
                       mapping = aes(x = year,
                                     ymin = obs_lci,
                                     ymax = obs_uci), 
-                      width = 0.5) +
+                      width = 0.5,
+                      color = errorbar_color) +
         geom_point(data = fit_dat,
-                   mapping = aes(x = year, y = obs)) +
+                   mapping = aes(x = year, y = obs),
+                   color = point_color) +
         geom_path(data = fit_dat,
-                  mapping = aes(x = year, y = pred)) +
-        scale_y_continuous(name = "Biomass Index (mt)", 
+                  mapping = aes(x = year, y = pred),
+                  color = timeseries_color) +
+        scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
                            expand = expansion(mult = c(0, 0.05)), 
-                           labels = scales::label_scientific(digits = 2, 
-                                                             trim = FALSE)) +
+                           labels = lab_fun(trim = lab_trim)) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
         facet_wrap(~taxa_stratum, 
@@ -155,38 +198,46 @@ plot_subarea_rema <- function(x, error_bar = TRUE, benchmarks = "none", append_f
     if(error_bar & benchmarks == "zscore") {
       
       p1 <- ggplot() +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = z_mean),
+                   color = hline_color) +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = plus1), 
+                   linetype = 2,
+                   color = hline_color) +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = plus2), 
+                   linetype = 3,
+                   color = hline_color) +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = minus1), 
+                   linetype = 2,
+                   color = hline_color) +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = minus2), 
+                   linetype = 3,
+                   color = hline_color) +
         geom_ribbon(data = fit_dat,
                     mapping = aes(x = year,
                                   ymin = pred_lci,
                                   ymax = pred_uci),
-                    alpha = 0.3) +
+                    alpha = 0.3,
+                    fill = ribbon_fill) +
         geom_errorbar(data = fit_dat,
                       mapping = aes(x = year,
                                     ymin = obs_lci,
                                     ymax = obs_uci), 
-                      width = 0.5) +
+                      width = 0.5,
+                      color = errorbar_color) +
         geom_point(data = fit_dat,
-                   mapping = aes(x = year, y = obs)) +
+                   mapping = aes(x = year, y = obs),
+                   color = point_color) +
         geom_path(data = fit_dat,
-                  mapping = aes(x = year, y = pred)) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = z_mean)) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = plus1), 
-                   linetype = 2) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = plus2), 
-                   linetype = 3) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = minus1), 
-                   linetype = 2) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = minus2), 
-                   linetype = 3) +
-        scale_y_continuous(name = "Biomass Index (mt)", 
+                  mapping = aes(x = year, y = pred),
+                  color = timeseries_color) +
+        scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
                            expand = expansion(mult = c(0, 0.05)), 
-                           labels = scales::label_scientific(digits = 2, 
-                                                             trim = FALSE)) +
+                           labels = lab_fun(trim = lab_trim)) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
         facet_wrap(~taxa_stratum, 
@@ -200,33 +251,40 @@ plot_subarea_rema <- function(x, error_bar = TRUE, benchmarks = "none", append_f
     if(!error_bar & benchmarks == "zscore") {
       
       p1 <- ggplot() +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = z_mean),
+                   color = hline_color) +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = plus1), 
+                   linetype = 2,
+                   color = hline_color) +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = plus2), 
+                   linetype = 3,
+                   color = hline_color) +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = minus1), 
+                   linetype = 2,
+                   color = hline_color) +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = minus2), 
+                   linetype = 3,
+                   color = hline_color) +
         geom_ribbon(data = fit_dat,
                     mapping = aes(x = year,
                                   ymin = pred_lci,
                                   ymax = pred_uci),
-                    alpha = 0.3) +
+                    alpha = 0.3,
+                    fill = ribbon_fill) +
         geom_point(data = fit_dat,
-                   mapping = aes(x = year, y = obs)) +
+                   mapping = aes(x = year, y = obs),
+                   color = point_color) +
         geom_path(data = fit_dat,
-                  mapping = aes(x = year, y = pred)) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = z_mean)) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = plus1), 
-                   linetype = 2) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = plus2), 
-                   linetype = 3) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = minus1), 
-                   linetype = 2) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = minus2), 
-                   linetype = 3) +
-        scale_y_continuous(name = "Biomass Index (mt)", 
+                  mapping = aes(x = year, y = pred),
+                  color = timeseries_color) +
+        scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
                            expand = expansion(mult = c(0, 0.05)), 
-                           labels = scales::label_scientific(digits = 2, 
-                                                             trim = FALSE)) +
+                           labels = lab_fun(trim = lab_trim)) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
         facet_wrap(~taxa_stratum, 
@@ -241,38 +299,46 @@ plot_subarea_rema <- function(x, error_bar = TRUE, benchmarks = "none", append_f
     if(error_bar & benchmarks == "quantile") {
       
       p1 <- ggplot() +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = q50),
+                   color = hline_color) +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = q75), 
+                   linetype = 2,
+                   color = hline_color) +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = q100), 
+                   linetype = 3,
+                   color = hline_color) +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = q25), 
+                   linetype = 2,
+                   color = hline_color) +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = q0), 
+                   linetype = 3,
+                   color = hline_color) +
         geom_ribbon(data = fit_dat,
                     mapping = aes(x = year,
                                   ymin = pred_lci,
                                   ymax = pred_uci),
-                    alpha = 0.3) +
+                    alpha = 0.3,
+                    fill = ribbon_fill) +
         geom_errorbar(data = fit_dat,
                       mapping = aes(x = year,
                                     ymin = obs_lci,
                                     ymax = obs_uci), 
-                      width = 0.5) +
+                      width = 0.5,
+                      color = errorbar_color) +
         geom_point(data = fit_dat,
-                   mapping = aes(x = year, y = obs)) +
+                   mapping = aes(x = year, y = obs),
+                   color = point_color) +
         geom_path(data = fit_dat,
-                  mapping = aes(x = year, y = pred)) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = q50)) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = q75), 
-                   linetype = 2) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = q100), 
-                   linetype = 3) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = q25), 
-                   linetype = 2) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = q0), 
-                   linetype = 3) +
-        scale_y_continuous(name = "Biomass Index (mt)", 
+                  mapping = aes(x = year, y = pred),
+                  color = timeseries_color) +
+        scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
                            expand = expansion(mult = c(0, 0.05)), 
-                           labels = scales::label_scientific(digits = 2, 
-                                                             trim = FALSE)) +
+                           labels = lab_fun(trim = lab_trim)) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
         facet_wrap(~taxa_stratum, 
@@ -285,33 +351,40 @@ plot_subarea_rema <- function(x, error_bar = TRUE, benchmarks = "none", append_f
     if(!error_bar & benchmarks == "quantile") {
       
       p1 <- ggplot() +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = q50),
+                   color = hline_color) +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = q75), 
+                   linetype = 2,
+                   color = hline_color) +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = q100), 
+                   linetype = 3,
+                   color = hline_color) +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = q25), 
+                   linetype = 2,
+                   color = hline_color) +
+        geom_hline(data = ts_summary,
+                   mapping = aes(yintercept = q0), 
+                   linetype = 3,
+                   color = hline_color) +
         geom_ribbon(data = fit_dat,
                     mapping = aes(x = year,
                                   ymin = pred_lci,
                                   ymax = pred_uci),
-                    alpha = 0.3) +
+                    alpha = 0.3,
+                    fill = ribbon_fill) +
         geom_point(data = fit_dat,
-                   mapping = aes(x = year, y = obs)) +
+                   mapping = aes(x = year, y = obs),
+                   color = point_color) +
         geom_path(data = fit_dat,
-                  mapping = aes(x = year, y = pred)) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = q50)) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = q75), 
-                   linetype = 2) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = q100), 
-                   linetype = 3) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = q25), 
-                   linetype = 2) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = q0), 
-                   linetype = 3) +
-        scale_y_continuous(name = "Biomass Index (mt)", 
+                  mapping = aes(x = year, y = pred),
+                  color = timeseries_color) +
+        scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
                            expand = expansion(mult = c(0, 0.05)), 
-                           labels = scales::label_scientific(digits = 2, 
-                                                             trim = FALSE)) +
+                           labels = lab_fun(trim = lab_trim)) +
         scale_x_continuous(name = "Year") +
         expand_limits(y = 0) +
         facet_wrap(~taxa_stratum, 
@@ -331,10 +404,9 @@ plot_subarea_rema <- function(x, error_bar = TRUE, benchmarks = "none", append_f
                position = "stack",
                stat = "identity", width = 1) +
       facet_wrap(~group_name, scales = "free_y", nrow = length(group_name)) +
-      scale_y_continuous(name = "Mean Biomass Index (mt)", 
+      scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
                          expand = expansion(mult = c(0, 0.05)), 
-                         labels = scales::label_scientific(digits = 2, 
-                                                           trim = FALSE)) +
+                         labels = lab_fun(trim = lab_trim)) +
       scale_fill_manual(name = fill_label, values = fill_colors) +
       scale_x_continuous(name = "Year") +
       theme_blue_strip() +

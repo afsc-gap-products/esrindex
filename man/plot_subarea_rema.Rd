@@ -7,8 +7,14 @@
 plot_subarea_rema(
   x,
   error_bar = TRUE,
+  point_color = "#0085CA",
+  timeseries_color = "#000000",
+  errorbar_color = "#000000",
+  ribbon_fill = "grey50",
+  hline_color = "grey50",
   benchmarks = "none",
-  append_filename = ""
+  append_filename = "",
+  set_unit = "kt"
 )
 }
 \arguments{
@@ -16,9 +22,21 @@ plot_subarea_rema(
 
 \item{error_bar}{Should annual observations include error bars?}
 
+\item{point_color}{Color for points.}
+
+\item{timeseries_color}{Color for time series line.}
+
+\item{errorbar_color}{Color for error bar.}
+
+\item{ribbon_fill}{Color for time series ribbon.}
+
+\item{hline_color}{Color for Z-score/quantile lines.}
+
 \item{benchmarks}{"none", "zscore", or "quantile"}
 
 \item{append_filename}{Character vector to include in file name.}
+
+\item{set_unit}{Set units to use for output ("kt" = kiloton, "mt" = metric tons)}
 }
 \value{
 The function doesn't return any value; it generates and saves plots based on the input data.
