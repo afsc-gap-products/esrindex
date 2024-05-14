@@ -22,12 +22,12 @@
 <figures>
 	<fig>
 		<figureNumber>1</figureNumber>
-		<figurePath>AI_jellyfish_full_region.png</figurePath>
+		<figurePath>AI_rema_jellyfish_full_region_ze.png</figurePath>
 		<figureCaption>Relative mean CPUE of jellyfish species by INPFC area from RACE Groundfish Assessment Program bottom trawl surveys in the Aleutian Islands from 1980 through 2022. Error bars represent relative standard errors. The gray lines represent the percentage of non-zero catches.</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>2</figureNumber>
-		<figurePath>AI_jellyfish_Jellyfish_stratum.png</figurePath>
+		<figurePath>AI_rema_jellyfish_subarea_bar.png</figurePath>
 		<figureCaption>Relative mean CPUE of jellyfish species by INPFC area from RACE Groundfish Assessment Program bottom trawl surveys in the Aleutian Islands from 1980 through 2022. Error bars represent relative standard errors. The gray lines represent the percentage of non-zero catches.</figureCaption>
 	</fig>
 </figures>

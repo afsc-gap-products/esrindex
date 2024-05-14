@@ -32,12 +32,17 @@
 <figures>
 	<fig>
 		<figureNumber>1</figureNumber>
-		<figurePath>EBS_structural_epifauna_full_region.png</figurePath>
+		<figurePath>EBS_rema_structural_epifauna_full_region_ze.png</figurePath>
 		<figureCaption>AFSC eastern Bering Sea shelf bottom trawl survey relative CPUE for three groups of benthic epifauna during the May to August time period from 1982–2023.</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>2</figureNumber>
-		<figurePath>NBS_structural_epifauna_full_region.png</figurePath>
+		<figurePath>EBS_rema_structural_epifauna_subarea_bar.png</figurePath>
+		<figureCaption>AFSC eastern Bering Sea shelf bottom trawl survey relative CPUE for three groups of benthic epifauna during the May to August time period from 1982–2023.</figureCaption>
+	</fig>
+	<fig>
+		<figureNumber>3</figureNumber>
+		<figurePath>NBS_rema_structural_epifauna_full_region_ze.png</figurePath>
 		<figureCaption>AFSC northern Bering Sea shelf bottom trawl survey relative CPUE for two groups of benthic epifauna during the July to August time period from 2010–2023.</figureCaption>
 	</fig>
 </figures>

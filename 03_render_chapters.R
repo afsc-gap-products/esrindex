@@ -4,6 +4,7 @@ library(esrindex)
 make_esr_chapter(xml_path = "./chapters/AI_jellyfish.xml")
 make_esr_chapter(xml_path = "./chapters/AI_misc_species.xml")
 make_esr_chapter(xml_path = "./chapters/AI_structural_epifauna.xml")
+make_esr_chapter(xml_path = "./chapters/AI_forage_fish.xml")
 
 make_esr_chapter(xml_path = "./chapters/GOA_jellyfish.xml")
 make_esr_chapter(xml_path = "./chapters/GOA_misc_species.xml")

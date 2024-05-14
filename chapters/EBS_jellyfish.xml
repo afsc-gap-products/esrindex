@@ -30,12 +30,17 @@
 <figures>
 	<fig>
 		<figureNumber>1</figureNumber>
-		<figurePath>EBS_jellyfish_full_region.png</figurePath>
+		<figurePath>EBS_rema_jellyfish_full_region_ze.png</figurePath>
 		<figureCaption>AFSC eastern (top) Bering Sea shelf bottom trawl survey relative CPUE for jellyfsh during the May–August time period from 1982–2023 and for the northern (bottom) Bering Sea shelf survey during the July–August time period from 2010–2023.</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>2</figureNumber>
-		<figurePath>NBS_jellyfish_full_region.png</figurePath>
+		<figurePath>EBS_rema_jellyfish_subarea_bar.png</figurePath>
+		<figureCaption>AFSC eastern (top) Bering Sea shelf bottom trawl survey relative CPUE for jellyfsh during the May–August time period from 1982–2023 and for the northern (bottom) Bering Sea shelf survey during the July–August time period from 2010–2023.</figureCaption>
+	</fig>	
+	<fig>
+		<figureNumber>3</figureNumber>
+		<figurePath>NBS_rema_jellyfish_full_region_ze.png</figurePath>
 		<figureCaption>AFSC eastern (top) Bering Sea shelf bottom trawl survey relative CPUE for jellyfsh during the May–August time period from 1982–2023 and for the northern (bottom) Bering Sea shelf survey during the July–August time period from 2010–2023.</figureCaption>
 	</fig>
 </figures>

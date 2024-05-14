@@ -22,7 +22,12 @@
 <figures>
 	<fig>
 		<figureNumber>1</figureNumber>
-		<figurePath>AI_misc_species_full_region.png</figurePath>
+		<figurePath>AI_rema_misc_species_full_region_ze.png</figurePath>
+		<figureCaption>Relative mean CPUE of miscellaneous species by area from RACE bottom trawl surveys in the Aleutian Islands from 1980 through 2016. Error bars represent standard errors. The gray lines represent the percentage of non-zero catches. The Western, Central, and Eastern Aleutians correspond to management areas 543, 542, and 541, respectively. The Southern Bering Sea corresponds to management areas 519 and 518.</figureCaption>
+	</fig>
+	<fig>
+		<figureNumber>2</figureNumber>
+		<figurePath>AI_rema_misc_species_subarea_bar.png</figurePath>
 		<figureCaption>Relative mean CPUE of miscellaneous species by area from RACE bottom trawl surveys in the Aleutian Islands from 1980 through 2016. Error bars represent standard errors. The gray lines represent the percentage of non-zero catches. The Western, Central, and Eastern Aleutians correspond to management areas 543, 542, and 541, respectively. The Southern Bering Sea corresponds to management areas 519 and 518.</figureCaption>
 	</fig>
 </figures>

@@ -20,7 +20,12 @@
 <figures>
 	<fig>
 		<figureNumber>1</figureNumber>
-		<figurePath>GOA_structural_epifauna_full_region.png</figurePath>
+		<figurePath>GOA_rema_structural_epifauna_full_region_ze.png</figurePath>
+		<figureCaption>Relative biomass estimates of echinoderms, shrimps, eelpouts, and poachers collected from International North Pacific Fisheries Commission (INPFC) statistical districts during fishery-independent summer bottom trawl surveys of the Gulf of Alaska (1990–2023). Error bars represent standard errors and the gray lines represent the prevalence (percentage) of non-zero catches of these taxa.</figureCaption>
+	</fig>
+	<fig>
+		<figureNumber>2</figureNumber>
+		<figurePath>GOA_rema_structural_epifauna_subarea_bar.png</figurePath>
 		<figureCaption>Relative biomass estimates of echinoderms, shrimps, eelpouts, and poachers collected from International North Pacific Fisheries Commission (INPFC) statistical districts during fishery-independent summer bottom trawl surveys of the Gulf of Alaska (1990–2023). Error bars represent standard errors and the gray lines represent the prevalence (percentage) of non-zero catches of these taxa.</figureCaption>
 	</fig>
 </figures>
