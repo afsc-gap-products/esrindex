@@ -32,12 +32,12 @@ region_settings <- list(GOA = list(esr_subarea_id = c(919, 929, 939, 949, 959),
 save(region_settings, file = "./data/region_settings.rda")
 
 # Species group code ranges
-# species_groups <- data.frame(group_name = c("Sponges", "Sea whips", "Jellyfish", "Sea anemones", "Eelpouts", "Poachers", "Echinoderms", "Shrimps", "pricklebacks", "sandlance", "capelin", "eulachon", "Pacific herring", "Pacific sandfish", "Sea stars", "Gorgonians", "Pennatulaceans", "Hydrocorals", "Soft corals"),
+# species_groups <- data.frame(group_name = c("Sponges", "Sea whips", "Jellyfish", "Sea anemones", "Eelpouts", "Poachers", "Echinoderms", "Shrimps", "pricklebacks", "Sandlances", "capelin", "eulachon", "Pacific herring", "Pacific sandfish", "Sea stars", "Gorgonians", "Pennatulaceans", "Hydrocorals", "Soft corals"),
 #                              min_code = c(91000, 42000, 40500, 43000, 24100, 20000, 80000, 66000, 23800, 20202, 23041, 23010, 21110, 21592, -999, -999, 42000, 44000, 41100),
 #                              max_code = c(91999, 42013, 40599, 43999, 24499, 20099, 85999, 66999, 23866, 20210, 23041, 23010, 21110, 21592, -999, -999, 42013, 44123, 41106),
 #                              complex = c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE))
 
-species_groups <- data.frame(group_name = c("Sponges", "Jellyfish", "Sea anemones", "Eelpouts", "Poachers", "Echinoderms", "Shrimps", "Pricklebacks", "Sandlance", "Capelin", "Eulachon", "Pacific herring", "Pacific sandfish", "Sea stars", "Myctophids", "Corals", "Pennatulaceans"),
+species_groups <- data.frame(group_name = c("Sponges", "Jellyfish", "Sea anemones", "Eelpouts", "Poachers", "Echinoderms", "Shrimps", "Pricklebacks", "Sandlances", "Capelin", "Eulachon", "Pacific herring", "Pacific sandfish", "Sea stars", "Myctophids", "Corals", "Pennatulaceans"),
                              min_code = c(-999, 40500, 43000, 24100, 20000, 80000, 66000, 23800, 20202, 23041, 23010, 21110, 21592, -999, 22600, -999, 42000),
                              max_code = c(-999, 40599, 43999, 24499, 20099, 85999, 66999, 23866, 20210, 23041, 23010, 21110, 21592, -999, 22656, -999, 42021),
                              complex = c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE))
@@ -55,13 +55,13 @@ save(species_groups_ns, file = "./data/species_groups_ns.rda")
 # Chapter settings by region and contribution; group_name for chapters should match group_name from species_groups data
 chapter_settings <- list(
   GOA = list(
-    misc_species = list(group_name = c("Sea stars", "Shrimps", "Eelpouts", "Poachers")),
+    misc_species = list(group_name = c("Eelpouts", "Poachers", "Shrimps", "Sea stars")),
     jellyfish = list(group_name = c("Jellyfish")),
     structural_epifauna = list(group_name = c("Sponges", "Sea anemones", "Corals", "Pennatulaceans")),
-    forage_fish = list(group_name = c("Eulachon", "Capelin", "Pricklebacks", "Sandlance", "Pacific sandfish", "Pacific herring", "Myctophids"))
+    forage_fish = list(group_name = c("Pacific herring", "Capelin", "Eulachon", "Sandlances", "Myctophids", "Pacific sandfish", "Pricklebacks"))
   ),
   AI = list(
-    misc_species = list(group_name = c("Sea stars", "Shrimps", "Eelpouts", "Poachers")),
+    misc_species = list(group_name = c("Eelpouts", "Poachers", "Shrimps", "Sea stars")),
     jellyfish = list(group_name = c("Jellyfish")),
     structural_epifauna = list(group_name = c("Sponges", "Sea anemones", "Corals", "Pennatulaceans")),
     forage_fish = list(group_name = c("Myctophids"))

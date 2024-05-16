@@ -70,3 +70,9 @@ plot_subarea_rema(x = EBS_INDICATOR,
                   errorbar_color = "#000000",
                   ribbon_fill = "grey50",
                   hline_color = "grey50")
+
+# Make .csv files containing rema time series and design-based index observations
+make_index_tables(AI_INDICATOR)
+make_index_tables(GOA_INDICATOR)
+make_index_tables(EBS_INDICATOR)
+make_index_tables(NBS_INDICATOR)

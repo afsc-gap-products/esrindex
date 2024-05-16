@@ -58,6 +58,12 @@ plot_region_rema <- function(x,
       
     }
     
+    obs_dat$group_name <- factor(obs_dat$SPECIES_CODE, 
+                                 levels = group_name)
+    
+    fit_dat$group_name <- factor(fit_dat$group_name, 
+                                 levels = group_name)
+    
     if(set_unit == "kt") {
       
       fit_dat$pred <- fit_dat$pred/1000
@@ -79,8 +85,6 @@ plot_region_rema <- function(x,
       lab_fun <- scales::label_comma
       lab_trim <- TRUE
     }
-    
-    obs_dat$group_name <- obs_dat$SPECIES_CODE
     
     ts_summary <- fit_dat |>
       dplyr::group_by(group_name) |>

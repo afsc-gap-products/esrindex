@@ -61,10 +61,14 @@ plot_subarea_rema <- function(x,
       
     }
     
+    obs_dat$group_name <- factor(obs_dat$SPECIES_CODE, 
+                                 levels = group_name)
+    
+    fit_dat$group_name <- factor(fit_dat$group_name, 
+                                 levels = group_name)
+    
     bar_dat <- fit_dat |>
       dplyr::filter(year %in% unique(obs_dat$YEAR))
-    
-    obs_dat$group_name <- obs_dat$SPECIES_CODE
     
     if(set_unit == "kt") {
       
