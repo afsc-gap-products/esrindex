@@ -6,6 +6,6 @@
 \alias{esrindex-package}
 \title{esrindex: Make index products for Ecosystem Status Reports}
 \description{
-Make index products for Ecosystem Status Reports.
+Make abundance index products for Ecosystem Status Reports.
 }
 \keyword{internal}
