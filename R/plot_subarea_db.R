@@ -19,8 +19,6 @@
 #' }
 #'
 #' @import ggplot2
-#' @importFrom grDevices png
-#'
 #' @export
 
 plot_subarea_db <- function(indicator_data, indicator_name, bar_color = "#0085CA", error_bars = TRUE) {
@@ -123,19 +121,19 @@ plot_subarea_db <- function(indicator_data, indicator_name, bar_color = "#0085CA
 
     }
 
-    png(filename = paste0("./plots/", region, "/", region, "_",
-                          gsub(x = indicator_name, pattern = " ", replacement = "_"),
-                          "_",
-                          gsub(x = group_name[ii], pattern = " ", replacement = "_"), 
-                          "_stratum.png"),
-        width = 169,
-        height = min(c(ifelse(length(area_id) > 4, 50 + 40 * ceiling(length(area_id)/3) - 1, 50), 225)),
-        units = "mm",
-        res = 300)
+    grDevices::png(filename = paste0("./plots/", region, "/", region, "_",
+                                     gsub(x = indicator_name, pattern = " ", replacement = "_"),
+                                     "_",
+                                     gsub(x = group_name[ii], pattern = " ", replacement = "_"), 
+                                     "_stratum.png"),
+                   width = 169,
+                   height = min(c(ifelse(length(area_id) > 4, 50 + 40 * ceiling(length(area_id)/3) - 1, 50), 225)),
+                   units = "mm",
+                   res = 300)
     print(p1 + theme(axis.text = element_text(size = 7),
                      axis.title = element_text(size = 8),
                      strip.text = element_text(size = 8)))
-    dev.off()
+    grDevices::dev.off()
 
   }
 

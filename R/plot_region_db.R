@@ -96,15 +96,15 @@ plot_region_db <- function(indicator_data, indicator_name, error_bars = TRUE, ba
 
   suppressWarnings(dir.create(paste0("./plots/", region), recursive = TRUE))
 
-  png(filename = paste0("./plots/", region, "/", region, "_", 
-                        gsub(x = indicator_name, pattern = " ", replacement = "_"), 
-                        "_full_region.png"),
-      width = 169,
-      height = min(c(20+40*length(group_name), 225)),
-      units = "mm",
-      res = 300)
+  grDevices::png(filename = paste0("./plots/", region, "/", region, "_", 
+                                   gsub(x = indicator_name, pattern = " ", replacement = "_"), 
+                                   "_full_region.png"),
+                 width = 169,
+                 height = min(c(20+40*length(group_name), 225)),
+                 units = "mm",
+                 res = 300)
   print(p1)
-  dev.off()
+  grDevices::dev.off()
 
   return(p1)
 

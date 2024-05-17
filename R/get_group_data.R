@@ -81,7 +81,7 @@ get_group_data <- function(region,
                               spp_codes = valid_species_codes), silent = TRUE)
 
     # Warn if there was a gapindex error
-    if(class(dat) == "try-error") {
+    if(methods::is(dat, "try-error")) {
 
       warning("gapindex::get_data retrieval failed. Skipping ", region_groups$group_name[ii])
 

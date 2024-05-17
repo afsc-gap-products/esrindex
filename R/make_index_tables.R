@@ -114,9 +114,9 @@ make_index_tables <- function(x) {
   
   cat("make_index_tables: Writing output to ", fpath, "\n")
   
-  write.csv(output,
-            file = fpath,
-            row.names = FALSE)
+  utils::write.csv(output,
+                   file = fpath,
+                   row.names = FALSE)
   
 }
 

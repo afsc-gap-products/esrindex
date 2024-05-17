@@ -98,11 +98,11 @@ plot_subarea_rema <- function(x,
     ts_summary <- fit_dat |>
       dplyr::group_by(group_name, strata) |>
       dplyr::summarise(z_mean = mean(pred, na.rm = TRUE),
-                       sd = sd(pred, na.rm = TRUE),
+                       sd = stats::sd(pred, na.rm = TRUE),
                        q100 = max(pred, na.rm = TRUE),
-                       q75 = quantile(pred, probs = 0.75, na.rm = TRUE),
-                       q50 = quantile(pred, probs = 0.5, na.rm = TRUE),
-                       q25 = quantile(pred, probs = 0.5, na.rm = TRUE),
+                       q75 = stats::quantile(pred, probs = 0.75, na.rm = TRUE),
+                       q50 = stats::quantile(pred, probs = 0.5, na.rm = TRUE),
+                       q25 = stats::quantile(pred, probs = 0.5, na.rm = TRUE),
                        q0 = min(pred, na.rm = TRUE))
     
     ts_summary$plus1 <- ts_summary$z_mean + ts_summary$sd
@@ -419,7 +419,7 @@ plot_subarea_rema <- function(x,
     # Save plots
     suppressWarnings(dir.create(paste0("./plots/", region), recursive = TRUE))
     
-    png(filename = paste0("./plots/", region, "/", region, "_rema_", 
+    grDevices::png(filename = paste0("./plots/", region, "/", region, "_rema_", 
                           gsub(x = indicator_name[ii], pattern = " ", replacement = "_"), 
                           "_subarea_point", append_filename, ".png"),
         width = 169,
@@ -427,20 +427,20 @@ plot_subarea_rema <- function(x,
         units = "mm",
         res = 300)
     print(p1 + theme(axis.text = element_text(size = 6.5)))
-    dev.off()
+    grDevices::dev.off()
     
     
     suppressWarnings(dir.create(paste0("./plots/", region), recursive = TRUE))
     
-    png(filename = paste0("./plots/", region, "/", region, "_rema_", 
-                          gsub(x = indicator_name[ii], pattern = " ", replacement = "_"), 
-                          "_subarea_bar", append_filename, ".png"),
-        width = 169,
-        height = min(c(40+40*length(group_name), 225)),
-        units = "mm",
-        res = 300)
+    grDevices::png(filename = paste0("./plots/", region, "/", region, "_rema_", 
+                                     gsub(x = indicator_name[ii], pattern = " ", replacement = "_"), 
+                                     "_subarea_bar", append_filename, ".png"),
+                   width = 169,
+                   height = min(c(40+40*length(group_name), 225)),
+                   units = "mm",
+                   res = 300)
     print(p2)
-    dev.off()
+    grDevices::dev.off()
     
   }
   

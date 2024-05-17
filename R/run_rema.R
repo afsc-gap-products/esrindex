@@ -44,7 +44,7 @@ fit_rema_region <- function(x, zero_assumption = "na", rema_by_stratum = TRUE) {
                         zero_assumption = zero_assumption),
                    silent = TRUE)
 
-    if(class(rema_out) == "try-error") {
+    if(methods::is(rema_out, "try-error")) {
       warning("fit_rema_region: ", unique_group_name[ii], " did not run.")
       next
     }
