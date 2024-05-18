@@ -33,16 +33,16 @@
 	<fig>
 		<figureNumber>1</figureNumber>
 		<figurePath>EBS_rema_structural_epifauna_full_region_ze.png</figurePath>
-		<figureCaption>AFSC eastern Bering Sea shelf bottom trawl survey relative CPUE for three groups of benthic epifauna during the May to August time period from 1982–2023.</figureCaption>
+		<figureCaption>Biomass index of Structural Epifauna (sponges, sea anemones, and Pennatulaceans) from AFSC/RACE summer bottom trawl surveys of the eastern Bering Sea from 1982 to 2024.  Panels show the observed total survey biomass (blue points), standard error (vertical error bars), biomass index time series mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal lines representing one and two standard deviations from the mean, respectively.</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>2</figureNumber>
 		<figurePath>EBS_rema_structural_epifauna_subarea_bar.png</figurePath>
-		<figureCaption>AFSC eastern Bering Sea shelf bottom trawl survey relative CPUE for three groups of benthic epifauna during the May to August time period from 1982–2023.</figureCaption>
+		<figureCaption>Biomass index of Structural Epifauna (sponges, sea anemones, and Pennatulaceans) in eastern Bering Sea survey strata (10-60) estimated from AFSC/RACE summer bottom trawl survey data from 1982 to 2024.</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>3</figureNumber>
 		<figurePath>NBS_rema_structural_epifauna_full_region_ze.png</figurePath>
-		<figureCaption>AFSC northern Bering Sea shelf bottom trawl survey relative CPUE for two groups of benthic epifauna during the July to August time period from 2010–2023.</figureCaption>
+		<figureCaption>Biomass index of Structural Epifauna (sponges, sea anemones, and Pennatulaceans) from AFSC/RACE summer bottom trawl surveys of the northern Bering Sea from 2010 to 2023. Panels show the observed total survey biomass (blue points), standard error (vertical error bars), biomass index time series mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal lines representing one and two standard deviations from the mean, respectively. </figureCaption>
 	</fig>
 </figures>

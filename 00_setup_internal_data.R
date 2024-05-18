@@ -32,17 +32,13 @@ region_settings <- list(GOA = list(esr_subarea_id = c(919, 929, 939, 949, 959),
 save(region_settings, file = "./data/region_settings.rda")
 
 # Species group code ranges
-# species_groups <- data.frame(group_name = c("Sponges", "Sea whips", "Jellyfish", "Sea anemones", "Eelpouts", "Poachers", "Echinoderms", "Shrimps", "pricklebacks", "Sandlances", "capelin", "eulachon", "Pacific herring", "Pacific sandfish", "Sea stars", "Gorgonians", "Pennatulaceans", "Hydrocorals", "Soft corals"),
-#                              min_code = c(91000, 42000, 40500, 43000, 24100, 20000, 80000, 66000, 23800, 20202, 23041, 23010, 21110, 21592, -999, -999, 42000, 44000, 41100),
-#                              max_code = c(91999, 42013, 40599, 43999, 24499, 20099, 85999, 66999, 23866, 20210, 23041, 23010, 21110, 21592, -999, -999, 42013, 44123, 41106),
-#                              complex = c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE))
-
 species_groups <- data.frame(group_name = c("Sponges", "Jellyfish", "Sea anemones", "Eelpouts", "Poachers", "Echinoderms", "Shrimps", "Pricklebacks", "Sandlances", "Capelin", "Eulachon", "Pacific herring", "Pacific sandfish", "Sea stars", "Myctophids", "Corals", "Pennatulaceans"),
                              min_code = c(-999, 40500, 43000, 24100, 20000, 80000, 66000, 23800, 20202, 23041, 23010, 21110, 21592, -999, 22600, -999, 42000),
                              max_code = c(-999, 40599, 43999, 24499, 20099, 85999, 66999, 23866, 20210, 23041, 23010, 21110, 21592, -999, 22656, -999, 42021),
                              complex = c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE))
 
 save(species_groups, file = "./data/species_groups.rda")
+
 
 # Species codes for non-sequential groups
 species_groups_ns <- list(`Sea stars` = c(80000, 80005, 80010, 80012, 80015, 80018, 80020, 80030, 80105, 80106, 80110, 80111, 80112, 80113, 80115, 80116, 80117, 80118, 80119, 80120, 80159, 80160, 80165, 80170, 80171, 80180, 80182, 80190, 80200, 80201, 80220, 80230, 80250, 80310, 80311, 80312, 80520, 80525, 80535, 80536, 80537, 80539, 80540, 80541, 80542, 80543, 80544, 80545, 80546, 80547, 80548, 80549, 80550, 80551, 80552, 80553, 80554, 80555, 80556, 80557, 80560, 80561, 80590, 80591, 80594, 80595, 80596, 80597, 80598, 80601, 80602, 80603, 80604, 80610, 80620, 80624, 80625, 80628, 80629, 80630, 80631, 80632, 80633, 80634, 80635, 80636, 80637, 80640, 80645, 80646, 80647, 80650, 80660, 80670, 80690, 80691, 80710, 80728, 80729, 80730, 80731, 80732, 80733, 80735, 80800, 80810, 80811, 80910, 80915, 81060, 81061, 81062, 81063, 81064, 81065, 81066, 81067, 81068, 81069, 81070, 81071, 81072, 81073, 81074, 81080, 81090, 81092, 81093, 81094, 81095, 81100, 81101, 81120, 81121, 81122, 81125, 81130, 81135, 81295, 81310, 81311, 81312, 81313, 81314, 81315, 81316, 81317, 81318, 81319, 81320, 81321, 81322, 81323, 81340, 81345, 81350, 81355, 81356, 81360, 81361, 81365, 81370, 81741, 81742, 81743, 81779, 81780, 81820, 81829, 81830, 81831, 81835, 81840, 81841, 81850, 81860, 81870, 81875, 81880, 81890, 81908, 81909, 81910, 81912, 81919, 81920, 81921, 81930, 82000, 82001, 82002, 82003, 82030, 82035, 82060, 82090, 82091, 82100, 82101),

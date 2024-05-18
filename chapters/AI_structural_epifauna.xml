@@ -21,11 +21,11 @@
 	<fig>
 		<figureNumber>1</figureNumber>
 		<figurePath>AI_rema_structural_epifauna_full_region_ze.png</figurePath>
-		<figureCaption> Mean CPUE of structural epifauna that form Habitat Areas of Particular Concern by area from RACE Groundfish Assessment Program bottom trawl surveys in the Aleutian Islands from 1980 through 2022. Error bars represent standard errors. The gray lines represent the percentage of non-zero catches.</figureCaption>
+		<figureCaption>Biomass index of Structural Epifauna (sponges, sea anemones, corals, and Pennatulaceans) from AFSC/RACE summer bottom trawl surveys of the Aleutian Islands from 1991 to 2024. Panels show the observed total survey biomass (blue points), standard error (vertical error bars), biomass index time series mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal lines representing one and two standard deviations from the mean, respectively.</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>2</figureNumber>
 		<figurePath>AI_rema_structural_epifauna_subarea_bar.png</figurePath>
-		<figureCaption> Mean CPUE of structural epifauna that form Habitat Areas of Particular Concern by area from RACE Groundfish Assessment Program bottom trawl surveys in the Aleutian Islands from 1980 through 2022. Error bars represent standard errors. The gray lines represent the percentage of non-zero catches.</figureCaption>
+		<figureCaption>Biomass index of Miscellaneous Species (sponges, sea anemones, corals, and Pennatulaceans) in Aleutian Islands subareas (Southern Bering Sea [SBS], Eastern Aleutian Islands [EAI], Central Aleutian Islands [CAI], and Western Aleutian Islands [WAI]) estimated from AFSC/RACE summer bottom trawl survey data from 1991 to 2024.</figureCaption>
 	</fig>
 </figures>
