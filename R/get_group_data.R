@@ -46,6 +46,8 @@ get_group_data <- function(region,
   region_groups <- dplyr::filter(esrindex::species_groups,
                                  group_name %in% unname(unlist(chapter_settings[[region]]))
                                  )
+  
+  dir.create(here::here("output", region), recursive = TRUE, showWarnings = FALSE)
 
   for(ii in 1:nrow(region_groups)) {
 
@@ -137,6 +139,24 @@ get_group_data <- function(region,
                        subarea_biomass_summary)
       
     }
+    
+    # Save intermediate outputs to .rds
+    path_biomass <- here::here("output", 
+                               region, 
+                               paste0("gapindex_", region, "_", region_groups$group_name[ii], ".rds"))
+    
+    message("get_group_data: Writing gapindex outputs to ",  
+            region_groups$group_name[ii], 
+            " ", 
+            path_biomass)
+    
+    saveRDS(object = list(
+      cpue = cpue,
+      biomass_strata = biomass_strata,
+      biomass_subarea = subarea_biomass, 
+      racebase_tables = dat
+    ), 
+    file = path_biomass)
 
   }
 
@@ -170,7 +190,6 @@ get_group_data <- function(region,
 
   mean_sd$MEAN_MINUS1 <- ifelse(mean_sd$MEAN_MINUS1 < 0, 0, mean_sd$MEAN_MINUS1)
   mean_sd$MEAN_MINUS2 <- ifelse(mean_sd$MEAN_MINUS2 < 0, 0, mean_sd$MEAN_MINUS2)
-
 
   # Fit random effects model to time series
   rema_fit <- fit_rema_region(x = timeseries, 

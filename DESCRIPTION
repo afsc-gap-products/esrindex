@@ -1,8 +1,12 @@
 Package: esrindex
 Type: Package
 Title: Make index products for Ecosystem Status Reports
-Version: 2024.5.17
-Author: c(person("Sean", "Rohan", email = "sean.rohan@noaa.gov", role = c("aut", "cre")))
+Version: 2024.6.20
+Author: c(person("Sean", "Rohan", email = "sean.rohan@noaa.gov", role = c("aut", "cre")),
+          person("Thaddaeus", "Buser", email = "thaddaeus.buser@noaa.gov", role = "ctb"),
+          person("Sarah", "Friedman", email = "sarah.friedman@noaa.gov", role = "ctb"),
+          person("Ned", "Laman", email = "ned.laman@noaa.gov", role = "ctb"),
+          person("Margaret", "Siple", email = "margaret.siple@noaa.gov", role = "ctb"))
 Maintainer: Sean Rohan <sean.rohan@noaa.gov>
 Description: Make abundance index products for Ecosystem Status Reports.
 License: GPL (>=2)
