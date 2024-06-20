@@ -7,6 +7,7 @@ chapters
 paper
 plots
 presentation
+output
 .github
 00_setup_internal_data.R
 01_get_esr_data.R
