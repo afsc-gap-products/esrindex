@@ -39,6 +39,8 @@ plot_region_rema <- function(x,
   
   indicator_name <- names(chapter_settings[[region]])
   
+  plot_list <- vector(mode = "list", length = length(indicator_name))
+  
   for(ii in 1:length(indicator_name)) {
     
     group_name <- chapter_settings[[region]][[indicator_name[ii]]]$group_name
@@ -124,7 +126,8 @@ plot_region_rema <- function(x,
                    color = point_color) +
         geom_path(data = fit_dat,
                   mapping = aes(x = year, y = pred),
-                  color = timeseries_color) +
+                  color = timeseries_color,
+                  size = rel(1.1)) +
         scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
                            expand = expansion(mult = c(0, 0.05)), 
                            labels = lab_fun(trim = lab_trim)) +
@@ -145,18 +148,18 @@ plot_region_rema <- function(x,
                    mapping = aes(yintercept = plus1), 
                    linetype = 2,
                    color = hline_color) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = plus2), 
-                   linetype = 3,
-                   color = hline_color) +
+        # geom_hline(data = ts_summary,
+        #            mapping = aes(yintercept = plus2), 
+        #            linetype = 3,
+        #            color = hline_color) +
         geom_hline(data = ts_summary,
                    mapping = aes(yintercept = minus1), 
                    linetype = 2,
                    color = hline_color) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = minus2), 
-                   linetype = 3,
-                   color = hline_color) +
+        # geom_hline(data = ts_summary,
+        #            mapping = aes(yintercept = minus2), 
+        #            linetype = 3,
+        #            color = hline_color) +
         geom_ribbon(data = fit_dat,
                     mapping = aes(x = year,
                                   ymin = pred_lci,
@@ -169,12 +172,14 @@ plot_region_rema <- function(x,
                                     ymax = BIOMASS_MINUS2_SD), 
                       width = 0.5,
                       color = errorbar_color) +
+        geom_path(data = fit_dat,
+                  mapping = aes(x = year, 
+                                y = pred),
+                  color = timeseries_color,
+                  size = rel(1.1)) +
         geom_point(data = obs_dat,
                    mapping = aes(x = YEAR, y = BIOMASS_MT),
                    color = point_color) +
-        geom_path(data = fit_dat,
-                  mapping = aes(x = year, y = pred),
-                  color = timeseries_color) +
         scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
                            expand = expansion(mult = c(0, 0.05)), 
                            labels = lab_fun(trim = lab_trim)) +
@@ -193,30 +198,31 @@ plot_region_rema <- function(x,
                    mapping = aes(yintercept = plus1), 
                    linetype = 2,
                    color = hline_color) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = plus2), 
-                   linetype = 3,
-                   color = hline_color) +
+        # geom_hline(data = ts_summary,
+        #            mapping = aes(yintercept = plus2), 
+        #            linetype = 3,
+        #            color = hline_color) +
         geom_hline(data = ts_summary,
                    mapping = aes(yintercept = minus1), 
                    linetype = 2,
                    color = hline_color) +
-        geom_hline(data = ts_summary,
-                   mapping = aes(yintercept = minus2), 
-                   linetype = 3,
-                   color = hline_color) +
+        # geom_hline(data = ts_summary,
+        #            mapping = aes(yintercept = minus2), 
+        #            linetype = 3,
+        #            color = hline_color) +
         geom_ribbon(data = fit_dat,
                     mapping = aes(x = year,
                                   ymin = pred_lci,
                                   ymax = pred_uci),
                     alpha = 0.3,
                     fill = ribbon_fill) +
+        geom_path(data = fit_dat,
+                  mapping = aes(x = year, y = pred),
+                  color = timeseries_color,
+                  size = rel(1.1)) +
         geom_point(data = obs_dat,
                    mapping = aes(x = YEAR, y = BIOMASS_MT),
                    color = point_color) +
-        geom_path(data = fit_dat,
-                  mapping = aes(x = year, y = pred),
-                  color = timeseries_color) +
         scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
                            expand = expansion(mult = c(0, 0.05)), 
                            labels = lab_fun(trim = lab_trim)) +
@@ -254,18 +260,19 @@ plot_region_rema <- function(x,
                                   ymax = pred_uci),
                     alpha = 0.3,
                     fill = ribbon_fill) +
-        geom_errorbar(data = obs_dat,
-                      mapping = aes(x = YEAR,
-                                    ymin = BIOMASS_PLUS2_SD,
-                                    ymax = BIOMASS_MINUS2_SD), 
-                      width = 0.5,
-                      color = errorbar_color) +
+        # geom_errorbar(data = obs_dat,
+        #               mapping = aes(x = YEAR,
+        #                             ymin = BIOMASS_PLUS2_SD,
+        #                             ymax = BIOMASS_MINUS2_SD), 
+        #               width = 0.5,
+        #               color = errorbar_color) +
+        geom_path(data = fit_dat,
+                  mapping = aes(x = year, y = pred),
+                  color = timeseries_color,
+                  size = rel(1.1)) +
         geom_point(data = obs_dat,
                    mapping = aes(x = YEAR, y = BIOMASS_MT),
                    color = point_color) +
-        geom_path(data = fit_dat,
-                  mapping = aes(x = year, y = pred),
-                  color = timeseries_color) +
         scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
                            expand = expansion(mult = c(0, 0.05)), 
                            labels = lab_fun(trim = lab_trim)) +
@@ -302,12 +309,13 @@ plot_region_rema <- function(x,
                                   ymax = pred_uci),
                     alpha = 0.3,
                     fill = ribbon_fill) +
+        geom_path(data = fit_dat,
+                  mapping = aes(x = year, y = pred),
+                  color = timeseries_color,
+                  size = rel(1.1)) +
         geom_point(data = obs_dat,
                    mapping = aes(x = YEAR, y = BIOMASS_MT),
                    color = point_color) +
-        geom_path(data = fit_dat,
-                  mapping = aes(x = year, y = pred),
-                  color = timeseries_color) +
         scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
                            expand = expansion(mult = c(0, 0.05)), 
                            labels = lab_fun(trim = lab_trim)) +
@@ -329,6 +337,10 @@ plot_region_rema <- function(x,
     print(p1)
     grDevices::dev.off()
     
+    plot_list[[ii]] <- p1
+    
   }
+  
+  return(plot_list)
   
 }
