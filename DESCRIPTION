@@ -1,9 +1,10 @@
 Package: esrindex
 Type: Package
 Title: Make index products for Ecosystem Status Reports
-Version: 2024.6.21
+Version: 2024.8.22
 Author: c(person("Sean", "Rohan", email = "sean.rohan@noaa.gov", role = c("aut", "cre")),
           person("Thaddaeus", "Buser", email = "thaddaeus.buser@noaa.gov", role = "ctb"),
+          person("Christina", "Conrath", email = "christina.conrath@noaa.gov", role = "ctb"),
           person("Sarah", "Friedman", email = "sarah.friedman@noaa.gov", role = "ctb"),
           person("Ned", "Laman", email = "ned.laman@noaa.gov", role = "ctb"),
           person("Margaret", "Siple", email = "margaret.siple@noaa.gov", role = "ctb"))

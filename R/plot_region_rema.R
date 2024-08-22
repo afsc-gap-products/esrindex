@@ -88,6 +88,11 @@ plot_region_rema <- function(x,
       lab_trim <- TRUE
     }
     
+    start_year <- min(obs_dat$YEAR) - min(obs_dat$YEAR)%%4
+    end_year <- max(obs_dat$YEAR)
+    year_breaks <- year_labels <- seq(start_year, end_year, by = 2)
+    year_labels[year_labels %% 4 > 0] <- ""
+    
     ts_summary <- fit_dat |>
       dplyr::group_by(group_name) |>
       dplyr::summarise(z_mean = mean(pred, na.rm = TRUE),
@@ -131,7 +136,9 @@ plot_region_rema <- function(x,
         scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
                            expand = expansion(mult = c(0, 0.05)), 
                            labels = lab_fun(trim = lab_trim)) +
-        scale_x_continuous(name = "Year") +
+        scale_x_continuous(name = "Year",
+                           breaks = year_breaks,
+                           labels = year_labels) +
         expand_limits(y = 0) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
         theme_blue_strip()
@@ -148,18 +155,10 @@ plot_region_rema <- function(x,
                    mapping = aes(yintercept = plus1), 
                    linetype = 2,
                    color = hline_color) +
-        # geom_hline(data = ts_summary,
-        #            mapping = aes(yintercept = plus2), 
-        #            linetype = 3,
-        #            color = hline_color) +
         geom_hline(data = ts_summary,
                    mapping = aes(yintercept = minus1), 
                    linetype = 2,
                    color = hline_color) +
-        # geom_hline(data = ts_summary,
-        #            mapping = aes(yintercept = minus2), 
-        #            linetype = 3,
-        #            color = hline_color) +
         geom_ribbon(data = fit_dat,
                     mapping = aes(x = year,
                                   ymin = pred_lci,
@@ -183,7 +182,9 @@ plot_region_rema <- function(x,
         scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
                            expand = expansion(mult = c(0, 0.05)), 
                            labels = lab_fun(trim = lab_trim)) +
-        scale_x_continuous(name = "Year") +
+        scale_x_continuous(name = "Year",
+                           breaks = year_breaks,
+                           labels = year_labels) +
         expand_limits(y = 0) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
         theme_blue_strip()
@@ -198,18 +199,10 @@ plot_region_rema <- function(x,
                    mapping = aes(yintercept = plus1), 
                    linetype = 2,
                    color = hline_color) +
-        # geom_hline(data = ts_summary,
-        #            mapping = aes(yintercept = plus2), 
-        #            linetype = 3,
-        #            color = hline_color) +
         geom_hline(data = ts_summary,
                    mapping = aes(yintercept = minus1), 
                    linetype = 2,
                    color = hline_color) +
-        # geom_hline(data = ts_summary,
-        #            mapping = aes(yintercept = minus2), 
-        #            linetype = 3,
-        #            color = hline_color) +
         geom_ribbon(data = fit_dat,
                     mapping = aes(x = year,
                                   ymin = pred_lci,
@@ -226,7 +219,9 @@ plot_region_rema <- function(x,
         scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
                            expand = expansion(mult = c(0, 0.05)), 
                            labels = lab_fun(trim = lab_trim)) +
-        scale_x_continuous(name = "Year") +
+        scale_x_continuous(name = "Year",
+                           breaks = year_breaks,
+                           labels = year_labels) +
         expand_limits(y = 0) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
         theme_blue_strip()
@@ -260,12 +255,6 @@ plot_region_rema <- function(x,
                                   ymax = pred_uci),
                     alpha = 0.3,
                     fill = ribbon_fill) +
-        # geom_errorbar(data = obs_dat,
-        #               mapping = aes(x = YEAR,
-        #                             ymin = BIOMASS_PLUS2_SD,
-        #                             ymax = BIOMASS_MINUS2_SD), 
-        #               width = 0.5,
-        #               color = errorbar_color) +
         geom_path(data = fit_dat,
                   mapping = aes(x = year, y = pred),
                   color = timeseries_color,
@@ -276,7 +265,9 @@ plot_region_rema <- function(x,
         scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
                            expand = expansion(mult = c(0, 0.05)), 
                            labels = lab_fun(trim = lab_trim)) +
-        scale_x_continuous(name = "Year") +
+        scale_x_continuous(name = "Year",
+                           breaks = year_breaks,
+                           labels = year_labels) +
         expand_limits(y = 0) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
         theme_blue_strip()
@@ -319,7 +310,9 @@ plot_region_rema <- function(x,
         scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
                            expand = expansion(mult = c(0, 0.05)), 
                            labels = lab_fun(trim = lab_trim)) +
-        scale_x_continuous(name = "Year") +
+        scale_x_continuous(name = "Year",
+                           breaks = year_breaks,
+                           labels = year_labels) +
         expand_limits(y = 0) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
         theme_blue_strip()
