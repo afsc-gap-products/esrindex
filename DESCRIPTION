@@ -1,6 +1,6 @@
 Package: esrindex
 Type: Package
-Title: Make index products for Ecosystem Status Reports
+Title: Abundance index products for Alaska ESRs
 Version: 2024.8.22
 Author: c(person("Sean", "Rohan", email = "sean.rohan@noaa.gov", role = c("aut", "cre")),
           person("Thaddaeus", "Buser", email = "thaddaeus.buser@noaa.gov", role = "ctb"),
@@ -9,7 +9,7 @@ Author: c(person("Sean", "Rohan", email = "sean.rohan@noaa.gov", role = c("aut",
           person("Ned", "Laman", email = "ned.laman@noaa.gov", role = "ctb"),
           person("Margaret", "Siple", email = "margaret.siple@noaa.gov", role = "ctb"))
 Maintainer: Sean Rohan <sean.rohan@noaa.gov>
-Description: Make abundance index products for Ecosystem Status Reports.
+Description: Make abundance index products for Alaska Ecosystem Status Reports.
 License: GPL (>=2)
 Encoding: UTF-8
 LazyData: true
