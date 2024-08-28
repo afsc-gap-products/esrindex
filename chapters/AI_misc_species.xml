@@ -27,11 +27,11 @@ This year, subarea biomass estimates were calculated using the _gapindex_ R pack
 	<fig>
 		<figureNumber>1</figureNumber>
 		<figurePath>AI_rema_misc_species_full_region_ze.png</figurePath>
-		<figureCaption>Mean biomass index of Miscellaneous Species (eelpouts, poachers, sea stars, shrimps) from AFSC/RACE summer bottom trawl surveys of the Aleutian Islands from 1991 to 2024. Panels show the observed total survey biomass (blue points), standard error (vertical error bars), biomass index time series mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal lines representing one and two standard deviations from the mean, respectively.</figureCaption>
+		<figureCaption>Biomass index of Miscellaneous Benthic Fauna (eelpouts, poachers, sea stars, shrimps) from AFSC/RACE summer bottom trawl surveys of the Aleutian Islands from 1991 to 2024. Panels show the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>2</figureNumber>
 		<figurePath>AI_rema_misc_species_subarea_bar.png</figurePath>
-		<figureCaption>Biomass index of Miscellaneous Species (eelpouts, poachers, sea stars, shrimps) in Aleutian Islands subareas (Southern Bering Sea [SBS], Eastern Aleutian Islands [EAI], Central Aleutian Islands [CAI], and Western Aleutian Islands [WAI]) estimated from AFSC/RACE summer bottom trawl survey data from 1991 to 2024.</figureCaption>
+		<figureCaption>Biomass index of Miscellaneous Benthic Fauna (eelpouts, poachers, sea stars, shrimps) in Aleutian Islands subareas (Southern Bering Sea [SBS], Eastern Aleutian Islands [EAI], Central Aleutian Islands [CAI], and Western Aleutian Islands [WAI]) estimated from AFSC/RACE summer bottom trawl survey data from 1991 to 2024.</figureCaption>
 	</fig>
 </figures>

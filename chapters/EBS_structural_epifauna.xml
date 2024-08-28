@@ -48,16 +48,16 @@ We note that bottom contact time is already accounted for in bottom trawl survey
 	<fig>
 		<figureNumber>1</figureNumber>
 		<figurePath>EBS_rema_structural_epifauna_full_region_ze.png</figurePath>
-		<figureCaption>Biomass index of Structural Epifauna (sponges, sea anemones, and sea pens) from AFSC/RACE summer bottom trawl surveys of the eastern Bering Sea from 1982 to 2024.  Panels show the observed total survey biomass (blue points), standard error (vertical error bars), biomass index time series mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal lines representing one and two standard deviations from the mean, respectively.</figureCaption>
+		<figureCaption>Biomass index of Structural Epifauna (sponges, sea anemones, and sea pens) from AFSC/RACE summer bottom trawl surveys of the eastern Bering Sea continental shelf from 1982 to 2024. Panels show the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>2</figureNumber>
 		<figurePath>EBS_rema_structural_epifauna_subarea_bar.png</figurePath>
-		<figureCaption>Biomass index of Structural Epifauna (sponges, sea anemones, and sea pens) in eastern Bering Sea survey strata (10-60) estimated from AFSC/RACE summer bottom trawl survey data from 1982 to 2024.</figureCaption>
+		<figureCaption>Biomass index of Structural Epifauna (sponges, sea anemones, and sea pens) in eastern Bering Sea continental shelf survey strata (10-60) estimated from AFSC/RACE summer bottom trawl survey data from 1982 to 2024.</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>3</figureNumber>
 		<figurePath>NBS_rema_structural_epifauna_full_region_ze.png</figurePath>
-		<figureCaption>Biomass index of Structural Epifauna (sponges, sea anemones, and Pennatulaceans) from AFSC/RACE summer bottom trawl surveys of the northern Bering Sea from 2010 to 2023. Panels show the observed total survey biomass (blue points), standard error (vertical error bars), biomass index time series mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal lines representing one and two standard deviations from the mean, respectively. </figureCaption>
+		<figureCaption>Biomass index of Structural Epifauna (sponges, sea anemones, and sea pens) from AFSC/RACE summer bottom trawl surveys of the northern Bering Sea from 2010 to 2023. Panels show the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.</figureCaption>
 	</fig>
 </figures>
