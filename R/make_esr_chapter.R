@@ -4,6 +4,8 @@
 #'
 #' @param xml_path Path to the ESR template file containing ESR chapter information.
 #' @param output_path Path to save the generated R Markdown document. If not specified, a default path will be used.
+#' @param bib_path Optional. Path to bibliography (.bib) file.
+#' @param csl_path Optional (required if bib_path is provided). Path to Citation Style Language (.csl) file.
 #' @return None
 #' @examples
 #' \dontrun{
@@ -13,7 +15,7 @@
 #' @import rmarkdown knitr
 #' @export
 
-make_esr_chapter <- function(xml_path, output_path = NULL) {
+make_esr_chapter <- function(xml_path, csl_path = NULL, bib_path = NULL, output_path = NULL) {
 
   chapter_data <- read_esr_xml(xml_path = xml_path)
 
@@ -26,6 +28,37 @@ make_esr_chapter <- function(xml_path, output_path = NULL) {
   suppressWarnings(dir.create(dirname(output_path)))
 
   lines <- readLines(system.file("extdata/esr_index_template.Rmd", package = "esrindex"))
+  
+  if(!is.null(csl_path)) {
+    
+    stopifnot("make_esr_chapter: .csl file not found at csl_path." = file.exists(csl_path))
+    stopifnot("make_esr_chapter: output_path and csl_path must point to the same root directory." = 
+                dirname(output_path) == dirname(csl_path))
+    
+    lines <- gsub(pattern = "\\[CSL_PATH\\]",
+                  replacement = paste0("csl: ", basename(csl_path)),
+                  x = lines)
+  } else {
+    
+    lines <- lines[!grepl(pattern = "\\[CSL_PATH\\]",
+                          x = lines)]
+    
+  }
+  
+  if(!is.null(bib_path)) {
+    
+    stopifnot("make_esr_chapter: .bib file not found at bib_path." = file.exists(csl_path))
+    stopifnot("make_esr_chapter: output_path and bib_path must point to the same root directory." = 
+                dirname(output_path) == dirname(bib_path))
+    
+    lines <- gsub(pattern = "\\[BIB_PATH\\]",
+                  replacement = paste0("bibliography: ", basename(bib_path)),
+                  x = lines)
+  } else {
+    
+    lines <- lines[!grepl(pattern = "\\[BIB_PATH\\]",
+                          x = lines)]
+  }
 
   lines <- gsub(pattern = "\\[AUTHOR\\]",
        replacement = chapter_data$text_data$authors,
@@ -63,7 +96,7 @@ make_esr_chapter <- function(xml_path, output_path = NULL) {
                          pattern = "\\[IMPLICATIONS\\]",
                          replacement = chapter_data$text_data$implications)
 
-  if(as.character(chapter_data$text_data$methodological_changes) == "NA") {
+  if(all(as.character(chapter_data$text_data$methodological_changes) == "NA")) {
     rm_line <- grep(pattern = "\\[METHODOLOGICAL CHANGES\\]", x = lines)
     lines <- lines[-c(rm_line, rm_line+1)]
   } else {
@@ -72,7 +105,7 @@ make_esr_chapter <- function(xml_path, output_path = NULL) {
                            replacement = chapter_data$text_data$methodological_changes)
   }
 
-  if(as.character(chapter_data$text_data$research_priorities) == "NA") {
+  if(all(as.character(chapter_data$text_data$research_priorities) == "NA")) {
     rm_line <- grep(pattern = "\\[RESEARCH_PRIORITIES\\]", x = lines)
     lines <- lines[-c(rm_line, rm_line+1)]
   } else {

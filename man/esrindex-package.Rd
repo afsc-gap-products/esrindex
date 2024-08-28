@@ -4,8 +4,21 @@
 \name{esrindex-package}
 \alias{esrindex}
 \alias{esrindex-package}
-\title{esrindex: Make index products for Ecosystem Status Reports}
+\title{esrindex: Abundance index products for Alaska ESRs}
 \description{
-Make abundance index products for Ecosystem Status Reports.
+Make abundance index products for Alaska Ecosystem Status Reports.
+}
+\author{
+\strong{Maintainer}: Sean Rohan \email{sean.rohan@noaa.gov}
+
+Other contributors:
+\itemize{
+  \item Thaddaeus Buser \email{thaddaeus.buser@noaa.gov} [contributor]
+  \item Christina Conrath \email{christina.conrath@noaa.gov} [contributor]
+  \item Sarah Friedman \email{sarah.friedman@noaa.gov} [contributor]
+  \item Ned Laman \email{ned.laman@noaa.gov} [contributor]
+  \item Margaret Siple \email{margaret.siple@noaa.gov} [contributor]
+}
+
 }
 \keyword{internal}

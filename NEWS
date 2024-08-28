@@ -1,3 +1,9 @@
+esromdex 0.1.0 (August 28, 2024)
+----------------------------------------------------------------
+
+- Modify make_esr_chapter() to add option to include references 
+  in chapters using .bib and .csl files.
+
 esrindex 2024.08.22 (August 22, 2024)
 ----------------------------------------------------------------
 

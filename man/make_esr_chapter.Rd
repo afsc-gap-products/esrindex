@@ -4,10 +4,19 @@
 \alias{make_esr_chapter}
 \title{Create ESR Chapter Document}
 \usage{
-make_esr_chapter(xml_path, output_path = NULL)
+make_esr_chapter(
+  xml_path,
+  csl_path = NULL,
+  bib_path = NULL,
+  output_path = NULL
+)
 }
 \arguments{
 \item{xml_path}{Path to the ESR template file containing ESR chapter information.}
+
+\item{csl_path}{Optional (required if bib_path is provided). Path to Citation Style Language (.csl) file.}
+
+\item{bib_path}{Optional. Path to bibliography (.bib) file.}
 
 \item{output_path}{Path to save the generated R Markdown document. If not specified, a default path will be used.}
 }

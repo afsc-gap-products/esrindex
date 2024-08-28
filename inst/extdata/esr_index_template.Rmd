@@ -1,6 +1,8 @@
 ---
 title: '[TITLE]'
 output: word_document
+[CSL_PATH]
+[BIB_PATH]
 ---
 
 ```{r setup, include=FALSE}
