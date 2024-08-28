@@ -4,10 +4,10 @@
 	<indicatorShortName>structural_epifauna</indicatorShortName>
 	<indicatorTitle>Structural Epifauna in the Aleutian Islands Ecosystem</indicatorTitle>
 	<indicatorRegion>AI</indicatorRegion>
-	<authors>Ned Laman</authors>
+	<authors>Ned Laman, Christina Conrath, and Sean Rohan</authors>
 	<contactEmail>Ned.Laman@noaa.gov</contactEmail>
 	<authorAffiliations>Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center, NOAA Fisheries</authorAffiliations>
-	<lastUpdate>October 2022</lastUpdate>
+	<lastUpdate>September 2024</lastUpdate>
 </header>
 <body>
 	<indicatorDescription>Biota considered to be Habitat Areas of Particular Concern (HAPC) are structural epifauna that include groups of seapens/seawhips, corals, anemones, and sponges. The biennial RACE Groundfish Assessment Program (GAP) bottom trawl survey in the Aleutian Islands (AI) does not sample the density of HAPC fauna well, but does seem to capture spatial trends in presence or absence in areas surveyed [@Rooper2016; @Rooper2018]. Survey effort in rough or rocky areas where these groups are likely to be more abundant is limited. The gears used by the Japanese vessels in the surveys prior to 1991 were quite different from the survey gear used aboard U.S. vessels in subsequent surveys, and so likely resulted in different catch rates for many of these groups. For each taxonomic group, the largest catch over the time series was arbitrarily scaled to a value of 100 and all other values were scaled to it. The standard error (±1) was weighted proportionally to the CPUE to get a relative standard error. Sponges include unidentified Porifera, calcareous sponges, hexactinellid sponges, and demosponges, which are the most common and abundant sponges within this larger grouping. Gorgonians include families of upright branching coral (Primnoidae, Plexauridae, Isididae, etc.). Hydrocorals include stylasterid corals and stony corals. Soft corals are uncommon in the AI bottom trawl survey catches, but are represented by genera like Gersemia. Sea anemones include all sea anemones captured in the bottom trawl surveys and pennatulaceans include sea pens and sea whips.</indicatorDescription>

@@ -4,10 +4,10 @@
 	<indicatorShortName>misc_species</indicatorShortName>
 	<indicatorTitle>Eastern and Northern Bering Sea – Miscellaneous benthic fauna</indicatorTitle>
 	<indicatorRegion>EBS</indicatorRegion>
-	<authors>Thaddaeus Buser</authors>
+	<authors>Thaddaeus Buser and Sean Rohan</authors>
 	<contactEmail>thaddaeus.buser@noaa.gov</contactEmail>
 	<authorAffiliations>Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center National Marine Fisheries Service, NOAA</authorAffiliations>
-	<lastUpdate>September 2023</lastUpdate>
+	<lastUpdate>September 2024</lastUpdate>
 </header>
 <body>
 	<indicatorDescription>'Miscellaneous' species fall into three groups: eelpouts (fishes of the Family Zoarcidae), poachers (fishes of the Family Agonidae), and sea stars (Class Asteroidea). The three species comprising the bulk of the eelpout group are the wattled eelpout (_Lycodes palearis_) and shortfn eelpout (_L. brevipes_) and to a lesser extent the marbled eelpout (_L. raridens_). The biomass of poachers is dominated by the sturgeon poacher (_Podothecus acipenserinus_) and to a lesser extent the sawback poacher (_Leptagonus frenatus_). The composition of sea stars is dominated by the purple-orange sea star (_Asterias amurensis_), found primarily in the inner/middle shelf, and the common mud star (_Ctenodiscus crispatus_), primarily in the outer shelf. Relative CPUE by weight (kg per hectare) was calculated and plotted for each species or species group by year for 1982–2023 for the eastern Bering Sea survey and 2010–2023 for the northern Bering Sea survey. Catch methods for the northern Bering Sea were standardized in 2010, so catches from previous years do not provide comparable data and are excluded. Relative CPUE was calculated by setting the largest biomass in the time series to a value of 1 and scaling other annual values proportionally. The standard error (±1) was weighted proportionally to the CPUE to produce a relative standard error.</indicatorDescription>
