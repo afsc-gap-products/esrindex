@@ -138,7 +138,7 @@ make_esr_chapter <- function(xml_path, csl_path = NULL, bib_path = NULL, output_
             chapter_data$text_data$esr_name,
             " in the ",
             chapter_data$text_data$region,
-            "written to ",
+            " written to ",
             docx_path)
   }
 
