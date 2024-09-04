@@ -1,8 +1,17 @@
-esromdex 0.1.0 (August 28, 2024)
+esrindex 0.1.1 (September 9, 2024)
+----------------------------------------------------------------
+
+- Update data with AI and EBS time series.
+
+
+
+esrindex 0.1.0 (August 28, 2024)
 ----------------------------------------------------------------
 
 - Modify make_esr_chapter() to add option to include references 
   in chapters using .bib and .csl files.
+
+
 
 esrindex 2024.08.22 (August 22, 2024)
 ----------------------------------------------------------------
@@ -11,6 +20,8 @@ esrindex 2024.08.22 (August 22, 2024)
   address reviewer comments.
 - Changed Pennatulaceans to 'Sea pens' to address reviewer 
   comments.
+
+
 
 esrindex 2024.06.21 (June 21, 2024)
 ----------------------------------------------------------------
