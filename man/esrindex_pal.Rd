@@ -4,9 +4,11 @@
 \alias{esrindex_pal}
 \title{Color palette for esrindex}
 \usage{
-esrindex_pal(...)
+esrindex_pal(option = "noaa-blue", ...)
 }
 \arguments{
+\item{option}{Color palette option (noaa-blue or brown-green)}
+
 \item{...}{Optional arguments passed to colorRampPalette}
 }
 \description{

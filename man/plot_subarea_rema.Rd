@@ -10,6 +10,7 @@ plot_subarea_rema(
   point_color = "#0085CA",
   timeseries_color = "#000000",
   errorbar_color = "#000000",
+  color_palette = "noaa-blue",
   ribbon_fill = "grey50",
   hline_color = "grey50",
   benchmarks = "none",
@@ -27,6 +28,8 @@ plot_subarea_rema(
 \item{timeseries_color}{Color for time series line.}
 
 \item{errorbar_color}{Color for error bar.}
+
+\item{color_palette}{Color palette for bars (either "noaa-blue" or "brown-green").}
 
 \item{ribbon_fill}{Color for time series ribbon.}
 

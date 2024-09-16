@@ -45,6 +45,7 @@ plot_region_rema(x = NBS_INDICATOR,
 # Subarea/Stratum plots ----------------------------------------------------------------------------
 
 plot_subarea_rema(x = AI_INDICATOR, 
+                  color_palette = "brown-green",
                   error_bar = FALSE, 
                   benchmarks = "zscore",                             
                   point_color = "#0085CA",
@@ -54,6 +55,7 @@ plot_subarea_rema(x = AI_INDICATOR,
                   hline_color = "grey50")
 
 plot_subarea_rema(x = GOA_INDICATOR, 
+                  color_palette = "brown-green",
                   error_bar = FALSE, 
                   benchmarks = "zscore",                             
                   point_color = "#0085CA",
@@ -63,6 +65,7 @@ plot_subarea_rema(x = GOA_INDICATOR,
                   hline_color = "grey50")
 
 plot_subarea_rema(x = EBS_INDICATOR, 
+                  color_palette = "brown-green",
                   error_bar = FALSE, 
                   benchmarks = "zscore",                             
                   point_color = "#0085CA",

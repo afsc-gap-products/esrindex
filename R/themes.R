@@ -162,13 +162,17 @@ set_stratum_order <- function(stratum = NULL, area_id = NULL, region, use_abbrev
 #' 
 #' This is the 'oceans' color palette from nmfspalette
 #' 
+#' @param option Color palette option (noaa-blue or brown-green)
 #' @param ... Optional arguments passed to colorRampPalette
 #' @importFrom grDevices colorRampPalette
 #' @export
 
-esrindex_pal <- function (...) 
+esrindex_pal <- function (option = "noaa-blue", ...) 
 {
-  pal <- c("#A6D4EC", "#6BB8DF", "#309BD3", "#0078C0", "#003C90", 
-           "#002873", "#001F5A", "#001743")
+  
+  pal <- switch(option,
+         'noaa-blue' = c("#B3EDEF", "#6DDBE1", "#1ECAD3", "#3EA2D5", "#001743"),
+         'brown-green' = c("#8C510A", "#D8B365", "#F6E8C3", "#F5F5F5", "#C7EAE5", "#5AB4AC", "#01665E"))
+
   colorRampPalette(pal, ...)
 }

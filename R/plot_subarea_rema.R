@@ -10,6 +10,7 @@
 #' @param point_color Color for points.
 #' @param errorbar_color Color for error bar.
 #' @param timeseries_color Color for time series line.
+#' @param color_palette Color palette for bars (either "noaa-blue" or "brown-green").
 #' @param ribbon_fill Color for time series ribbon.
 #' @param hline_color Color for Z-score/quantile lines.
 #' @return The function doesn't return any value; it generates and saves plots based on the input data.
@@ -31,6 +32,7 @@ plot_subarea_rema <- function(x,
                               point_color = "#0085CA",
                               timeseries_color = "#000000",
                               errorbar_color = "#000000",
+                              color_palette = "noaa-blue",
                               ribbon_fill = "grey50",
                               hline_color = "grey50",
                               benchmarks = "none", 
@@ -118,7 +120,7 @@ plot_subarea_rema <- function(x,
     ts_summary$minus1[ts_summary$minus1 < 0] <- 0
     ts_summary$minus2[ts_summary$minus2 < 0] <- 0
     
-    fill_colors <- esrindex_pal()(length(unique(ts_summary$strata)))
+    fill_colors <- esrindex_pal(option = color_palette)(length(unique(ts_summary$strata)))
     n_facet_row <- length(unique(obs_dat$SPECIES_CODE))
     
     
