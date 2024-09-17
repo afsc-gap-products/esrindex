@@ -555,7 +555,11 @@ plot_autocorrelation_subarea_complex <- ggplot() +
             mapping = aes(y = SPECIES_CODE,
                           x = AREA_NAME,
                           fill = cut(acf_lag1, breaks = c(-1, -0.8, -0.6, -0.4, -0.2, 0.2, 0.4, 0.6, 0.8, 1)))) +
-  scale_fill_brewer("Autocorrelation\n(lag 1 survey)", palette = "RdBu", drop = FALSE, na.translate = FALSE) +
+  scale_fill_brewer("Autocorrelation\n(lag 1 survey)", 
+                    palette = "RdBu",#, 
+                    # drop = FALSE,
+                    na.translate = FALSE
+                    ) +
   facet_wrap(~SURVEY, scales = "free", nrow = 3) +
   scale_x_discrete(expand = c(0,0)) +
   scale_y_discrete(expand = c(0,0)) +
@@ -571,7 +575,10 @@ plot_autocorrelation_subarea_species <- ggplot() +
             mapping = aes(y = SPECIES_CODE,
                           x = AREA_NAME,
                           fill = cut(acf_lag1, breaks = c(-1, -0.8, -0.6, -0.4, -0.2, 0.2, 0.4, 0.6, 0.8, 1)))) +
-  scale_fill_brewer("Autocorrelation\n(lag 1 survey)", palette = "RdBu", drop = FALSE, na.translate = FALSE) +
+  scale_fill_brewer("Autocorrelation\n(lag 1 survey)", 
+                    palette = "RdBu", 
+                    # drop = FALSE, 
+                    na.translate = FALSE) +
   facet_wrap(~SURVEY, scales = "free", nrow = 3) +
   scale_x_discrete(expand = c(0,0)) +
   scale_y_discrete(expand = c(0,0)) +
@@ -587,7 +594,10 @@ plot_autocorrelation_region <- ggplot() +
             mapping = aes(x = SPECIES_CODE,
                           y = SURVEY,
                           fill = cut(acf_lag1, breaks = c(-1, -0.8, -0.6, -0.4, -0.2, 0.2, 0.4, 0.6, 0.8, 1)))) +
-  scale_fill_brewer("Autocorrelation\n(lag 1 survey)", palette = "RdBu", drop = FALSE, na.translate = FALSE) +
+  scale_fill_brewer("Autocorrelation\n(lag 1 survey)", 
+                    palette = "RdBu",
+                    # drop = FALSE, 
+                    na.translate = FALSE) +
   scale_x_discrete(expand = c(0,0)) +
   scale_y_discrete(expand = c(0,0)) +
   facet_wrap(~complex,
