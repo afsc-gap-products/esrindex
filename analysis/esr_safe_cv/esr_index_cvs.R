@@ -550,16 +550,28 @@ index_acf <- dplyr::bind_rows(
   dplyr::mutate(AREA_NAME = ifelse(AREA_NAME %in% c("1.0", "2.0", "3.0", "4.0", "5.0", "6.0"),
                                    as.character(as.numeric(AREA_NAME)*10), AREA_NAME))
 
+
+# Plot ACF
+
+acf_breaks <- c(-1, -0.8, -0.6, -0.4, -0.2, 0.2, 0.4, 0.6, 0.8, 1)
+acf_labels <- paste(acf_breaks[1:length(acf_breaks)-1], 
+                    acf_breaks[2:length(acf_breaks)],
+                    sep = "-")
+acf_colors <- scales::brewer_pal(palette = "RdBu")(length(acf_breaks)-1)
+
+names(acf_colors) <- acf_labels
+
 plot_autocorrelation_subarea_complex <- ggplot() +
   geom_tile(data = dplyr::filter(index_acf, complex == "Complex"),
             mapping = aes(y = SPECIES_CODE,
                           x = AREA_NAME,
-                          fill = cut(acf_lag1, breaks = c(-1, -0.8, -0.6, -0.4, -0.2, 0.2, 0.4, 0.6, 0.8, 1)))) +
-  scale_fill_brewer("Autocorrelation\n(lag 1 survey)", 
-                    palette = "RdBu",#, 
-                    # drop = FALSE,
-                    na.translate = FALSE
-                    ) +
+                          fill = cut(acf_lag1, 
+                                     breaks = acf_breaks,
+                                     labels = acf_labels))) +
+  scale_fill_manual("Autocorrelation\n(lag 1 survey)", 
+                    values = acf_colors,
+                    # palette = "RdBu", 
+                    na.translate = TRUE) +
   facet_wrap(~SURVEY, scales = "free", nrow = 3) +
   scale_x_discrete(expand = c(0,0)) +
   scale_y_discrete(expand = c(0,0)) +
@@ -574,11 +586,13 @@ plot_autocorrelation_subarea_species <- ggplot() +
   geom_tile(data = dplyr::filter(index_acf, complex == "Species"),
             mapping = aes(y = SPECIES_CODE,
                           x = AREA_NAME,
-                          fill = cut(acf_lag1, breaks = c(-1, -0.8, -0.6, -0.4, -0.2, 0.2, 0.4, 0.6, 0.8, 1)))) +
-  scale_fill_brewer("Autocorrelation\n(lag 1 survey)", 
-                    palette = "RdBu", 
-                    # drop = FALSE, 
-                    na.translate = FALSE) +
+                          fill = cut(acf_lag1, 
+                                     breaks = acf_breaks,
+                                     labels = acf_labels))) +
+  scale_fill_manual("Autocorrelation\n(lag 1 survey)", 
+                    values = acf_colors,
+                    # palette = "RdBu", 
+                    na.translate = TRUE) +
   facet_wrap(~SURVEY, scales = "free", nrow = 3) +
   scale_x_discrete(expand = c(0,0)) +
   scale_y_discrete(expand = c(0,0)) +
@@ -593,11 +607,13 @@ plot_autocorrelation_region <- ggplot() +
   geom_tile(data = dplyr::filter(index_acf, AREA_NAME == "All"),
             mapping = aes(x = SPECIES_CODE,
                           y = SURVEY,
-                          fill = cut(acf_lag1, breaks = c(-1, -0.8, -0.6, -0.4, -0.2, 0.2, 0.4, 0.6, 0.8, 1)))) +
-  scale_fill_brewer("Autocorrelation\n(lag 1 survey)", 
-                    palette = "RdBu",
-                    # drop = FALSE, 
-                    na.translate = FALSE) +
+                          fill = cut(acf_lag1, 
+                                     breaks = acf_breaks,
+                                     labels = acf_labels))) +
+  scale_fill_manual("Autocorrelation\n(lag 1 survey)", 
+                    values = acf_colors,
+                    # palette = "RdBu", 
+                    na.translate = TRUE) +
   scale_x_discrete(expand = c(0,0)) +
   scale_y_discrete(expand = c(0,0)) +
   facet_wrap(~complex,
