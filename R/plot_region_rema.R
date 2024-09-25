@@ -7,6 +7,7 @@
 #' @param benchmarks "none", "zscore", or "quantile"
 #' @param append_filename Character vector to include in file name.
 #' @param set_unit Set units to use for output ("kt" = kiloton, "mt" = metric tons)
+#' @param y_axis_min Optional. Minimum value for the y-axis.
 #' @param point_color Color for points.
 #' @param errorbar_color Color for error bar.
 #' @param timeseries_color Color for time series line.
@@ -33,6 +34,7 @@ plot_region_rema <- function(x,
                              ribbon_fill = "grey50",
                              hline_color = "grey50",
                              append_filename = "", 
+                             y_axis_min = NULL,
                              set_unit = "kt") {
   
   region <- x$timeseries$SURVEY[1]
@@ -139,7 +141,7 @@ plot_region_rema <- function(x,
         scale_x_continuous(name = "Year",
                            breaks = year_breaks,
                            labels = year_labels) +
-        expand_limits(y = 0) +
+        expand_limits(y = y_axis_min) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
         theme_blue_strip()
       
@@ -185,7 +187,7 @@ plot_region_rema <- function(x,
         scale_x_continuous(name = "Year",
                            breaks = year_breaks,
                            labels = year_labels) +
-        expand_limits(y = 0) +
+        expand_limits(y = y_axis_min) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
         theme_blue_strip()
       
@@ -222,7 +224,7 @@ plot_region_rema <- function(x,
         scale_x_continuous(name = "Year",
                            breaks = year_breaks,
                            labels = year_labels) +
-        expand_limits(y = 0) +
+        expand_limits(y = y_axis_min) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
         theme_blue_strip()
     }
@@ -268,7 +270,7 @@ plot_region_rema <- function(x,
         scale_x_continuous(name = "Year",
                            breaks = year_breaks,
                            labels = year_labels) +
-        expand_limits(y = 0) +
+        expand_limits(y = y_axis_min) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
         theme_blue_strip()
       
@@ -313,7 +315,7 @@ plot_region_rema <- function(x,
         scale_x_continuous(name = "Year",
                            breaks = year_breaks,
                            labels = year_labels) +
-        expand_limits(y = 0) +
+        expand_limits(y = y_axis_min) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
         theme_blue_strip()
     }

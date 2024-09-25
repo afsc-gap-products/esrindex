@@ -29,6 +29,7 @@ plot_region_rema(x = EBS_INDICATOR,
                  point_color = "#0085CA",
                  timeseries_color = "#000000",
                  #errorbar_color = "#000000",
+                 y_axis_min = NULL,
                  ribbon_fill = "grey50",
                  hline_color = "grey50")
 
@@ -38,6 +39,7 @@ plot_region_rema(x = NBS_INDICATOR,
                  append_filename = "_ze",                             
                  point_color = "#0085CA",
                  timeseries_color = "#000000",
+                 y_axis_min = NULL,
                  #errorbar_color = "#000000",
                  ribbon_fill = "grey50",
                  hline_color = "grey50")

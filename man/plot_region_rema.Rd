@@ -14,6 +14,7 @@ plot_region_rema(
   ribbon_fill = "grey50",
   hline_color = "grey50",
   append_filename = "",
+  y_axis_min = NULL,
   set_unit = "kt"
 )
 }
@@ -35,6 +36,8 @@ plot_region_rema(
 \item{hline_color}{Color for Z-score/quantile lines.}
 
 \item{append_filename}{Character vector to include in file name.}
+
+\item{y_axis_min}{Optional. Minimum value for the y-axis.}
 
 \item{set_unit}{Set units to use for output ("kt" = kiloton, "mt" = metric tons)}
 }

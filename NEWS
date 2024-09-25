@@ -1,7 +1,25 @@
+esrindex 0.1.3 (September 25, 2024)
+----------------------------------------------------------------
+
+NEW FEATURES
+
+- Added a plot_cpue_maps() function to generate maps of CPUE by 
+  group and region.
+
+FUNCTIONALITY CHANGES 
+
+- plot_region_rema() no longer sets minimum y-axis value to 
+  zero. Now accepts a y_axis_min argument that can be used
+  to set the minimum y-axis value to zero.
+
+
+
 esrindex 0.1.2 (September 16, 2024)
 ----------------------------------------------------------------
 
 - Added HCL browngreen color palette option to base plots.
+
+
 
 esrindex 0.1.1 (September 9, 2024)
 ----------------------------------------------------------------
