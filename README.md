@@ -4,6 +4,6 @@
 
 # esrindex
 
-_In development_
+*In development*
 
-Bottom trawl survey abundance trends for Alaska Ecosystem Status Reports
+The esrindex package is used to estimate bottom trawl survey abundance trends for Alaska Ecosystem Status Reports for Groundfish Assessment Program survey regions (Aleutian Islands, Gulf of Alaska, Eastern Bering Sea, and Northern Bering Sea).
