@@ -16,6 +16,6 @@ Encoding: UTF-8
 LazyData: true
 Depends: R (>= 4.1), gapindex
 Imports: dplyr, ggplot2, RODBC, getPass, knitr, rmarkdown, rema, scales, here, methods, akgfmaps, 
-  ragg, sf, viridis, classInt, cowplot
+  ragg, sf, classInt, cowplot
 Remotes: afsc-gap-products/gapindex, afsc-assessments/rema, afsc-gap-products/akgfmaps
 RoxygenNote: 7.3.1

@@ -5,7 +5,7 @@
 #' @param breaks Optional break values for CPUE plots. Uses package defaults if not provided.
 #' @param fig_res Figure resolution for .png output files.
 #' @export
-#' @import ggplot2 dplyr akgfmaps ragg sf viridis
+#' @import ggplot2 dplyr akgfmaps ragg scales
 
 plot_cpue_maps <- function(gapindex_cpue, crs = "EPSG:3338", breaks = NULL, fig_res = 300) {
 
@@ -123,7 +123,7 @@ plot_cpue_maps <- function(gapindex_cpue, crs = "EPSG:3338", breaks = NULL, fig_
       geom_sf(data = cpue_stack$map_layers$survey.strata, fill = NA) +
       geom_sf(data = cpue_stack$map_layers$graticule, alpha = 0.3, linewidth = 0.2) +
       scale_fill_manual(name = expression(CPUE~(kg%.%km^-2)),
-                        values = c("white", viridis::viridis_pal(option = "mako", 
+                        values = c("white", scales::viridis_pal(option = "mako", 
                                                                  direction = -1)(n_levels)[2:n_levels]),
                         drop = FALSE) +
       scale_x_continuous(breaks = cpue_stack$map_layers$lon.breaks,
