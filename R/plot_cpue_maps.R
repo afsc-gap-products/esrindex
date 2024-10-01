@@ -291,7 +291,7 @@ plot_cpue_maps <- function(gapindex_cpue, crs = "EPSG:3338", breaks = NULL, fig_
                 shape = POSITIVE_CATCH),
               show.legend = TRUE) +
       scale_color_manual(name = expression(CPUE~(kg%.%km^-2)),
-                         values = c("grey30", viridis::viridis_pal(option = "turbo",
+                         values = c("grey30", scales::viridis_pal(option = "turbo",
                                                                    direction = 1)(n_levels)[1:(n_levels-1)]),
                          drop = FALSE) +
       scale_shape_manual(guide = "none", 
@@ -418,7 +418,7 @@ plot_cpue_maps <- function(gapindex_cpue, crs = "EPSG:3338", breaks = NULL, fig_
                 shape = POSITIVE_CATCH),
               show.legend = TRUE) +
       scale_color_manual(name = expression(CPUE~(kg%.%km^-2)),
-                         values = c("grey30", viridis::viridis_pal(option = "turbo",
+                         values = c("grey30", scales::viridis_pal(option = "turbo",
                                                                    direction = 1)(n_levels)[1:(n_levels-1)]),
                          drop = FALSE) +
       scale_shape_manual(guide = "none", 
@@ -508,7 +508,7 @@ plot_cpue_maps <- function(gapindex_cpue, crs = "EPSG:3338", breaks = NULL, fig_
         geom_sf(data = cpue_stack$map_layers$survey.strata, fill = NA, color = "black") +
         geom_sf(data = cpue_stack$map_layers$graticule, alpha = 0.3, linewidth = 0.2) +
         scale_fill_manual(name = expression(CPUE~(kg%.%km^-2)),
-                          values = c("white", viridis::viridis_pal(option = "mako", 
+                          values = c("white", scales::viridis_pal(option = "mako", 
                                                                    direction = -1)(n_levels)[2:n_levels]),
                           drop = FALSE) +
         scale_x_continuous(breaks = cpue_stack$map_layers$lon.breaks,
@@ -563,7 +563,7 @@ plot_cpue_maps <- function(gapindex_cpue, crs = "EPSG:3338", breaks = NULL, fig_
                   shape = POSITIVE_CATCH),
                 show.legend = TRUE) +
         scale_color_manual(name = expression(CPUE~(kg%.%km^-2)),
-                           values = c("grey30", viridis::viridis_pal(option = "turbo",
+                           values = c("grey30", scales::viridis_pal(option = "turbo",
                                                                     direction = 1)(n_levels)[1:(n_levels-1)]),
                            drop = FALSE) +
         scale_shape_manual(guide = "none", 
@@ -653,7 +653,7 @@ plot_cpue_maps <- function(gapindex_cpue, crs = "EPSG:3338", breaks = NULL, fig_
                   shape = POSITIVE_CATCH),
                 show.legend = TRUE) +
         scale_color_manual(name = expression(CPUE~(kg%.%km^-2)),
-                           values = c("grey30", viridis::viridis_pal(option = "turbo",
+                           values = c("grey30", scales::viridis_pal(option = "turbo",
                                                                      direction = 1)(n_levels)[1:(n_levels-1)]),
                            drop = FALSE) +
         scale_shape_manual(guide = "none", 
