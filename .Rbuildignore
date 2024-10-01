@@ -13,4 +13,5 @@ output
 01_get_esr_data.R
 02_rema_plots.R
 03_render_chapters.R
-05_make_nonrema_plots.R
+04_cpue_maps.R
+NEWS
