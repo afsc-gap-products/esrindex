@@ -5,7 +5,7 @@
 #' @param breaks Optional break values for CPUE plots. Uses package defaults if not provided.
 #' @param fig_res Figure resolution for .png output files.
 #' @export
-#' @import ggplot2 dplyr akgfmaps
+#' @import ggplot2 dplyr akgfmaps ragg sf viridis
 
 plot_cpue_maps <- function(gapindex_cpue, crs = "EPSG:3338", breaks = NULL, fig_res = 300) {
 
@@ -68,7 +68,7 @@ plot_cpue_maps <- function(gapindex_cpue, crs = "EPSG:3338", breaks = NULL, fig_
   # Set region
   region <- switch(survey,
                    'BSS' = "bs.slope",
-                   'EBS' = "ebs",
+                   'EBS' = "sebs",
                    'NBS' = "nbs",
                    'AI' = "ai",
                    'GOA' = "goa")
@@ -216,7 +216,7 @@ plot_cpue_maps <- function(gapindex_cpue, crs = "EPSG:3338", breaks = NULL, fig_
       vec <- as.character(vec)
       vec[grep("-1", vec)] <- "No catch"
       vec <- sub("\\(", "\\>", vec)
-      vec <- sub("\\,", "–", vec)
+      vec <- sub("\\,", "-", vec)
       vec <- sub("\\]", "", vec)
       
       if(length(sig_dig) > 0) {

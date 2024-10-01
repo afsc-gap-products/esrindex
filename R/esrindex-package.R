@@ -1,7 +1,7 @@
 #' @keywords internal
 "_PACKAGE"
 
-#' @import dplyr ggplot2 RODBC getPass knitr rmarkdown rema scales here akgfmaps
+#' @import dplyr ggplot2 RODBC getPass knitr rmarkdown rema scales here akgfmaps sf ragg viridis
 #' @importFrom grDevices dev.off
 #' @importFrom methods is
 #' @importFrom stats sd quantile
