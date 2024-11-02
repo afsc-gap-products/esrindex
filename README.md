@@ -4,12 +4,12 @@
 
 # esrindex
 
-The esrindex package is used to estimate bottom trawl survey abundance indices for Structural Epifauna, Jellyfish, Miscellaneous Benthic Fauna, and Forage Fish contributions in [Alaska Ecosystem Status Reports (ESRs)](https://apps-afsc.fisheries.noaa.gov/refm/reem/ecoweb/index.php). Time series for each taxonomic group and region are included in the package as built-in data sets. Indicator time series figures are available in [/plots/](./plots/). Indicator time series are updated in September following the finalization of catch and effort data from summer bottom trawl surveys.
+The esrindex package is used to estimate bottom trawl survey abundance indices for Structural Epifauna, Jellyfish, Miscellaneous Benthic Fauna, and Forage Fish contributions for [Alaska Ecosystem Status Reports (ESRs)](https://apps-afsc.fisheries.noaa.gov/refm/reem/ecoweb/index.php). Time series for each taxonomic group and region (Aleutian Islands [AI], Gulf of Alaska [GOA], Eastern Bering Sea [EBS], and Northern Bering Sea [NBS]) are included in the package as built-in data sets. Indicator time series figures are available in [/plots/](./plots/). Indicator time series are updated in September following the finalization of catch and effort data from summer bottom trawl surveys.
 
 
 ### ESR contribution leads
 
-| Contribution | Aleutian Islands | Gulf of Alaska | Eastern Bering Sea/Northern Bering Sea |
+| Contribution | AI | GOA | EBS/NBS |
 |--------------|------------------|----------------|----------------------------------------|
 | Forage Fish | NA | [Megsie Siple](https://github.com/margaret-siple-noaa) | NA |
 | Jellyfish | [Ned Laman](https://github.com/ned-laman-noaa) | [Alexandra Dowlin](https://github.com/orgs/afsc-gap-products/people/AlexandraDowlin-NOAA) | [Thaddaeus Buser](https://github.com/ThaddaeusBuser-NOAA) |
