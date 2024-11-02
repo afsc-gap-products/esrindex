@@ -1,13 +1,14 @@
 Package: esrindex
 Type: Package
 Title: Abundance index products for Alaska ESRs
-Version: 0.1.4
-Date: 2024-10-01
+Version: 1.0.0
+Date: 2024-11-01
 Authors@R: c(person("Sean", "Rohan", email = "sean.rohan@noaa.gov", role = c("aut", "cre")),
           person("Thaddaeus", "Buser", email = "thaddaeus.buser@noaa.gov", role = "ctb"),
           person("Christina", "Conrath", email = "christina.conrath@noaa.gov", role = "ctb"),
           person("Sarah", "Friedman", email = "sarah.friedman@noaa.gov", role = "ctb"),
           person("Ned", "Laman", email = "ned.laman@noaa.gov", role = "ctb"),
+          person("Susanne", "McDermott", email = "susanne.mcdermott@noaa.gov", role = "ctb"),
           person("Margaret", "Siple", email = "margaret.siple@noaa.gov", role = "ctb"))
 Maintainer: Sean Rohan <sean.rohan@noaa.gov>
 Description: Make abundance index products for Alaska Ecosystem Status Reports.
@@ -18,4 +19,4 @@ Depends: R (>= 4.1), gapindex
 Imports: dplyr, ggplot2, RODBC, getPass, knitr, rmarkdown, rema, scales, here, methods, akgfmaps, 
   ragg, sf, classInt, cowplot
 Remotes: afsc-gap-products/gapindex, afsc-assessments/rema, afsc-gap-products/akgfmaps
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2

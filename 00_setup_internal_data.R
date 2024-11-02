@@ -18,16 +18,24 @@ library(devtools)
 # Region settings for years to include and area_ids for ESR areas/subareas
 region_settings <- list(GOA = list(esr_subarea_id = c(919, 929, 939, 949, 959),
                                    esr_area_id = 99903,
-                                   min_year = 1990),
+                                   min_year = 1990,
+                                   min_rema_year = 1990,
+                                   exclude_years = 2001),
                         AI = list(esr_subarea_id = c(299, 799, 3499, 5699),
                                   esr_area_id = 99904,
-                                  min_year = 1991),
+                                  min_year = 1991,
+                                  min_rema_year = 1991,
+                                  exclude_years = NULL),
                         EBS = list(esr_subarea_id = c(1:6),
                                    esr_area_id = 99901,
-                                   min_year = 1982),
-                        NBS = list(esr_subarea_id = NULL,
+                                   min_year = 1982,
+                                   min_rema_year = 1982,
+                                   exclude_years = NULL),
+                        NBS = list(esr_subarea_id = c(70, 71, 81),
                                    esr_area_id = 99902,
-                                   min_year = 2010))
+                                   min_year = 2010,
+                                   min_rema_year = 2017,
+                                   exclude_years = NULL))
 
 save(region_settings, file = "./data/region_settings.rda")
 
