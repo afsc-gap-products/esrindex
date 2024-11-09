@@ -67,8 +67,8 @@ chapter_settings <- list(
   AI = list(
     misc_species = list(group_name = c("Eelpouts", "Poachers", "Shrimps", "Sea stars")),
     jellyfish = list(group_name = c("Jellyfish")),
-    structural_epifauna = list(group_name = c("Sponges", "Sea anemones", "Corals", "Sea pens")),
-    forage_fish = list(group_name = c("Myctophids"))
+    structural_epifauna = list(group_name = c("Sponges", "Sea anemones", "Corals", "Sea pens"))#,
+    # forage_fish = list(group_name = c("Myctophids"))
   ),
   EBS = list(
     misc_species = list(group_name = c("Eelpouts", "Poachers", "Sea stars")),

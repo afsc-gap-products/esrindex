@@ -345,7 +345,7 @@ plot_region_rema <- function(x,
 
       if(error_bar & benchmarks == "none") {
         
-        p1 <- ggplot() +
+        p2 <- ggplot() +
           geom_ribbon(data = sel_group_fit,
                       mapping = aes(x = year,
                                     ymin = pred_lci,
@@ -379,7 +379,7 @@ plot_region_rema <- function(x,
       
       if(error_bar & benchmarks == "zscore") {
         
-        p1 <- ggplot() +
+        p2 <- ggplot() +
           geom_hline(data = sel_group_ts_summary,
                      mapping = aes(yintercept = z_mean),
                      color = hline_color) +
@@ -424,7 +424,7 @@ plot_region_rema <- function(x,
       }
       
       if(!error_bar & benchmarks == "zscore") {
-        p1 <- ggplot() +
+        p2 <- ggplot() +
           geom_hline(data = sel_group_ts_summary,
                      mapping = aes(yintercept = z_mean)) +
           geom_hline(data = sel_group_ts_summary,
@@ -462,7 +462,7 @@ plot_region_rema <- function(x,
       
       if(error_bar & benchmarks == "quantile") {
         
-        p1 <- ggplot() +
+        p2 <- ggplot() +
           geom_hline(data = sel_group_ts_summary,
                      mapping = aes(yintercept = q50)) +
           geom_hline(data = sel_group_ts_summary,
@@ -507,7 +507,7 @@ plot_region_rema <- function(x,
       }
       
       if(!error_bar & benchmarks == "quantile") {
-        p1 <- ggplot() +
+        p2 <- ggplot() +
           geom_hline(data = sel_group_ts_summary,
                      mapping = aes(yintercept = q50)) +
           geom_hline(data = sel_group_ts_summary,
@@ -561,7 +561,7 @@ plot_region_rema <- function(x,
                      height = 60,
                      units = "mm",
                      res = 300)
-      print(p1)
+      print(p2)
       grDevices::dev.off()
       
       

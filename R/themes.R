@@ -74,10 +74,10 @@ set_stratum_order <- function(stratum = NULL, area_id = NULL, region, use_abbrev
                                    "6.0"),
                          "NBS" = c("Inner Domain",
                                    "Middle Domain"),
-                         "AI" = c("Southern Bering Sea",
-                                  "Eastern Aleutians",
+                         "AI" = c("Western Aleutians",
                                   "Central Aleutians",
-                                  "Western Aleutians")
+                                  "Eastern Aleutians",
+                                  "Southern Bering Sea")
     )
     
   }
@@ -102,10 +102,10 @@ set_stratum_order <- function(stratum = NULL, area_id = NULL, region, use_abbrev
                          "NBS" = c("70", 
                                    "71", 
                                    "81"),
-                         "AI" = c("799",
-                                  "5699",
+                         "AI" = c("299",
                                   "3499",
-                                  "299")
+                                  "5699",
+                                  "799")
     )
     
     
@@ -128,10 +128,10 @@ set_stratum_order <- function(stratum = NULL, area_id = NULL, region, use_abbrev
                          "NBS" = c("Stratum 70",
                                    "Stratum 71",
                                    "Stratum 81"),
-                         "AI" = c("Southern Bering Sea",
-                                  "Eastern Aleutians",
+                         "AI" = c("Western Aleutians",
                                   "Central Aleutians",
-                                  "Western Aleutians")
+                                  "Eastern Aleutians",
+                                  "Southern Bering Sea")
     )
     
   }
