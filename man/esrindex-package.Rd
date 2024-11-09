@@ -17,6 +17,7 @@ Other contributors:
   \item Christina Conrath \email{christina.conrath@noaa.gov} [contributor]
   \item Sarah Friedman \email{sarah.friedman@noaa.gov} [contributor]
   \item Ned Laman \email{ned.laman@noaa.gov} [contributor]
+  \item Susanne McDermott \email{susanne.mcdermott@noaa.gov} [contributor]
   \item Margaret Siple \email{margaret.siple@noaa.gov} [contributor]
 }
 
