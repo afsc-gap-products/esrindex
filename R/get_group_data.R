@@ -79,7 +79,7 @@ get_group_data <- function(region,
 
     dat <- try(gapindex::get_data(year_set = min_year:as.numeric(format(Sys.Date(), "%Y")),
                               survey_set = region,
-                              sql_channel = channel,
+                              channel = channel,
                               spp_codes = valid_species_codes), silent = TRUE)
 
     # Warn if there was a gapindex error
@@ -93,14 +93,15 @@ get_group_data <- function(region,
 
     subareas <- dplyr::select(dat$subarea, AREA_ID, AREA_NAME, DESCRIPTION)
 
-    cpue <- gapindex::calc_cpue(racebase_tables = dat)
+    cpue <- gapindex::calc_cpue(gapdata = dat)
 
     if(nrow(cpue) > 0) {
       
-      biomass_strata <- gapindex::calc_biomass_stratum(racebase_tables = dat, cpue = cpue)
+      biomass_strata <- gapindex::calc_biomass_stratum(gapdata = dat, 
+                                                       cpue = cpue)
       
-      subarea_biomass <- gapindex::calc_biomass_subarea(racebase_tables = dat,
-                                                        biomass_strata = biomass_strata)
+      subarea_biomass <- gapindex::calc_biomass_subarea(gapdata = dat,
+                                                        biomass_stratum = biomass_strata)
       
       subarea_biomass_summary <- suppressMessages(
         dplyr::group_by(subarea_biomass, AREA_ID, SPECIES_CODE) |>
