@@ -334,6 +334,239 @@ plot_region_rema <- function(x,
     
     plot_list[[ii]] <- p1
     
+    # Plots for individual groups
+    for(kk in 1:length(group_name)) {
+      
+      sel_group_fit <- fit_dat[fit_dat$group_name == group_name[kk], ]
+      
+      sel_group_obs <- obs_dat[obs_dat$group_name == group_name[kk], ]
+
+      sel_group_ts_summary <- ts_summary[ts_summary$group_name == group_name[kk], ]
+
+      if(error_bar & benchmarks == "none") {
+        
+        p1 <- ggplot() +
+          geom_ribbon(data = sel_group_fit,
+                      mapping = aes(x = year,
+                                    ymin = pred_lci,
+                                    ymax = pred_uci),
+                      alpha = 0.3,
+                      fill = ribbon_fill) +
+          geom_errorbar(data = sel_group_obs,
+                        mapping = aes(x = YEAR,
+                                      ymin = BIOMASS_PLUS2_SD,
+                                      ymax = BIOMASS_MINUS2_SD), 
+                        width = 0.5,
+                        color = errorbar_color) +
+          geom_point(data = sel_group_obs,
+                     mapping = aes(x = YEAR, y = BIOMASS_MT),
+                     color = point_color) +
+          geom_path(data = sel_group_fit,
+                    mapping = aes(x = year, y = pred),
+                    color = timeseries_color,
+                    size = rel(1.1)) +
+          scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
+                             expand = expansion(mult = c(0, 0.05)), 
+                             labels = lab_fun(trim = lab_trim)) +
+          scale_x_continuous(name = "Year",
+                             breaks = year_breaks,
+                             labels = year_labels) +
+          expand_limits(y = y_axis_min) +
+          facet_wrap(~group_name[kk]) +
+          theme_blue_strip()
+        
+      }
+      
+      if(error_bar & benchmarks == "zscore") {
+        
+        p1 <- ggplot() +
+          geom_hline(data = sel_group_ts_summary,
+                     mapping = aes(yintercept = z_mean),
+                     color = hline_color) +
+          geom_hline(data = sel_group_ts_summary,
+                     mapping = aes(yintercept = plus1), 
+                     linetype = 2,
+                     color = hline_color) +
+          geom_hline(data = sel_group_ts_summary,
+                     mapping = aes(yintercept = minus1), 
+                     linetype = 2,
+                     color = hline_color) +
+          geom_ribbon(data = sel_group_fit,
+                      mapping = aes(x = year,
+                                    ymin = pred_lci,
+                                    ymax = pred_uci),
+                      alpha = 0.3,
+                      fill = ribbon_fill) +
+          geom_errorbar(data = sel_group_obs,
+                        mapping = aes(x = YEAR,
+                                      ymin = BIOMASS_PLUS2_SD,
+                                      ymax = BIOMASS_MINUS2_SD), 
+                        width = 0.5,
+                        color = errorbar_color) +
+          geom_path(data = sel_group_fit,
+                    mapping = aes(x = year, 
+                                  y = pred),
+                    color = timeseries_color,
+                    size = rel(1.1)) +
+          geom_point(data = sel_group_obs,
+                     mapping = aes(x = YEAR, y = BIOMASS_MT),
+                     color = point_color) +
+          scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
+                             expand = expansion(mult = c(0, 0.05)), 
+                             labels = lab_fun(trim = lab_trim)) +
+          scale_x_continuous(name = "Year",
+                             breaks = year_breaks,
+                             labels = year_labels) +
+          expand_limits(y = y_axis_min) +
+          facet_wrap(~group_name) +
+          theme_blue_strip()
+        
+      }
+      
+      if(!error_bar & benchmarks == "zscore") {
+        p1 <- ggplot() +
+          geom_hline(data = sel_group_ts_summary,
+                     mapping = aes(yintercept = z_mean)) +
+          geom_hline(data = sel_group_ts_summary,
+                     mapping = aes(yintercept = plus1), 
+                     linetype = 2,
+                     color = hline_color) +
+          geom_hline(data = sel_group_ts_summary,
+                     mapping = aes(yintercept = minus1), 
+                     linetype = 2,
+                     color = hline_color) +
+          geom_ribbon(data = sel_group_fit,
+                      mapping = aes(x = year,
+                                    ymin = pred_lci,
+                                    ymax = pred_uci),
+                      alpha = 0.3,
+                      fill = ribbon_fill) +
+          geom_path(data = sel_group_fit,
+                    mapping = aes(x = year, y = pred),
+                    color = timeseries_color,
+                    size = rel(1.1)) +
+          geom_point(data = sel_group_obs,
+                     mapping = aes(x = YEAR, y = BIOMASS_MT),
+                     color = point_color) +
+          scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
+                             expand = expansion(mult = c(0, 0.05)), 
+                             labels = lab_fun(trim = lab_trim)) +
+          scale_x_continuous(name = "Year",
+                             breaks = year_breaks,
+                             labels = year_labels) +
+          expand_limits(y = y_axis_min) +
+          facet_wrap(~group_name) +
+          theme_blue_strip()
+      }
+      
+      
+      if(error_bar & benchmarks == "quantile") {
+        
+        p1 <- ggplot() +
+          geom_hline(data = sel_group_ts_summary,
+                     mapping = aes(yintercept = q50)) +
+          geom_hline(data = sel_group_ts_summary,
+                     mapping = aes(yintercept = q75), 
+                     linetype = 2,
+                     color = hline_color) +
+          geom_hline(data = sel_group_ts_summary,
+                     mapping = aes(yintercept = q100), 
+                     linetype = 3,
+                     color = hline_color) +
+          geom_hline(data = sel_group_ts_summary,
+                     mapping = aes(yintercept = q25), 
+                     linetype = 2,
+                     color = hline_color) +
+          geom_hline(data = sel_group_ts_summary,
+                     mapping = aes(yintercept = q0), 
+                     linetype = 3,
+                     color = hline_color) +
+          geom_ribbon(data = sel_group_fit,
+                      mapping = aes(x = year,
+                                    ymin = pred_lci,
+                                    ymax = pred_uci),
+                      alpha = 0.3,
+                      fill = ribbon_fill) +
+          geom_path(data = sel_group_fit,
+                    mapping = aes(x = year, y = pred),
+                    color = timeseries_color,
+                    size = rel(1.1)) +
+          geom_point(data = sel_group_obs,
+                     mapping = aes(x = YEAR, y = BIOMASS_MT),
+                     color = point_color) +
+          scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
+                             expand = expansion(mult = c(0, 0.05)), 
+                             labels = lab_fun(trim = lab_trim)) +
+          scale_x_continuous(name = "Year",
+                             breaks = year_breaks,
+                             labels = year_labels) +
+          expand_limits(y = y_axis_min) +
+          facet_wrap(~group_name) +
+          theme_blue_strip()
+        
+      }
+      
+      if(!error_bar & benchmarks == "quantile") {
+        p1 <- ggplot() +
+          geom_hline(data = sel_group_ts_summary,
+                     mapping = aes(yintercept = q50)) +
+          geom_hline(data = sel_group_ts_summary,
+                     mapping = aes(yintercept = q75), 
+                     linetype = 2,
+                     color = hline_color) +
+          geom_hline(data = sel_group_ts_summary,
+                     mapping = aes(yintercept = q100), 
+                     linetype = 3,
+                     color = hline_color) +
+          geom_hline(data = sel_group_ts_summary,
+                     mapping = aes(yintercept = q25), 
+                     linetype = 2,
+                     color = hline_color) +
+          geom_hline(data = sel_group_ts_summary,
+                     mapping = aes(yintercept = q0), 
+                     linetype = 3,
+                     color = hline_color) +
+          geom_ribbon(data = sel_group_fit,
+                      mapping = aes(x = year,
+                                    ymin = pred_lci,
+                                    ymax = pred_uci),
+                      alpha = 0.3,
+                      fill = ribbon_fill) +
+          geom_path(data = sel_group_fit,
+                    mapping = aes(x = year, y = pred),
+                    color = timeseries_color,
+                    size = rel(1.1)) +
+          geom_point(data = sel_group_obs,
+                     mapping = aes(x = YEAR, y = BIOMASS_MT),
+                     color = point_color) +
+          scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
+                             expand = expansion(mult = c(0, 0.05)), 
+                             labels = lab_fun(trim = lab_trim)) +
+          scale_x_continuous(name = "Year",
+                             breaks = year_breaks,
+                             labels = year_labels) +
+          expand_limits(y = y_axis_min) +
+          facet_wrap(~group_name) +
+          theme_blue_strip()
+      }
+      
+      suppressWarnings(dir.create(paste0("./plots/", region, "/plots_by_group"), recursive = TRUE))
+      
+      grDevices::png(filename = paste0("./plots/", region, "/", "/plots_by_group/", region, "_rema_", 
+                                       gsub(x = indicator_name[ii], pattern = " ", replacement = "_"),
+                                       "_",
+                                       gsub(x = group_name[kk], pattern = " ", replacement = "_"),
+                                       "_full_region", append_filename, ".png"),
+                     width = 169,
+                     height = 60,
+                     units = "mm",
+                     res = 300)
+      print(p1)
+      grDevices::dev.off()
+      
+      
+    }
+    
   }
   
   return(plot_list)
