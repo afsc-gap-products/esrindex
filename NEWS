@@ -1,3 +1,20 @@
+esrindex 1.0.1 (November 25, 2024)
+----------------------------------------------------------------
+
+BUG FIX
+
+- Update get_group_data() to use gapindex 3.0.0 syntax.
+
+
+esrindex 1.0.0 (November 8, 2024) - First production release
+----------------------------------------------------------------
+
+NEW FEATURES
+
+- plot_region_rema() makes individual timeseries plots for each
+  group.
+
+
 esrindex 0.1.4 (October 1, 2024)
 ----------------------------------------------------------------
 
