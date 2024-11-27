@@ -77,8 +77,9 @@ get_group_data <- function(region,
     # valid_species_codes$GROUP <- region_groups$group_name[ii]
 
     group_species_codes <- data.frame(
-      SPECIES_CODE = esrindex::species_groups[region_groups[ii]],
-      GROUP = region_groups[ii]
+      SPECIES_CODE = esrindex::species_groups[region_groups[ii]][[1]],
+      GROUP_CODE = esrindex::species_groups[region_groups[ii]][[1]]
+      # GROUP = region_groups[ii]
     )
 
 

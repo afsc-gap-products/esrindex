@@ -56,6 +56,19 @@ for (i in 1:length(tax_tables)) {
 }
 
 
+# including taxonomic changes table so species codes aren't dropped through time due to taxonomic reshuffling
+code_changes <- merge(x = taxonomic_changes[grepl("change taxon code", taxonomic_changes$ACTION), c("OLD_SPECIES_CODE", "NEW_SPECIES_CODE")],
+                      y = taxonomic_classification,
+                      by.x = "NEW_SPECIES_CODE",
+                      by.y = "SPECIES_CODE",
+                      all.x = TRUE
+)
+names(code_changes)[names(code_changes) == 'OLD_SPECIES_CODE'] <- 'SPECIES_CODE'
+code_changes <- code_changes[,-1]
+classy <- unique(rbind(taxonomic_classification, code_changes))
+
+
+
 # Species group code ranges
 groups <- data.frame(
   group_name = c(
@@ -80,7 +93,7 @@ groups <- data.frame(
 # getting species codes for each group
 species_groups <- list()
 for (i in 1:nrow(groups)) {
-  species_groups[[i]] <- esrindex:::get_group_codes(groups$sci_name[i], groups$group_level[i], tt = taxonomic_classification)
+  species_groups[[i]] <- esrindex:::get_group_codes(groups$sci_name[i], groups$group_level[i], tt = classy)
 }
 names(species_groups) <- groups$group_name
 
