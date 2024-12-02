@@ -79,14 +79,13 @@ get_group_data <- function(region,
     group_species_codes <- data.frame(
       SPECIES_CODE = esrindex::species_groups[region_groups[ii]][[1]],
       GROUP_CODE = esrindex::species_groups[region_groups[ii]][[1]]
-      # GROUP = region_groups[ii]
     )
 
 
     dat <- try(gapindex::get_data(
       year_set = min_year:as.numeric(format(Sys.Date(), "%Y")),
       survey_set = region,
-      sql_channel = channel,
+      channel = channel,
       spp_codes = group_species_codes
     ), silent = TRUE)
 
