@@ -104,7 +104,7 @@ groups <- data.frame(
 # getting all species codes for each group
 species_groups <- list()
 for (i in 1:nrow(groups)) {
-  species_groups[[i]] <- esrindex:::get_group_codes(group = groups$sci_name[i], rank = groups$group_level[i], tt = classy)
+  species_groups[[i]] <- esrindex:::get_group_codes(group = groups$sci_name[i], rank = groups$group_level[i], tax_table = classy)
 }
 names(species_groups) <- groups$group_name
 

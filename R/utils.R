@@ -56,12 +56,13 @@ capitalize_first <- function(x) {
 #'
 #' @param group A character string designating the taxonomic group
 #' @param rank A character string designating the taxonomic rank of grouping
-#' @param tt Taxonomic classification table from Oracle database
+#' @param tax_table Taxonomic classification table from Oracle database
 #'
 #' @return A numeric vector of species codes
 #' @export
 
-get_group_codes <- function(group, rank, tt) {
+get_group_codes <- function(group, rank, tax_table) {
+  tt <- tax_table
   if (rank != "Species") {
     col <- paste0(toupper(rank), "_TAXON")
     out <- tt$SPECIES_CODE[tt[eval(col)] == eval(group) & tt$SURVEY_SPECIES == 1]
