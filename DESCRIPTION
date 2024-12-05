@@ -9,6 +9,7 @@ Authors@R: c(person("Sean", "Rohan", email = "sean.rohan@noaa.gov", role = c("au
           person("Sarah", "Friedman", email = "sarah.friedman@noaa.gov", role = "ctb"),
           person("Ned", "Laman", email = "ned.laman@noaa.gov", role = "ctb"),
           person("Susanne", "McDermott", email = "susanne.mcdermott@noaa.gov", role = "ctb"),
+          person("Zack", "Oyafuso", email = "zack.oyafuso@noaa.gov", role = "ctb"),
           person("Margaret", "Siple", email = "margaret.siple@noaa.gov", role = "ctb"))
 Maintainer: Sean Rohan <sean.rohan@noaa.gov>
 Description: Make abundance index products for Alaska Ecosystem Status Reports.
