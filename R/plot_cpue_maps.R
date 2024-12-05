@@ -159,7 +159,7 @@ plot_cpue_maps <- function(gapindex_cpue, crs = "EPSG:3338", breaks = NULL, fig_
     
     alt_round <- 0
     
-    if(class(breaks) == "character") {
+    if(is(breaks, "character")) {
       
       breaks <- classInt::classIntervals(fit_cpue$CPUE_KGHA, n = 5, style = breaks)$brks
       
