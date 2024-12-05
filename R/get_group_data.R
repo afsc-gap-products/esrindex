@@ -52,30 +52,6 @@ get_group_data <- function(region,
   for (ii in 1:length(region_groups)) {
     message(region_groups[ii])
 
-    # # Retrieve valid SPECIES_CODES for gapindex
-    # if(region_groups$min_code[ii] == -999 & region_groups$max_code[ii] == -999) {
-    #
-    #   # Case where species codes are not sequential -- SPECIES_CODE -999 is used as a flag in esrindex::region_groups
-    #   species_codes <- species_groups_ns[[region_groups$group_name[ii]]]
-    #
-    #   valid_species_codes <- RODBC::sqlQuery(channel = channel,
-    #                                          query = paste0("select species_code from racebase.species where species_code >= ",
-    #                                                         min(species_codes), " and ", "species_code <= ", max(species_codes)))
-    #
-    #   valid_species_codes$GROUP <- region_groups$group_name[ii]
-    #
-    #   valid_species_codes <- valid_species_codes[valid_species_codes$SPECIES_CODE %in% species_codes, ]
-    #
-    # } else {
-    #
-    #   # Case where species codes are sequential
-    #   valid_species_codes <- RODBC::sqlQuery(channel = channel,
-    #                                          query = paste0("select species_code from racebase.species where species_code >= ",
-    #                                                         region_groups$min_code[ii], " and ", "species_code <= ", region_groups$max_code[ii]))
-    # }
-    #
-    # valid_species_codes$GROUP <- region_groups$group_name[ii]
-
     group_species_codes <- data.frame(
       SPECIES_CODE = esrindex::species_groups[region_groups[ii]][[1]],
       GROUP_CODE = region_groups[ii]
@@ -98,16 +74,17 @@ get_group_data <- function(region,
 
     subareas <- dplyr::select(dat$subarea, AREA_ID, AREA_NAME, DESCRIPTION)
 
-    cpue <- gapindex::calc_cpue(racebase_tables = dat)
+    cpue <- gapindex::calc_cpue(gapdata = dat)
 
     if (nrow(cpue) > 0) {
+      
       biomass_strata <- gapindex::calc_biomass_stratum(racebase_tables = dat, cpue = cpue)
 
       subarea_biomass <- gapindex::calc_biomass_subarea(
         racebase_tables = dat,
         biomass_strata = biomass_strata
       )
-
+      
       subarea_biomass_summary <- suppressMessages(
         dplyr::group_by(subarea_biomass, AREA_ID, SPECIES_CODE) |>
           dplyr::summarize(
