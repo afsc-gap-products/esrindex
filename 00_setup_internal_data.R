@@ -58,9 +58,9 @@ for (i in 1:length(tax_tables)) {
   a <- RODBC::sqlQuery(channel, paste0("SELECT * FROM GAP_PRODUCTS.", tax_tables[i]))
   readr::write_csv(
     x = a,
-    file = paste0("data/", tolower(tax_tables[i]), ".csv")
+    file = paste0("assets/", tolower(tax_tables[i]), ".csv")
   )
-  b <- readr::read_csv(file = paste0("data/", tolower(tax_tables[i]), ".csv"))
+  b <- readr::read_csv(file = paste0("assets/", tolower(tax_tables[i]), ".csv"))
   assign(x = tolower(tax_tables[i]), value = b)
   remove(a, b)
 }
@@ -104,7 +104,11 @@ groups <- data.frame(
 # getting all species codes for each group
 species_groups <- list()
 for (i in 1:nrow(groups)) {
-  species_groups[[i]] <- esrindex:::get_group_codes(group = groups$sci_name[i], rank = groups$group_level[i], tax_table = classy)
+  species_groups[[i]] <- 
+    esrindex:::get_group_codes(
+    group = groups$sci_name[i], 
+    rank = groups$group_level[i], 
+    tax_table = classy)
 }
 names(species_groups) <- groups$group_name
 
