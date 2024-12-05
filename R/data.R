@@ -12,13 +12,6 @@
 #'   }
 'species_groups'
 
-#' Non-sequential species groups
-#'
-#' This named list contains species codes for species categories that are non-sequential.
-#'
-#' @docType data
-'species_groups_ns'
-
 #' ESR region settings
 #'
 #' This dataset contains subarea and area IDs, and the minimum years to use for biomass.

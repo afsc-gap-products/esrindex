@@ -1,3 +1,16 @@
+esrindex 1.1.0 (December 5, 2024)
+----------------------------------------------------------------
+
+FUNCTIONALITY CHANGES
+
+- Replace manual species code retrieval with queries on 
+  GAP_PRODUCTS tables (TAXONOMIC_CLASSIFICATION, TAXONOMIC_CHANGES)
+  to ensure that groups get updated automatically when there are 
+  taxonomic changes. The change requires the new get_group_codes() 
+  function to handle paraphyletic groupings and functional 
+  groupings that do not follow taxonomic groupings.
+  
+
 esrindex 1.0.1 (November 25, 2024)
 ----------------------------------------------------------------
 

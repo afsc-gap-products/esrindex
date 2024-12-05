@@ -15,18 +15,20 @@
 #' @importFrom getPass getPass
 #' @export
 
-get_connected <- function(channel = NULL, schema = NA){
-  if(is.null(channel)) {
-    (echo = FALSE)
-    if(is.na(schema)) {
+get_connected <- function(channel = NULL, schema = NA) {
+  if (is.null(channel)) {
+    (echo <- FALSE)
+    if (is.na(schema)) {
       schema <- getPass::getPass(msg = "Enter ORACLE schema: ")
     }
     username <- getPass::getPass(msg = "Enter your ORACLE Username: ")
     password <- getPass::getPass(msg = "Enter your ORACLE Password: ")
-    channel  <- RODBC::odbcConnect(dsn = paste(schema),
-                                   uid = paste(username),
-                                   pwd = paste(password),
-                                   believeNRows = FALSE)
+    channel <- RODBC::odbcConnect(
+      dsn = paste(schema),
+      uid = paste(username),
+      pwd = paste(password),
+      believeNRows = FALSE
+    )
   }
   return(channel)
 }
@@ -42,6 +44,6 @@ get_connected <- function(channel = NULL, schema = NA){
 #' @export
 
 capitalize_first <- function(x) {
-    x <- paste(toupper(substr(x, 1, 1)), substr(x, 2, nchar(x)), sep = "")
-    return(x)
+  x <- paste(toupper(substr(x, 1, 1)), substr(x, 2, nchar(x)), sep = "")
+  return(x)
 }
