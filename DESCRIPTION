@@ -1,8 +1,8 @@
 Package: esrindex
 Type: Package
 Title: Abundance index products for Alaska ESRs
-Version: 1.1.0
-Date: 2024-12-04
+Version: 1.1.1
+Date: 2025-01-28
 Authors@R: c(person("Sean", "Rohan", email = "sean.rohan@noaa.gov", role = c("aut", "cre")),
           person("Thaddaeus", "Buser", email = "thaddaeus.buser@noaa.gov", role = "ctb"),
           person("Christina", "Conrath", email = "christina.conrath@noaa.gov", role = "ctb"),

@@ -78,11 +78,11 @@ get_group_data <- function(region,
 
     if (nrow(cpue) > 0) {
       
-      biomass_strata <- gapindex::calc_biomass_stratum(racebase_tables = dat, cpue = cpue)
+      biomass_stratum <- gapindex::calc_biomass_stratum(gapdata = dat, cpue = cpue)
 
       subarea_biomass <- gapindex::calc_biomass_subarea(
-        racebase_tables = dat,
-        biomass_strata = biomass_strata
+        gapdata = dat,
+        biomass_stratum = biomass_stratum
       )
       
       subarea_biomass_summary <- suppressMessages(
@@ -149,9 +149,9 @@ get_group_data <- function(region,
     saveRDS(
       object = list(
         cpue = cpue,
-        biomass_strata = biomass_strata,
+        biomass_stratum = biomass_stratum,
         biomass_subarea = subarea_biomass,
-        racebase_tables = dat
+        gapdata = dat
       ),
       file = path_biomass
     )

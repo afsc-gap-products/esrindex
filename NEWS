@@ -1,3 +1,12 @@
+esrindex 1.1.1 (January 28, 2025)
+----------------------------------------------------------------
+
+FUNCTIONALITY CHANGES
+
+- Replace gapindex function arguments with version 3.0.0 argument
+  names.
+  
+
 esrindex 1.1.0 (December 5, 2024)
 ----------------------------------------------------------------
 
