@@ -12,7 +12,7 @@ EBS_INDICATOR <- esrindex::get_group_data(region = "EBS",
 NBS_INDICATOR <- esrindex::get_group_data(region = "NBS", 
                                           channel = channel,
                                           zero_assumption = "na",
-                                          rema_by_stratum = FALSE) # Use single stratum RE model
+                                          rema_by_stratum = TRUE)
 
 GOA_INDICATOR <- esrindex::get_group_data(region = "GOA", 
                                           channel = channel,

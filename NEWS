@@ -1,11 +1,17 @@
-esrindex 1.1.1 (January 28, 2025)
+esrindex 1.1.1 (In progress)
 ----------------------------------------------------------------
 
 FUNCTIONALITY CHANGES
 
 - Replace gapindex function arguments with version 3.0.0 argument
   names.
-  
+- Add option to exclude years from the time series using the 
+  exclude_years field in region_settings. Used by get_group_data().
+- Add option to exclude years from rema fitting using min_rema_year. 
+  Used by get_group_data().
+- get_group_data() fits index trends by stratum for regions 
+  without subarea biomass estimates.
+
 
 esrindex 1.1.0 (December 5, 2024)
 ----------------------------------------------------------------

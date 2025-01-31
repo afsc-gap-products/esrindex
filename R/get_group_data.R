@@ -38,18 +38,17 @@ get_group_data <- function(region,
   esr_subarea_id <- region_settings[[region]][["esr_subarea_id"]]
   esr_area_id <- region_settings[[region]][["esr_area_id"]]
   min_year <- region_settings[[region]][["min_year"]]
-
+  exclude_years <- region_settings[[region]][["exclude_years"]]
+  min_rema_year <- region_settings[[region]][["min_rema_year"]]
+  
   timeseries <- data.frame()
   mean_sd <- data.frame()
 
-  # region_groups <- dplyr::filter(esrindex::species_groups,
-  #                                group_name %in% unname(unlist(chapter_settings[[region]]))
-  #                                )
   region_groups <- names(esrindex::species_groups)[names(esrindex::species_groups) %in% unname(unlist(chapter_settings[[region]]))]
 
   dir.create(here::here("output", region), recursive = TRUE, showWarnings = FALSE)
 
-  for (ii in 1:length(region_groups)) {
+  for(ii in 1:length(region_groups)) {
     message(region_groups[ii])
 
     group_species_codes <- data.frame(
@@ -57,51 +56,91 @@ get_group_data <- function(region,
       GROUP_CODE = region_groups[ii]
     )
 
+    sel_years <- min_year:as.numeric(format(Sys.Date(), "%Y"))
+    
+    if(!is.null(exclude_years)) {
+      sel_years <- sel_years[!(sel_years %in% exclude_years)]
+    }
 
     dat <- try(gapindex::get_data(
-      year_set = min_year:as.numeric(format(Sys.Date(), "%Y")),
+      year_set = sel_years,
       survey_set = region,
       channel = channel,
       spp_codes = group_species_codes
     ), silent = TRUE)
 
     # Warn if there was a gapindex error
-    if (methods::is(dat, "try-error")) {
+    if(methods::is(dat, "try-error")) {
       warning("gapindex::get_data retrieval failed. Skipping ", region_groups[ii])
 
       next
     }
 
     subareas <- dplyr::select(dat$subarea, AREA_ID, AREA_NAME, DESCRIPTION)
+    
+    strata <- dplyr::select(dat$strata, AREA_ID = STRATUM, AREA_NAME, DESCRIPTION)
+    
+    strata_subareas <- rbind(subareas, strata)
 
     cpue <- gapindex::calc_cpue(gapdata = dat)
 
-    if (nrow(cpue) > 0) {
+    
+    if(nrow(cpue) > 0) {
       
       biomass_stratum <- gapindex::calc_biomass_stratum(gapdata = dat, cpue = cpue)
-
+      
       subarea_biomass <- gapindex::calc_biomass_subarea(
         gapdata = dat,
         biomass_stratum = biomass_stratum
       )
-      
-      subarea_biomass_summary <- suppressMessages(
-        dplyr::group_by(subarea_biomass, AREA_ID, SPECIES_CODE) |>
-          dplyr::summarize(
-            MEAN_BIOMASS = mean(BIOMASS_MT),
-            SD_BIOMASS = sd(BIOMASS_MT)
-          ) |>
-          dplyr::inner_join(subareas)
-      )
 
-      subarea_biomass <- suppressMessages(
-        dplyr::inner_join(
-          subarea_biomass,
-          subarea_biomass_summary
-        ) |>
-          dplyr::inner_join(subareas) |>
-          dplyr::mutate(BIOMASS_MT_ZSCORE = (BIOMASS_MT - MEAN_BIOMASS) / SD_BIOMASS)
-      )
+      if(nrow(subareas) > 1) {
+        # Case where strata are combined into subareas (e.g. EBS strata 61, 62, and 63 in subarea 6)
+        subarea_biomass_summary <- suppressMessages(
+          dplyr::group_by(subarea_biomass, AREA_ID, SPECIES_CODE) |>
+            dplyr::summarize(
+              MEAN_BIOMASS = mean(BIOMASS_MT),
+              SD_BIOMASS = sd(BIOMASS_MT)
+            ) |>
+            dplyr::inner_join(subareas)
+        )
+        
+        subarea_biomass <- suppressMessages(
+          dplyr::inner_join(
+            subarea_biomass,
+            subarea_biomass_summary
+          ) |>
+            dplyr::inner_join(subareas) |>
+            dplyr::mutate(BIOMASS_MT_ZSCORE = (BIOMASS_MT - MEAN_BIOMASS) / SD_BIOMASS)
+        )
+        
+      } else {
+        # Case where strata are combined into subareas (e.g. EBS strata 61, 62, and 63 in subarea 6)
+        strata_biomass <- biomass_stratum |>
+          dplyr::rename(AREA_ID = STRATUM)
+        
+        subarea_biomass <- rbind(subarea_biomass,
+                                 strata_biomass)
+        
+        subarea_biomass_summary <- suppressMessages(
+          dplyr::group_by(subarea_biomass, AREA_ID, SPECIES_CODE) |>
+            dplyr::summarize(
+              MEAN_BIOMASS = mean(BIOMASS_MT),
+              SD_BIOMASS = sd(BIOMASS_MT)
+            ) |>
+            dplyr::inner_join(strata_subareas)
+        )
+        
+        subarea_biomass <- suppressMessages(
+          dplyr::inner_join(
+            subarea_biomass,
+            subarea_biomass_summary
+          ) |>
+            dplyr::inner_join(strata_subareas) |>
+            dplyr::mutate(BIOMASS_MT_ZSCORE = (BIOMASS_MT - MEAN_BIOMASS) / SD_BIOMASS)
+        )
+        
+      }
 
       subarea_biomass <- dplyr::select(
         subarea_biomass,
@@ -119,7 +158,6 @@ get_group_data <- function(region,
         DESCRIPTION,
         BIOMASS_MT_ZSCORE
       )
-
 
       timeseries <- rbind(
         timeseries,
@@ -192,16 +230,18 @@ get_group_data <- function(region,
 
   # Fit random effects model to time series
   rema_fit <- fit_rema_region(
-    x = timeseries,
+    x = timeseries[timeseries$YEAR >= min_rema_year, ],
     zero_assumption = zero_assumption,
     rema_by_stratum = rema_by_stratum
   )
 
-  return(list(
-    timeseries = as.data.frame(timeseries),
-    mean_sd = as.data.frame(mean_sd),
-    rema_fit = rema_fit,
-    last_update = Sys.Date(),
-    package_version = paste0("esrindex ", packageVersion(pkg = "esrindex"))
-  ))
+  return(
+    list(
+      timeseries = as.data.frame(timeseries),
+      mean_sd = as.data.frame(mean_sd),
+      rema_fit = rema_fit,
+      last_update = Sys.Date(),
+      package_version = paste0("esrindex ", packageVersion(pkg = "esrindex"))
+    )
+  )
 }
