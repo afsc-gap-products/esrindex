@@ -5,6 +5,7 @@
 library(esrindex)
 library(akgfmaps)
 library(navmaps)
+library(ggthemes)
 
 # Look-up table for GOA 2025 strata, by NMFS area
 goa_2025_strata <- 
@@ -97,3 +98,14 @@ subarea_biomass <- gapindex::calc_biomass_subarea(
   gapdata = dat,
   biomass_stratum = biomass_stratum
 )
+
+ggplot() +
+  geom_area(data = dplyr::filter(subarea_biomass, AREA_ID %in% 610:650),
+             mapping = aes(x = YEAR, y = BIOMASS_MT, fill = factor(AREA_ID)),
+            position = "stack") +
+  geom_point(data = dplyr::filter(subarea_biomass, AREA_ID == 99903),
+             mapping = aes(x = YEAR, y = BIOMASS_MT,
+                           color = "Total biomass"), size = rel(2)) +
+  scale_fill_tableau(name = "NMFS Area", direction = -1) +
+  scale_color_manual(name = "AREA_ID 99903", values = "blue") +
+  theme_bw()
