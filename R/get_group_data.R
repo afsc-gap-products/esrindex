@@ -44,7 +44,10 @@ get_group_data <- function(region,
   timeseries <- data.frame()
   mean_sd <- data.frame()
 
-  region_groups <- names(esrindex::species_groups)[names(esrindex::species_groups) %in% unname(unlist(chapter_settings[[region]]))]
+  region_groups <- 
+    names(esrindex::species_groups)[
+      names(esrindex::species_groups) %in% unname(unlist(chapter_settings[[region]]))
+      ]
 
   dir.create(here::here("output", region), recursive = TRUE, showWarnings = FALSE)
 

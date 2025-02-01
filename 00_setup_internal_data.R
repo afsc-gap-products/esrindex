@@ -18,7 +18,7 @@ library(devtools)
 # Region settings for years to include and area_ids for ESR areas/subareas
 region_settings <- list(
   GOA = list(
-    esr_subarea_id = c(919, 929, 939, 949, 959),
+    esr_subarea_id = c(610, 620, 630, 640, 650),
     esr_area_id = 99903,
     min_year = 1990,
     min_rema_year = 1990,
