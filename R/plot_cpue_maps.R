@@ -5,7 +5,8 @@
 #' @param breaks Optional break values for CPUE plots. Uses package defaults if not provided.
 #' @param fig_res Figure resolution for .png output files.
 #' @export
-#' @import ggplot2 dplyr akgfmaps ragg scales
+#' @import ggplot2 dplyr akgfmaps ragg scales utils
+#' @importFrom grDevices pdf
 
 plot_cpue_maps <- function(gapindex_cpue, crs = "EPSG:3338", breaks = NULL, fig_res = 300) {
 

@@ -23,6 +23,7 @@
 #'                   benchmarks = "zscore")
 #' }
 #' @import ggplot2 scales
+#' @import grDevices
 #' @export
 
 plot_region_rema <- function(x, 

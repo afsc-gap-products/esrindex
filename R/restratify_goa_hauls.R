@@ -9,8 +9,6 @@
 
 restratify_goa_hauls <- function(gapdata, method = "use_2025_strata") {
   
-  gapdata <- gp_data
-  
   # Original hauls to help with error checking at the end
   input_haul <- gapdata$haul
   

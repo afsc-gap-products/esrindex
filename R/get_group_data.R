@@ -87,7 +87,7 @@ get_group_data <- function(region,
     # Reclassify 1990-2023 GOA hauls by stratum
     if(region == "GOA") {
       message("get_group_data: Reassigning GOA hauls to 2025 strata.")
-      dat <- restratify_goa_hauls(x = dat)
+      dat <- restratify_goa_hauls(gapdata = dat)
     }
 
     subareas <- dplyr::select(dat$subarea, AREA_ID, AREA_NAME, DESCRIPTION)
