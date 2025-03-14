@@ -53,30 +53,41 @@ get_group_data <- function(region,
 
   for(ii in 1:length(region_groups)) {
     message(region_groups[ii])
-
+    
     group_species_codes <- data.frame(
       SPECIES_CODE = esrindex::species_groups[region_groups[ii]][[1]],
       GROUP_CODE = region_groups[ii]
     )
-
+    
     sel_years <- min_year:as.numeric(format(Sys.Date(), "%Y"))
     
+    # Remove years that should be excluded, such as 2001 GOA partial survey
     if(!is.null(exclude_years)) {
       sel_years <- sel_years[!(sel_years %in% exclude_years)]
     }
+    
+    # Retreived data using gapindex
+    dat <- 
+      try(
+        gapindex::get_data(
+          year_set = sel_years,
+          survey_set = region,
+          channel = channel,
+          spp_codes = group_species_codes
+        ), 
+        silent = TRUE
+      )
 
-    dat <- try(gapindex::get_data(
-      year_set = sel_years,
-      survey_set = region,
-      channel = channel,
-      spp_codes = group_species_codes
-    ), silent = TRUE)
-
-    # Warn if there was a gapindex error
+    # Warn if there was a gapindex error and skip group
     if(methods::is(dat, "try-error")) {
       warning("gapindex::get_data retrieval failed. Skipping ", region_groups[ii])
-
       next
+    }
+    
+    # Reclassify 1990-2023 GOA hauls by stratum
+    if(region == "GOA") {
+      message("get_group_data: Reassigning GOA hauls to 2025 strata.")
+      dat <- restratify_goa_hauls(x = dat)
     }
 
     subareas <- dplyr::select(dat$subarea, AREA_ID, AREA_NAME, DESCRIPTION)
@@ -88,6 +99,7 @@ get_group_data <- function(region,
     cpue <- gapindex::calc_cpue(gapdata = dat)
 
     
+    # Calculate indices when CPUE records exist for the taxa/region
     if(nrow(cpue) > 0) {
       
       biomass_stratum <- gapindex::calc_biomass_stratum(gapdata = dat, cpue = cpue)
@@ -231,7 +243,7 @@ get_group_data <- function(region,
   mean_sd$MEAN_MINUS1 <- ifelse(mean_sd$MEAN_MINUS1 < 0, 0, mean_sd$MEAN_MINUS1)
   mean_sd$MEAN_MINUS2 <- ifelse(mean_sd$MEAN_MINUS2 < 0, 0, mean_sd$MEAN_MINUS2)
 
-  # Fit random effects model to time series
+  # Fit random effects model to time series using the rema packakge
   rema_fit <- fit_rema_region(
     x = timeseries[timeseries$YEAR >= min_rema_year, ],
     zero_assumption = zero_assumption,
