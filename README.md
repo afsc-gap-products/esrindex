@@ -21,6 +21,17 @@ The esrindex package is used to estimate bottom trawl survey abundance indices f
 
 The esrindex package produces estimates of regional and subarea/stratum indices of abundance (biomass in kilotons) and confidence intervals for each ESR taxa by fitting a multivariate random effects model (REM) to design-based abundance index time series from individual survey strata (EBS groundfish strata) or subareas (AI or GOA INPFC subareas). Abundance indices are calculated from AFSC summer bottom trawl survey catch and effort data using the [gapindex R package](https://afsc-gap-products.github.io/gapindex/). Random effects models are fitted to abundance index time series using the [rema R package](https://afsc-assessments.github.io/rema/).
 
+# Setup
+
+To use this package, you'll need the following dependencies:
+```
+# rema from afsc-assessments
+devtools::install_github("afsc-assessments/rema", dependencies = TRUE, build_vignettes = TRUE)
+
+# akgfmaps from afsc-gap-products
+devtools::install_github("afsc-gap-products/akgfmaps", build_vignettes = TRUE)
+
+```
 
 # Legal disclaimer
 
