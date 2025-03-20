@@ -7,7 +7,7 @@
 	<authors>Margaret Siple</authors>
 	<contactEmail>Margaret.Siple@noaa.gov</contactEmail>
 	<authorAffiliations>Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center, NOAA Fisheries</authorAffiliations>
-	<lastUpdate>October 2023</lastUpdate>
+	<lastUpdate>March 2025</lastUpdate>
 </header>
 <body>
 	<indicatorDescription>The Resource Assessment and Conservation Engineering Division’s Groundfish Assessment Program (RACE-GAP) fishery-independent summer bottom trawl surveys in the Gulf of Alaska (GOA) are designed to assess populations of commercially and ecologically important fishes and invertebrates. Since 1990, we have deployed the same standardized trawl gear (footrope and trawl net) as is presently in use in the GOA bottom trawl survey. The North Pacific Fishery Management Council has identified several forage fish species or groups of species for federal management. The survey catches Pacific sandlance, eulachon, capelin, sandfish, and pricklebacks though the trawl mesh size is sufficiently large to allow escapement for most of these species. Because of the highly variable design-based biomass estimates from the trawl survey, the biomass of each forage fish was log-transformed to better show trends. For each species or species group, the largest log-transformed biomass estimate over the time series was arbitrarily scaled to a value of 100 and all other values were scaled in reference to that. The standard error (± 1) was weighted proportionally to the biomass to get a relative standard error.</indicatorDescription>
