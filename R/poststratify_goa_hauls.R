@@ -1,13 +1,13 @@
-#' Post-stratify historical GOA hauls based on NMFS area boundaries
+#' Post-stratify GOA hauls based on 2025 design
 #'
-#' Assign historical GOA hauls to 2025 strata or assign hauls to redrawn 1984 strata to align historical hauls with NMFS Statistical Area boundaries rather than historical 1984 boundaries.
+#' Assign 1990-2023 GOA hauls to 2025 strata that align with NMFS Statistical Area boundaries.
 #'
 #' @param gapdata gapdata output from `gapindex::get_data()`
-#' @param method "2025_strata" (default) or "1984_post".
-#' @import sf dplyr
+#' @param method "2025_strata" (default)
+#' @import akgfmaps sf dplyr
 #' @noRd
 
-restratify_goa_hauls <- function(gapdata, method = "use_2025_strata") {
+poststratify_goa_hauls <- function(gapdata, method = "use_2025_strata") {
   
   # Original hauls to help with error checking at the end
   input_haul <- gapdata$haul
@@ -16,8 +16,26 @@ restratify_goa_hauls <- function(gapdata, method = "use_2025_strata") {
     
     # Load GOA 2025 stratum polygons
     goa_2025_strata <-
-      system.file("extdata", "goa_strata_2025.gpkg", package = "esrindex", mustWork = TRUE) |>
-      sf::st_read()
+      system.file(
+        "extdata", "afsc_bottom_trawl_surveys.gpkg", 
+        package = "akgfmaps", 
+        mustWork = TRUE) |>
+      sf::st_read(
+        layer = "survey_strata",
+        quiet = TRUE
+      ) |>
+      dplyr::filter(
+        SURVEY_DEFINITION_ID == 47,
+        DESIGN_YEAR == 2025
+      ) |>
+      dplyr::select(
+        SURVEY_DEFINITION_ID, 
+        DESIGN_YEAR, 
+        STRATUM = AREA_ID, 
+        AREA_M2) |>
+      sf::st_transform(
+        crs = "EPSG:3338"
+      )
     
     # Look-up table for GOA 2025 strata, by NMFS area
     goa_2025_stratum_lut <- 

@@ -136,9 +136,12 @@ plot_subarea_rema <- function(x,
     
     taxa_levels <- chapter_settings[[region]][[indicator_name[ii]]]$group_name
     
-    stratum_levels <- levels(esrindex::set_stratum_order(area_id = unique(fit_dat$strata), 
-                                                         region = region,
-                                                         use_abbreviation = TRUE))
+    stratum_levels <- levels(
+      esrindex::set_stratum_order(area_id = unique(fit_dat$strata), 
+                                  region = region,
+                                  use_abbreviation = TRUE)
+    )
+    
     for(kk in 1:length(taxa_levels)){
       
       grid_levels <- c(grid_levels, paste(stratum_levels, taxa_levels[kk]))
@@ -149,6 +152,10 @@ plot_subarea_rema <- function(x,
     
     if(region %in% "EBS") {
       fill_label <- "Stratum"
+    }
+    
+    if(region %in% "GOA") {
+      fille_label <- "NMFS Area"
     }
     
     # Setup plot order
@@ -422,51 +429,51 @@ plot_subarea_rema <- function(x,
       
     }
     
-    # p2 <- ggplot() +
-    #   geom_bar(data = bar_dat,
-    #            mapping = aes(x = year,
-    #                          y = pred,
-    #                          fill = esrindex::set_stratum_order(area_id = strata, 
-    #                                                             region = region,
-    #                                                             use_abbreviation = TRUE)),
-    #            position = "stack",
-    #            stat = "identity", width = 1) +
-    #   facet_wrap(~group_name, scales = "free_y", nrow = length(group_name)) +
-    #   scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"), 
-    #                      expand = expansion(mult = c(0, 0.05)), 
-    #                      labels = lab_fun(trim = lab_trim)) +
-    #   scale_fill_manual(name = fill_label, values = fill_colors) +
-    #   scale_x_continuous(name = "Year",
-    #                      breaks = year_breaks,
-    #                      labels = year_labels) +
-    #   theme_blue_strip() +
-    #   theme(legend.title = element_text())
-    # 
-    # # Save plots
-    # suppressWarnings(dir.create(paste0("./plots/", region), recursive = TRUE))
-    # 
-    # grDevices::png(filename = paste0("./plots/", region, "/", region, "_rema_", 
-    #                                  gsub(x = indicator_name[ii], pattern = " ", replacement = "_"), 
-    #                                  "_subarea_point", append_filename, ".png"),
-    #                width = 169,
-    #                height = min(c(20+40*length(group_name), 225)),
-    #                units = "mm",
-    #                res = 300)
-    # print(p1 + theme(axis.text = element_text(size = 6.5)))
-    # grDevices::dev.off()
-    # 
-    # 
-    # suppressWarnings(dir.create(paste0("./plots/", region), recursive = TRUE))
-    # 
-    # grDevices::png(filename = paste0("./plots/", region, "/", region, "_rema_", 
-    #                                  gsub(x = indicator_name[ii], pattern = " ", replacement = "_"), 
-    #                                  "_subarea_bar", append_filename, ".png"),
-    #                width = 169,
-    #                height = min(c(40+40*length(group_name), 225)),
-    #                units = "mm",
-    #                res = 300)
-    # print(p2)
-    # grDevices::dev.off()
+    p2 <- ggplot() +
+      geom_bar(data = bar_dat,
+               mapping = aes(x = year,
+                             y = pred,
+                             fill = esrindex::set_stratum_order(area_id = strata,
+                                                                region = region,
+                                                                use_abbreviation = TRUE)),
+               position = "stack",
+               stat = "identity", width = 1) +
+      facet_wrap(~group_name, scales = "free_y", nrow = length(group_name)) +
+      scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"),
+                         expand = expansion(mult = c(0, 0.05)),
+                         labels = lab_fun(trim = lab_trim)) +
+      scale_fill_manual(name = fill_label, values = fill_colors) +
+      scale_x_continuous(name = "Year",
+                         breaks = year_breaks,
+                         labels = year_labels) +
+      theme_blue_strip() +
+      theme(legend.title = element_text())
+
+    # Save plots
+    suppressWarnings(dir.create(paste0("./plots/", region), recursive = TRUE))
+
+    grDevices::png(filename = paste0("./plots/", region, "/", region, "_rema_",
+                                     gsub(x = indicator_name[ii], pattern = " ", replacement = "_"),
+                                     "_subarea_point", append_filename, ".png"),
+                   width = 169,
+                   height = min(c(20+40*length(group_name), 225)),
+                   units = "mm",
+                   res = 300)
+    print(p1 + theme(axis.text = element_text(size = 6.5)))
+    grDevices::dev.off()
+
+
+    suppressWarnings(dir.create(paste0("./plots/", region), recursive = TRUE))
+
+    grDevices::png(filename = paste0("./plots/", region, "/", region, "_rema_",
+                                     gsub(x = indicator_name[ii], pattern = " ", replacement = "_"),
+                                     "_subarea_bar", append_filename, ".png"),
+                   width = 169,
+                   height = min(c(40+40*length(group_name), 225)),
+                   units = "mm",
+                   res = 300)
+    print(p2)
+    grDevices::dev.off()
     
     set_col <- switch(region,
                      "AI" = 4,

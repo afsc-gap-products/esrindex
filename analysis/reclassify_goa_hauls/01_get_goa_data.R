@@ -44,10 +44,12 @@ gp_data$haul$STRATUM[gp_data$haul$STRATUM == 40 &
                        gp_data$haul$MID_LONGITUDE >= -140] <- 50
 gp_data$haul$STRATUM[gp_data$haul$STRATUM == 142 & 
                        gp_data$haul$MID_LONGITUDE < -140] <- 141
+
+# Stratum 152 is new and wasn't part of the 1984 design
 gp_data$haul$STRATUM[gp_data$haul$STRATUM == 142 & 
                        gp_data$haul$MID_LONGITUDE >= -140] <- 152
 
-gp_data$haul$STRATUM[gp_data$haul$STRATUM == 143] <- 152 # New stratum, not in the 1984 design
+gp_data$haul$STRATUM[gp_data$haul$STRATUM == 143] <- 152
 
 gp_data$haul$STRATUM[gp_data$haul$STRATUM == 240 & 
                        gp_data$haul$MID_LONGITUDE >= -140] <- 250

@@ -1,3 +1,18 @@
+esrindex 1.2.0 (March 20, 2025)
+----------------------------------------------------------------
+
+FUNCTIONALITY CHANGES
+
+- poststratify_goa_hauls() function 'poststratifies' GOA hauls 
+  from gapindex::get_data() by assigning them to 2025 GOA strata.
+  This is used by get_group_data() to reassign hauls to 2025 
+  strata so subarea biomass estimates follow NMFS statistical 
+  area boundaries.
+- plot_subarea_rema() shows indicator estimates by NMFS 
+  statistical area. Subareas were previously shown by INPFC
+  area.
+  
+
 esrindex 1.1.0 (March 14, 2025)
 ----------------------------------------------------------------
 
