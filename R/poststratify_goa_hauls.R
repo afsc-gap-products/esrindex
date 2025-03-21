@@ -14,6 +14,10 @@ poststratify_goa_hauls <- function(gapdata, method = "use_2025_strata") {
   
   if(method == "use_2025_strata") {
     
+    if(packageVersion("akgfmaps") < "4.0.0") {
+      stop("poststratify_goa_hauls: akgfmaps version >= 4.0.0 required. Detected version: ", packageVersion("akgfmaps"))
+    }
+    
     # Load GOA 2025 stratum polygons
     goa_2025_strata <-
       system.file(
