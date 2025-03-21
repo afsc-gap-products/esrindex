@@ -38,8 +38,8 @@ We note that bottom contact time is already accounted for in bottom trawl survey
 <figures>
 	<fig>
 		<figureNumber>1</figureNumber>
-		<figurePath>GOA_rema_forage_fish_full_region_ze.png</figurePath>
-		<figureCaption>Biomass index of Forage Fish (Pacific herring, capelin, eualchon, sandlances, myctophids, Pacific sandfish, pricklebacks) from AFSC/RACE summer bottom trawl surveys of the Gulf of Alaska from 1990 to 2023. Panels show  showing the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.</figureCaption>
+		<figurePath>GOA_rema_forage_fish_full_region_ze_log10.png</figurePath>
+		<figureCaption>Biomass index of Forage Fish (Pacific herring, capelin, eualchon, sandlances, myctophids, Pacific sandfish, pricklebacks) from AFSC/RACE summer bottom trawl surveys of the Gulf of Alaska from 1990 to 2023. Panels show  showing the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean. All are plotted on a log10 scale to better show the full range of values.</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>2</figureNumber>
