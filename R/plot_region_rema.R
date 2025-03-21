@@ -8,6 +8,7 @@
 #' @param append_filename Character vector to include in file name.
 #' @param set_unit Set units to use for output ("kt" = kiloton, "mt" = metric tons)
 #' @param y_axis_min Optional. Minimum value for the y-axis.
+#' @param y_axis_log10_scale Should the y-axis be plotted on a log10 scale?
 #' @param point_color Color for points.
 #' @param errorbar_color Color for error bar.
 #' @param timeseries_color Color for time series line.
@@ -36,6 +37,7 @@ plot_region_rema <- function(x,
                              hline_color = "grey50",
                              append_filename = "", 
                              y_axis_min = NULL,
+                             y_axis_log10_scale = FALSE,
                              set_unit = "kt") {
   
   region <- x$timeseries$SURVEY[1]
@@ -321,6 +323,13 @@ plot_region_rema <- function(x,
         theme_blue_strip()
     }
     
+    if(y_axis_log10_scale) {
+      p1 <- p1 + 
+        scale_y_log10(name = paste0("Biomass Index (", set_unit, ")"), 
+                           expand = expansion(mult = c(0, 0.05)), 
+                           labels = lab_fun(trim = lab_trim)) 
+    }
+    
     suppressWarnings(dir.create(paste0("./plots/", region), recursive = TRUE))
     
     grDevices::png(filename = paste0("./plots/", region, "/", region, "_rema_", 
@@ -549,6 +558,13 @@ plot_region_rema <- function(x,
           expand_limits(y = y_axis_min) +
           facet_wrap(~group_name) +
           theme_blue_strip()
+      }
+      
+      if(y_axis_log10_scale) {
+        p1 <- p1 + 
+          scale_y_log10(name = paste0("Biomass Index (", set_unit, ")"), 
+                        expand = expansion(mult = c(0, 0.05)), 
+                        labels = lab_fun(trim = lab_trim)) 
       }
       
       suppressWarnings(dir.create(paste0("./plots/", region, "/plots_by_group"), recursive = TRUE))

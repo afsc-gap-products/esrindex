@@ -1,4 +1,4 @@
-esrindex 1.2.0 (March 20, 2025)
+esrindex 1.2.0 (March 21, 2025)
 ----------------------------------------------------------------
 
 FUNCTIONALITY CHANGES
@@ -11,6 +11,8 @@ FUNCTIONALITY CHANGES
 - plot_subarea_rema() shows indicator estimates by NMFS 
   statistical area. Subareas were previously shown by INPFC
   area.
+- plot_region_rema() includes an option to plot y-axis (biomass)
+  on a log10 scale.
   
 
 esrindex 1.1.0 (March 14, 2025)
