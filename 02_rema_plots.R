@@ -44,6 +44,53 @@ plot_region_rema(x = NBS_INDICATOR,
                  ribbon_fill = "grey50",
                  hline_color = "grey50")
 
+# Full region plots with y-axis on log10 scale -----------------------------------------------------
+plot_region_rema(x = AI_INDICATOR, 
+                 error_bar = FALSE, 
+                 benchmarks = "zscore", 
+                 append_filename = "_ze_log10",                             
+                 point_color = "#0085CA",
+                 timeseries_color = "#000000",
+                 #errorbar_color = "#000000",
+                 y_axis_log10_scale = TRUE,
+                 ribbon_fill = "grey50",
+                 hline_color = "grey50")
+
+plot_region_rema(x = GOA_INDICATOR, 
+                 error_bar = FALSE, 
+                 benchmarks = "zscore", 
+                 append_filename = "_ze_log10",                             
+                 point_color = "#0085CA",
+                 timeseries_color = "#000000",
+                 #errorbar_color = "#000000",
+                 y_axis_log10_scale = TRUE,
+                 ribbon_fill = "grey50",
+                 hline_color = "grey50")
+
+plot_region_rema(x = EBS_INDICATOR, 
+                 error_bar = FALSE, 
+                 benchmarks = "zscore", 
+                 append_filename = "_ze_log10",                            
+                 point_color = "#0085CA",
+                 timeseries_color = "#000000",
+                 #errorbar_color = "#000000",
+                 y_axis_min = NULL,
+                 y_axis_log10_scale = TRUE,
+                 ribbon_fill = "grey50",
+                 hline_color = "grey50")
+
+plot_region_rema(x = NBS_INDICATOR, 
+                 error_bar = FALSE, 
+                 benchmarks = "zscore", 
+                 append_filename = "_ze_log10",                            
+                 point_color = "#0085CA",
+                 timeseries_color = "#000000",
+                 y_axis_min = NULL,
+                 y_axis_log10_scale = TRUE,
+                 #errorbar_color = "#000000",
+                 ribbon_fill = "grey50",
+                 hline_color = "grey50")
+
 # Subarea/Stratum plots ----------------------------------------------------------------------------
 
 plot_subarea_rema(x = AI_INDICATOR, 

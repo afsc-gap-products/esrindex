@@ -15,6 +15,7 @@ plot_region_rema(
   hline_color = "grey50",
   append_filename = "",
   y_axis_min = NULL,
+  y_axis_log10_scale = FALSE,
   set_unit = "kt"
 )
 }
@@ -38,6 +39,8 @@ plot_region_rema(
 \item{append_filename}{Character vector to include in file name.}
 
 \item{y_axis_min}{Optional. Minimum value for the y-axis.}
+
+\item{y_axis_log10_scale}{Should the y-axis be plotted on a log10 scale?}
 
 \item{set_unit}{Set units to use for output ("kt" = kiloton, "mt" = metric tons)}
 }
