@@ -32,11 +32,11 @@ We note that bottom contact time is already accounted for in bottom trawl survey
 	<fig>
 		<figureNumber>1</figureNumber>
 		<figurePath>GOA_rema_forage_fish_full_region_ze.png</figurePath>
-		<figureCaption>Biomass index of Forage Fish (Pacific herring, capelin, eualchon, sandlances, myctophids, Pacific sandfish, pricklebacks) from AFSC/RACE summer bottom trawl surveys of the Gulf of Alaska from 1990 to 2023. Panels show the observed total survey biomass (blue points), standard error (vertical error bars), biomass index time series mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal lines representing one and two standard deviations from the mean, respectively.</figureCaption>
+		<figureCaption>Biomass index of Forage Fish (Pacific herring, capelin, eualchon, sandlances, myctophids, Pacific sandfish, pricklebacks) from AFSC/RACE summer bottom trawl surveys of the Gulf of Alaska from 1990 to 2023. Panels show  showing the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>2</figureNumber>
 		<figurePath>GOA_rema_forage_fish_subarea_bar.png</figurePath>
-		<figureCaption>Biomass index of Forage Fish (Pacific herring, capelin, eualchon, sandlances, myctophids, Pacific sandfish, pricklebacks) in INPFC subareas in the Gulf of Alaska (Shumagin [Shu], Chirikov [Chi], Kodiak [Kod], Yakutat [Yak], Southeast [SE]) estimated from AFSC/RACE summer bottom trawl survey data from 1990 to 2023.</figureCaption>
+		<figureCaption>Biomass index of Forage Fish (Pacific herring, capelin, eualchon, sandlances, myctophids, Pacific sandfish, pricklebacks) in the Gulf of Alaska estimated from AFSC/RACE summer bottom trawl survey data from 1990 to 2023.</figureCaption>
 	</fig>
 </figures>
