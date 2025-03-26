@@ -1,0 +1,64 @@
+---
+title: 'Jellyfish in the Aleutian Islands'
+output: word_document
+csl: citestyle.csl
+bibliography: esrindex.bib
+---
+
+```{r setup, include=FALSE}
+library(esrindex)
+library(knitr)
+```
+
+Contributed by Ned Laman, Mark Zimmermann, and Sean Rohan
+
+Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center, NOAA Fisheries 
+
+**Contact**: Mark.Zimmermann@noaa.gov
+
+**Last updated**: September 2024
+
+**Description of Indicator**: 
+Jellyfish are an important component of plankton communities and an active area of research at the Alaska Fisheries Science Center (AFSC). Jellyfish act as both predators and competitors of fish, especially early life history stages [@Purcell2001]. Thus, fluctuations in jellyfish abundance may affect ecosystem dynamics and fish abundance through indirect (e.g., competition for prey) and direct (e.g., predation) competition with forage fishes and other commercially and ecologically important species.
+
+Since 1991, the Resource Assessment and Conservation Engineering Division’s Groundfish Assessment Program (RACE-GAP) at AFSC has employed standardized operating procedures in the Aleutian Islands (AI) to deploy the same gear (footrope and bottom trawl net) on triennial (1991-2000) and then biennial (2002-present) bottom trawl surveys. Therefore, biomass index trends are likely to reflect changes in the abundance of species and life history stages that are available to the survey, especially if trends are sustained over time and the relative abundance of jellies from these surveys may be informative of their population trends within the ecosystem (e.g., @Decker2023).
+
+Regional and subarea indices of abundance (biomass in kilotons) and confidence intervals were estimated for jellyfish by fitting a multivariate random effects model (REM) to stratum-level design-based abundance index time series calculated from AFSC summer bottom trawl survey catch and effort data. The index was calculated for the entire standardized bottom trawl survey time series (1991 to 2024). The design-based index of abundance was calculated using the _gapindex_ R package [@gapindex] and REM was fitted to the time series using the _rema_ R package [@rema]. Code and data used to produce this indicator are provided in the _esrindex_ R package and repository [@esrindex].
+
+
+**Methodological Changes**: 
+Methods for producing this indicator have been updated this year to account for process error in survey abundance estimates, facilitate interpretation of indicator trends, utilize consistent statistical methods across ESR regions, and ensure consistent species group composition across regions. Previously, two time series were presented for each species group: (1) average bottom trawl survey catch-per-unit effort for within INPFC subareas (CPUE, kg ha^-1^) that were scaled proportionally to the maximum CPUE in the bottom trawl survey time series, and (2) frequency of occurrence of each species group among bottom trawl survey hauls within INPFC subareas.
+
+This year, subarea biomass estimates were calculated using the _gapindex_ R package [@gapindex], which uses the @Wakabayashi1985 method to estimate design-based abundance index means and coefficients of variation (CVs) from catch (kg) and effort data (area swept; ha) collected during Aleutian Islands summer bottom trawl surveys. Then, abundance index time series means and confidence intervals were estimated by fitting a multivariate random effects model (REM) to INPFC subarea biomass estimates and CVs using the R package _rema_ [@rema; @Sullivan2022] to account for process error in indicator time series. The code and methods to calculate abundance indices and fit REM to time series are implemented in the R package _esrindex_ [@esrindex].
+
+Switching to REM addresses an issue raised in conversation during the November 2023 BSAI Groundfish Plan Team meeting pertaining to Structural Epifauna trends in the EBS:
+
+“The Team had a conversation about utilizing random effects models to deal with process error in the indicator and standardizing the index for variables such as bottom contact time.”
+
+We note that bottom contact time is already accounted for in bottom trawl survey effort data because effort is only calculated for the time the net is on bottom based on bottom contact sensor data.
+
+**Status and Trends**: Jellyfish biomass was above average in the relatively warm year of 2016 and, after declining from that peak, has fluctuated around the long term average since then and remains near and slightly above the long term average in 2024 (Figure JELLY1). High biomass estimated in 1991 was primarily attributable to their abundance in the WAI (Figure JELLY2) while the peaks in 2004 and 2006 indicate that jellyfish were abundant throughout the Aleutians Islands except in the SBS area east of EAI and north of the archipelago. In 2024, jellyfish were more abundant in the EAI and WAI than they were in the CAI or SBS.
+
+**Factors influencing observed trends**: Jellyfish populations in Alaska can vary widely in response to changing climate and prey availability [@Decker2023]. @Brodeur2008 linked changes in jellyfish abundance to increasing sea surface temperature. However, the high jellyfish biomass estimates recorded in 2004 and 2006 did not coincide with particularly higher surface temperatures recorded in those years (Howard and Laman, This Year’s ESR). Though RACE-GAP standardized bottom trawl surveys are a platform that can be used to assess relative abundance trends of jellyfishes in the Aleutian Islands, they do not provide the data necessary to address mechanisms responsible for their fluctuating biomass in this region of Alaska.
+
+**Implications**: Jellyfish abundance can fluctuate widely over space and time as evidenced by their wide ranging biomass estimates across the RACE-GAP Aleutian Islands bottom trawl survey time series (Figure JELLY1). Posited relationships between surface temperature and jellyfish abundance have not been consistently supported in our time series thus far. Jellyfish biomass has remained near the long term average for the last four biennial RACE-GAP bottom trawl surveys of the Aleutians, but we lack data to speculate on the implications of past increases or present trends.
+
+**Research priorities**: The bottom trawl survey uses standardized survey protocols aimed at ensuring consistent sampling efficiency. However, additional research is needed to better characterize the catchability and selectivity of jellyfish by the bottom trawl survey.
+
+
+
+```{r fig1, include = TRUE, echo = FALSE, fig.cap='\\label{fig:figs}Figure 1. Biomass index of jellyfish from RACE Groundfish Assessment Program summer bottom trawl surveys of the Aleutian Islands from 1991 to 2024 showing the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.'}
+knitr::include_graphics('../plots/AI/AI_rema_jellyfish_full_region_ze.png')
+```
+
+
+
+
+
+```{r fig2, include = TRUE, echo = FALSE, fig.cap='\\label{fig:figs}Figure 2. Biomass index of jellyfish in Aleutian Islands subareas (Southern Bering Sea [SBS], Eastern Aleutian Islands [EAI], Central Aleutian Islands [CAI], and Western Aleutian Islands [WAI]) estimated from RACE Groundfish Assessment Program summer bottom trawl surveys of the Aleutian Islands from 1991 to 2024.'}
+knitr::include_graphics('../plots/AI/AI_rema_jellyfish_subarea_bar.png')
+```
+
+
+
+## References

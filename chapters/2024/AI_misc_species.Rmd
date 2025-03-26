@@ -1,0 +1,56 @@
+---
+title: 'Miscellaneous benthic fauna—Aleutian Islands'
+output: word_document
+csl: citestyle.csl
+bibliography: esrindex.bib
+---
+
+```{r setup, include=FALSE}
+library(esrindex)
+library(knitr)
+```
+
+Contributed by Sarah Friedman, Ned Laman, and Sean Rohan
+
+Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center, NOAA Fisheries 
+
+**Contact**: Sarah.Friedman@noaa.gov
+
+**Last updated**: September 2024
+
+**Description of Indicator**: Benthic species are often reliable ecosystem indicators due to their sensitivity to environmental fluctuations [@Tampo2021] and their integral role in marine food webs [@Griffiths2017]. Thus, changes in their abundance are widely used as sentinels for shifts in environmental conditions and ecosystem functioning [@Salas2006; @Jayachandran2022]. The benthic fauna presented here are categorized into four taxonomic groups: eelpouts (family Zoarcidae), poachers (family Agonidae), shrimps (infraorder Caridea), and sea stars (class Asteroidea). The three species comprising the bulk of the eelpout group are the ebony eelpout (_Lycodes concolor_), bicolor eelpout (_L. beringi_) and, to a lesser extent, the shortfin eelpout (_L. brevipes_). The biomass of poachers is dominated by sturgeon poachers (_Podothecus accipenserinus_) and sawback poachers (_Sarritor frenatus_). The biomass of shrimps is largely composed of Alaskan pink shrimp (_Pandalus eous_) and yellowleg pandalids (_P. tridens_), whereas the biomass of sea stars are primarily comprised of _Henricia_ stars and the fragile sea star (_Cheiraster dawsoni_). These benthic fauna, when considered alongside formally assessed and commercially targeted species, can provide valuable context for the overall status of the Aleutian ecosystem. Since 1991, the biennial RACE Groundfish Assessment Program fishery-independent summer bottom trawl survey in the Aleutian Islands (AI) has deployed the same standardized trawl gear (footrope and trawl net) across the survey region. Therefore, biomass index trends are likely to reflect changes in the abundance of species and life history stages that are available to the survey, especially if trends are sustained over time.
+
+Regional and subarea indices of abundance (biomass in kilotons) and confidence intervals were estimated for each taxonomic group by fitting a multivariate random effects model (REM) to subarea design-based index of abundance time series that were calculated from RACE Groundfish Assessment Program (GAP) summer bottom trawl survey catch and effort data. Indices were calculated for the entire standardized survey time series (1991 to 2024). Design-based indices of abundance were calculated using the _gapindex_ R package [@gapindex] and REM were fitted to the time series using the _rema_ R package [@rema]. Code and data used to produce these indicators are provided in the _esrindex_ R package and repository [@esrindex].
+
+**Methodological Changes**: 
+Methods for producing this indicator have been updated this year to account for process error in survey abundance estimates, facilitate interpretation of indicator trends, utilize consistent statistical methods across ESR regions, and ensure consistent species group composition across regions. Previously, two time series were presented for each species group: (1) average bottom trawl survey catch-per-unit effort for within INPFC subareas (CPUE, kg ha^-1^) that were scaled proportionally to the maximum CPUE in the bottom trawl survey time series, and (2) frequency of occurrence of each species group among bottom trawl survey hauls within INPFC subareas.
+
+This year, subarea biomass estimates were calculated using the _gapindex_ R package [@gapindex], which uses the @Wakabayashi1985 method to estimate design-based abundance index means and coefficients of variation (CVs) from catch (kg) and effort data (area swept; ha) collected during Aleutian Islands summer bottom trawl surveys. Then, abundance index time series means and confidence intervals were estimated by fitting a multivariate random effects model (REM) to INPFC subarea biomass estimates and CVs using the R package _rema_ [@rema; @Sullivan2022] to account for process error in indicator time series. The code and methods to calculate abundance indices and fit REM to time series are implemented in the R package _esrindex_ [@esrindex].
+
+**Status and Trends**: Over the first decade of the survey (1991-2000), estimates of sea stars and shrimps indicated relatively stable biomass, with some degree of fluctuation across years (Figure MBF1). Biomass was largely centered in the Eastern Aleutian Islands (EAI) for sea stars, and in the Western Aleutian Islands (WAI) for shrimps. However, we find steady declines in biomass over the last decade in both invertebrate taxonomic groups, predominantly from the WAI. Since the 2022 survey, shrimps and sea stars remain relatively stable with comparatively low biomass. The subarea pattern of sea star abundance largely mirrors 2022, with the majority of the biomass concentrated in the EAI (Figure MBF2). In contrast, we find a significant reduction of shrimp biomass in the Southern Bering Sea relative to the previous Aleutian Islands bottom trawl survey.
+
+Historically, the biomass of eelpouts and poachers has been relatively stable, with the majority of eelpouts found in the Central Aleutian Islands (CAI) and EAI, and poachers dominating the EAI and WAI. Reflecting similar patterns in the invertebrate taxa, we also find substantial declines in eelpouts since 2010 and poachers since 2006. Despite the regional trend, poachers have become more abundant in the WAI and eelpouts in the EAI. While the biomass of both poachers and eelpouts have increased from the 2022 estimates, this appears to largely be due to biomass increases in the EAI for eelpouts and in the WAI for poachers, consistent with the longer term subarea trends for these two groups.
+
+**Factors influencing observed trends**: We hypothesize that persistent warm conditions and decreased ecosystem productivity documented since 2013 in the Aleutian Islands [@Xiao2023] may be contributing to the steady biomass declines found in all four taxonomic groups. Many of these taxa are known to be sensitive to thermal stress [@Anderson2000; @Brodte2006], and sea stars in particular have been subjected to an outbreak of wasting disease, presumably triggered by such temperature shifts. Likewise, the recent biomass increases in both poachers and eelpouts could be attributed to cooler conditions in the Aleutians this year. However, other factors, such as changes in prey or predator dynamics, disturbance, or a combination of effects may also be contributing to these patterns. Further investigation of these non-target benthic taxa is needed to provide a more robust understanding of the mechanisms responsible for the biomass trends documented here.
+
+**Implications**: These taxa are an important dietary component of many commercially important species, like Atka mackerel, Pacific cod, and king crab. Therefore, changes in biomass could substantially alter trophic dynamics and have ecosystem-wide ramifications.
+
+**Research priorities**: The bottom trawl survey uses standardized survey protocols aimed at ensuring consistent sampling efficiency. However, additional research is needed to better characterize the catchability and selectivity of miscellaneous benthic fauna groups by the bottom trawl survey.
+
+
+
+```{r fig1, include = TRUE, echo = FALSE, fig.cap='\\label{fig:figs}Figure 1. Biomass index (kilotons) of miscellaneous benthic fauna (eelpouts, poachers, sea stars, shrimps) from RACE Groundfish Assessment Program summer bottom trawl surveys of the Aleutian Islands from 1991 to 2024. Panels show the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.'}
+knitr::include_graphics('../plots/AI/AI_rema_misc_species_full_region_ze.png')
+```
+
+
+
+
+
+```{r fig2, include = TRUE, echo = FALSE, fig.cap='\\label{fig:figs}Figure 2. Biomass index (kilotons) of miscellaneous benthic fauna (eelpouts, poachers, sea stars, shrimps) in Aleutian Islands subareas (Southern Bering Sea [SBS], Eastern Aleutian Islands [EAI], Central Aleutian Islands [CAI], and Western Aleutian Islands [WAI]) estimated from RACE Groundfish Assessment Program summer bottom trawl survey data from 1991 to 2024.'}
+knitr::include_graphics('../plots/AI/AI_rema_misc_species_subarea_bar.png')
+```
+
+
+
+## References

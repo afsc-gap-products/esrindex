@@ -1,0 +1,62 @@
+---
+title: 'Structural Epifauna in the Aleutian Islands Ecosystem'
+output: word_document
+csl: citestyle.csl
+bibliography: esrindex.bib
+---
+
+```{r setup, include=FALSE}
+library(esrindex)
+library(knitr)
+```
+
+Contributed by Christina Conrath, Ned Laman, and Sean Rohan
+
+Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center, NOAA Fisheries 
+
+**Contact**: Christina.Conrath@noaa.gov
+
+**Last updated**: September 2024
+
+**Description of Indicator**: Biota considered to be Habitat Areas of Particular Concern (HAPC) are structural epifauna that include groups of sea pens, corals, anemones, and sponges. Since 1991, the RACE Groundfish Assessment Program fishery-independent summer bottom trawl survey in the Aleutian Islands (AI) has deployed the same standardized trawl gear (footrope and trawl net) across the survey region. Therefore, biomass index trends are likely to reflect changes in the abundance of species and life history stages that are available to the survey, especially if trends are sustained over time. However, bottom trawl survey gear is inefficient at sampling HAPC fauna and the survey does not sample in rough or rocky areas where these groups are likely to be more abundant [@Rooper2016; @Rooper2018]. Sponges include calcareous sponges, hexactinellid sponges, and demosponges, which are the most common and abundant sponges within this larger grouping. Gorgonians include families of upright branching coral (Primnoidae, Plexauridae, Isididae, etc.). Hydrocorals include stylasterid corals and stony corals. Soft corals are uncommon in the AI bottom trawl survey catches, but are represented by genera like _Gersemia_. Sea anemones include all sea anemones captured in the bottom trawl surveys and sea pens comprise all pennatulaceans including sea whips.
+
+Regional and subarea indices of abundance (biomass in kilotons) and confidence intervals were estimated for each taxonomic group by fitting a multivariate random effects model (REM) to subarea design-based index of abundance time series that were calculated from AFSC summer bottom trawl survey catch and effort data. Indices were calculated for the entire standardized survey time series (1991 to 2024). Design-based indices of abundance were calculated using the _gapindex_ R package [@gapindex] and REM were fitted to the time series using the _rema_ R package [@rema]. Code and data used to produce these indicators are provided in the _esrindex_ R package and repository [@esrindex].
+
+**Methodological Changes**: 
+Methods for producing this indicator have been updated this year to account for process error in survey abundance estimates, facilitate interpretation of indicator trends, utilize consistent statistical methods across ESR regions, and ensure consistent species group composition across regions. Previously, two time series were presented for each species group: (1) average bottom trawl survey catch-per-unit effort for within INPFC subareas (CPUE, kg ha^-1^) that were scaled proportionally to the maximum CPUE in the bottom trawl survey time series, and (2) frequency of occurrence of each species group among bottom trawl survey hauls within INPFC subareas.
+
+This year, subarea biomass estimates were calculated using the _gapindex_ R package [@gapindex], which uses the @Wakabayashi1985 method to estimate design-based abundance index means and coefficients of variation (CVs) from catch (kg) and effort data (area swept; ha) collected during Aleutian Islands summer bottom trawl surveys. Then, abundance index time series means and confidence intervals were estimated by fitting a multivariate random effects model (REM) to INPFC subarea biomass estimates and CVs using the R package _rema_ [@rema; @Sullivan2022] to account for process error in indicator time series. The code and methods to calculate abundance indices and fit REM to time series are implemented in the R package _esrindex_ [@esrindex].
+
+Switching to REM addresses an issue raised during the November 2023 BSAI Groundfish Plan Team meeting pertaining to statistical methods to estimate Structural Epifauna abundance in the EBS:
+
+_“The Team had a conversation about utilizing random effects models to deal with process error in the indicator and standardizing the index for variables such as bottom contact time.”_
+
+We note that bottom contact time is already accounted for in bottom trawl survey effort data because effort is only calculated for the time the net is on bottom based on bottom contact sensor data.
+
+
+
+**Status and Trends**: A few general patterns are clearly discernible (Figure SE1). Sponges are caught in most tows (>80%) in the AI west of the southern Bering Sea. Sponge abundance began declining in the Aleutians west of the southern Bering Sea in 2010, but appears to have begun stabilizing in recent years (2016–2022). Gorgonian corals occur in about 20–40% of AI bottom trawl survey tows. Abundance of coral in all areas has declined since about 1991–1993 and is at generally low levels in all areas, but the frequency of occurrence has remained steady. Hydrocorals are fairly commonly captured, except in the southern Bering Sea. They typically occur in about 20–40% of tows in other areas in the AI. Similar to sponges, hydrocoral frequency of occurrence and abundance has decreased in the western and central AI over recent surveys (from a peak in the 2000 survey). Soft corals occur in relatively few tows, except in the eastern AI where they occur in about 20% of tows. A high abundance year is documented in 1991 with less abundance found in subsequent surveys. Sea anemones are also relatively common in survey catches (∼20–40% of tows) but abundance trends are not clear for most areas. Sea pens are much more likely to be encountered in the southern Bering Sea and eastern AI than in areas farther west. Abundance estimates are low across the survey area. Any large apparent increases in abundance, such as that seen in the eastern AI in 1997 are typically based on a single large catch. One large catch in the eastern AI may also explain the increase in the abundance index in 2024. The 2024 results suggest relatively little change in the abundance trends of corals, sea anemones, and sponges from 2022.
+
+**Factors influencing observed trends**: The two major threats to populations of benthic invertebrates in the AI have been identified as impacts due to fishing activity and climate change [@Stone2006; @Stone2011; @Rooper2018]. Both of these processes are occurring in the Aleutian archipelago. Much of the benthic habitat in the Aleutians (∼ 50% of the shelf and slope to depths of 500 m) has been protected from mobile fishing gear since 2006; these closures effectively ‘froze the footprint’ of fisheries within this area. Fishing effects are therefore limited to a proportion of the benthic habitat in the Aleutians, though it is documented to occur in locations that have been identified as coral and sponge gardens [@Stone2014]. Climate factors that may impact the abundance of these groups include changes in temperature, water chemistry, and changes in the movement and speed of ocean currents. The 2024 bottom trawl survey temperature data were cooler than the previous 3 biennial surveys, though in several of the Aleutian subareas temperature anomalies remained positive with actual temperatures above or near the long term means (Howard and Laman this year’s ESR). In addition, some of these species have carbonate skeletons that require the absorption of carbonate ions from the surrounding water and are likely to be negatively impacted by changing water chemistry.  In addition,there is some evidence of changes to the strength and variability of the Alaska Stream in recent years, which could result in changes to the strength of currents and transport of biological material through the oceanic passes of the Aleutian Islands [@Stabeno2014]. These changes in currents will impact the food that is available to filter feeding organisms. Non-motile HAPC organisms are particularly sensitive to these changes in the benthic environment.
+
+**Implications**: The association of many commercially important groundfish species with high relief habitat containing structure-forming invertebrates like coral and sponge is documented. Structurally complex habitat provides a refuge from strong currents, protection from predators, spawning habitat, and may act to increase prey resources [@Carlson1976; @Carlson1981; @Lauth2007]. In Alaska, the three most commercially important rockfishes, Pacific ocean perch (Sebastes alutus), northern rockfish (S. polyspinis), and dusky rockfish (S. variabilis) have all been documented to have strong associations with this habitat type [@Carlson1981; @Rooper2007; @Rooper2011; @Conrath2019]. Atka mackerel nesting sites have also been documented to occur in rocky substrata in the Aleutian Islands [@Lauth2007]. The decline in biomass indices for sponges, anemones, and corals is concerning given these associations with commercially important fish species. Although, the unknown catchability and the grouping of many species into large taxonomic groups limit the amount of interpretation that is possible from these results, these surveys are conducted in a standardized manner and the trends in these large taxa groups are an indication of a decline in the habitat available to rockfishes and other species. It should be noted that another factor could  impact these trends. Due to the difficulty in finding towable grounds in the high relief bottom habitat of the Aleutians Islands about 50% of the survey stations tend to be re-towed using the same towpath.  This re-towing of the same area  could potentially contribute to a decline in benthic invertebrates for the re-towed area that is not representative of the general trend in neighboring untowed areas. The amount of new ground surveyed compared to the total ground surveyed generally continues to decline since the 1990s; this decline was reversed after 2022 when a fixed percentage of tows over new ground were added to the sampling allocation program. In light of these caveats, research aimed at achieving a more comprehensive understanding of these changes in the abundance of structure forming invertebrates in the annual bottom trawl surveys would be valuable.
+
+**Research priorities**: The bottom trawl survey uses standardized survey protocols aimed at ensuring consistent sampling efficiency. However, additional research is needed to better characterize the catchability and selectivity of structural epifauna groups by the bottom trawl survey. Additional research is also needed to better understand how potential losses in habitat formed by structural epifauna will impact commercially important species.
+
+
+
+```{r fig1, include = TRUE, echo = FALSE, fig.cap='\\label{fig:figs}Figure 1. Biomass index of Structural Epifauna (sponges, sea anemones, corals, and sea pens) from RACE Groundfish Assessment Program summer bottom trawl surveys of the Aleutian Islands from 1991 to 2024. Panels show the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.'}
+knitr::include_graphics('../plots/AI/AI_rema_structural_epifauna_full_region_ze.png')
+```
+
+
+
+
+
+```{r fig2, include = TRUE, echo = FALSE, fig.cap='\\label{fig:figs}Figure 2. Biomass index of Structural Epifauna (sponges, sea anemones, corals, and sea pens) in Aleutian Islands subareas (Southern Bering Sea [SBS], Eastern Aleutian Islands [EAI], Central Aleutian Islands [CAI], and Western Aleutian Islands [WAI]) estimated from RACE Groundfish Assessment Program summer bottom trawl surveys of the Aleutian Islands from 1991 to 2024.'}
+knitr::include_graphics('../plots/AI/AI_rema_structural_epifauna_subarea_bar.png')
+```
+
+
+
+## References
