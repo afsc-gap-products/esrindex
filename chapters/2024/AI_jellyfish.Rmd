@@ -47,7 +47,7 @@ We note that bottom contact time is already accounted for in bottom trawl survey
 
 
 
-```{r fig1, include = TRUE, echo = FALSE, fig.cap='\\label{fig:figs}Figure 1. Biomass index of jellyfish from RACE Groundfish Assessment Program summer bottom trawl surveys of the Aleutian Islands from 1991 to 2024 showing the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.'}
+```{r fig1, include = TRUE, echo = FALSE, fig.cap='\\label{fig:figs}Figure 1. Biomass index (kilotons) of jellyfish from RACE Groundfish Assessment Program summer bottom trawl surveys of the Aleutian Islands from 1991 to 2024 showing the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.'}
 knitr::include_graphics('../plots/AI/AI_rema_jellyfish_full_region_ze.png')
 ```
 
@@ -55,7 +55,7 @@ knitr::include_graphics('../plots/AI/AI_rema_jellyfish_full_region_ze.png')
 
 
 
-```{r fig2, include = TRUE, echo = FALSE, fig.cap='\\label{fig:figs}Figure 2. Biomass index of jellyfish in Aleutian Islands subareas (Southern Bering Sea [SBS], Eastern Aleutian Islands [EAI], Central Aleutian Islands [CAI], and Western Aleutian Islands [WAI]) estimated from RACE Groundfish Assessment Program summer bottom trawl surveys of the Aleutian Islands from 1991 to 2024.'}
+```{r fig2, include = TRUE, echo = FALSE, fig.cap='\\label{fig:figs}Figure 2. Biomass index (kilotons) of jellyfish in Aleutian Islands subareas (Southern Bering Sea [SBS], Eastern Aleutian Islands [EAI], Central Aleutian Islands [CAI], and Western Aleutian Islands [WAI]) estimated from RACE Groundfish Assessment Program summer bottom trawl survey data from 1991 to 2024.'}
 knitr::include_graphics('../plots/AI/AI_rema_jellyfish_subarea_bar.png')
 ```
 

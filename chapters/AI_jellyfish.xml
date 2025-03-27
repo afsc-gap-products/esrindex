@@ -38,11 +38,11 @@ We note that bottom contact time is already accounted for in bottom trawl survey
 	<fig>
 		<figureNumber>1</figureNumber>
 		<figurePath>AI_rema_jellyfish_full_region_ze.png</figurePath>
-		<figureCaption>Biomass index of jellyfish from RACE Groundfish Assessment Program summer bottom trawl surveys of the Aleutian Islands from 1991 to 2024 showing the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.</figureCaption>
+		<figureCaption>Biomass index (kilotons) of jellyfish from RACE Groundfish Assessment Program summer bottom trawl surveys of the Aleutian Islands from 1991 to 2024 showing the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>2</figureNumber>
 		<figurePath>AI_rema_jellyfish_subarea_bar.png</figurePath>
-		<figureCaption>Biomass index of jellyfish in Aleutian Islands subareas (Southern Bering Sea [SBS], Eastern Aleutian Islands [EAI], Central Aleutian Islands [CAI], and Western Aleutian Islands [WAI]) estimated from RACE Groundfish Assessment Program summer bottom trawl surveys of the Aleutian Islands from 1991 to 2024.</figureCaption>
+		<figureCaption>Biomass index (kilotons) of jellyfish in Aleutian Islands subareas (Southern Bering Sea [SBS], Eastern Aleutian Islands [EAI], Central Aleutian Islands [CAI], and Western Aleutian Islands [WAI]) estimated from RACE Groundfish Assessment Program summer bottom trawl survey data from 1991 to 2024.</figureCaption>
 	</fig>
 </figures>
