@@ -1,3 +1,12 @@
+esrindex 1.2.1 (August 26, 2025)
+----------------------------------------------------------------
+
+BUG FIX
+
+- Changed poststratify_goa_hauls() system file paths for 
+  akgfmaps 4.1.0.
+
+
 esrindex 1.2.0 (March 21, 2025)
 ----------------------------------------------------------------
 
