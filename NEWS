@@ -1,3 +1,12 @@
+esrindex 1.2.2 (September 4, 2025)
+----------------------------------------------------------------
+
+FUNCTIONALITY CHANGES
+
+- Changed plot design for plot_subarea_rema() to improve 
+  contrast with BrBG palette.
+
+
 esrindex 1.2.1 (August 27, 2025)
 ----------------------------------------------------------------
 

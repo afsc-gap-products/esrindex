@@ -431,13 +431,20 @@ plot_subarea_rema <- function(x,
     
     p2 <- ggplot() +
       geom_bar(data = bar_dat,
-               mapping = aes(x = year,
-                             y = pred,
-                             fill = esrindex::set_stratum_order(area_id = strata,
-                                                                region = region,
-                                                                use_abbreviation = TRUE)),
+               mapping = aes(
+                 x = year,
+                 y = pred,
+                 fill = esrindex::set_stratum_order(
+                   area_id = strata,
+                   region = region,
+                   use_abbreviation = TRUE
+                 )
+               ),
                position = "stack",
-               stat = "identity", width = 1) +
+               stat = "identity", 
+               width = 1,
+               color = "black", 
+               linewidth = 0.1) +
       facet_wrap(~group_name, scales = "free_y", nrow = length(group_name)) +
       scale_y_continuous(name = paste0("Biomass Index (", set_unit, ")"),
                          expand = expansion(mult = c(0, 0.05)),
