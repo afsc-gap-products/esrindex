@@ -97,6 +97,7 @@ plot_region_rema <- function(x,
     end_year <- max(obs_dat$YEAR)
     year_breaks <- year_labels <- seq(start_year, end_year, by = 2)
     year_labels[year_labels %% 4 > 0] <- ""
+    year_limits <- c(min(obs_dat$YEAR)-1, max(obs_dat$YEAR)+1)
     
     ts_summary <- fit_dat |>
       dplyr::group_by(group_name) |>
@@ -143,7 +144,9 @@ plot_region_rema <- function(x,
                            labels = lab_fun(trim = lab_trim)) +
         scale_x_continuous(name = "Year",
                            breaks = year_breaks,
-                           labels = year_labels) +
+                           labels = year_labels,
+                           limits = year_limits,
+                           expand = c(0,0)) +
         expand_limits(y = y_axis_min) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
         theme_blue_strip()
@@ -189,7 +192,9 @@ plot_region_rema <- function(x,
                            labels = lab_fun(trim = lab_trim)) +
         scale_x_continuous(name = "Year",
                            breaks = year_breaks,
-                           labels = year_labels) +
+                           labels = year_labels,
+                           limits = year_limits,
+                           expand = c(0,0)) +
         expand_limits(y = y_axis_min) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
         theme_blue_strip()
@@ -226,7 +231,8 @@ plot_region_rema <- function(x,
                            labels = lab_fun(trim = lab_trim)) +
         scale_x_continuous(name = "Year",
                            breaks = year_breaks,
-                           labels = year_labels) +
+                           labels = year_labels,
+                           limits = c()) +
         expand_limits(y = y_axis_min) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
         theme_blue_strip()
@@ -272,7 +278,9 @@ plot_region_rema <- function(x,
                            labels = lab_fun(trim = lab_trim)) +
         scale_x_continuous(name = "Year",
                            breaks = year_breaks,
-                           labels = year_labels) +
+                           labels = year_labels,
+                           limits = year_limits,
+                           expand = c(0,0)) +
         expand_limits(y = y_axis_min) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
         theme_blue_strip()
@@ -317,7 +325,9 @@ plot_region_rema <- function(x,
                            labels = lab_fun(trim = lab_trim)) +
         scale_x_continuous(name = "Year",
                            breaks = year_breaks,
-                           labels = year_labels) +
+                           labels = year_labels,
+                           limits = year_limits,
+                           expand = c(0,0)) +
         expand_limits(y = y_axis_min) +
         facet_wrap(~group_name, scales = "free", nrow = length(group_name)) +
         theme_blue_strip()
@@ -380,7 +390,9 @@ plot_region_rema <- function(x,
                              labels = lab_fun(trim = lab_trim)) +
           scale_x_continuous(name = "Year",
                              breaks = year_breaks,
-                             labels = year_labels) +
+                             labels = year_labels,
+                             limits = year_limits,
+                             expand = c(0,0)) +
           expand_limits(y = y_axis_min) +
           facet_wrap(~group_name[kk]) +
           theme_blue_strip()
@@ -426,7 +438,9 @@ plot_region_rema <- function(x,
                              labels = lab_fun(trim = lab_trim)) +
           scale_x_continuous(name = "Year",
                              breaks = year_breaks,
-                             labels = year_labels) +
+                             labels = year_labels,
+                             limits = year_limits,
+                             expand = c(0,0)) +
           expand_limits(y = y_axis_min) +
           facet_wrap(~group_name) +
           theme_blue_strip()
@@ -463,7 +477,9 @@ plot_region_rema <- function(x,
                              labels = lab_fun(trim = lab_trim)) +
           scale_x_continuous(name = "Year",
                              breaks = year_breaks,
-                             labels = year_labels) +
+                             labels = year_labels,
+                             limits = year_limits,
+                             expand = c(0,0)) +
           expand_limits(y = y_axis_min) +
           facet_wrap(~group_name) +
           theme_blue_strip()
@@ -509,7 +525,9 @@ plot_region_rema <- function(x,
                              labels = lab_fun(trim = lab_trim)) +
           scale_x_continuous(name = "Year",
                              breaks = year_breaks,
-                             labels = year_labels) +
+                             labels = year_labels,
+                             limits = year_limits,
+                             expand = c(0,0)) +
           expand_limits(y = y_axis_min) +
           facet_wrap(~group_name) +
           theme_blue_strip()
@@ -554,7 +572,9 @@ plot_region_rema <- function(x,
                              labels = lab_fun(trim = lab_trim)) +
           scale_x_continuous(name = "Year",
                              breaks = year_breaks,
-                             labels = year_labels) +
+                             labels = year_labels,
+                             limits = year_limits,
+                             expand = c(0,0)) +
           expand_limits(y = y_axis_min) +
           facet_wrap(~group_name) +
           theme_blue_strip()
