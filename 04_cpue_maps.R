@@ -44,3 +44,18 @@ for(jj in 1:length(goa_files)) {
     crs = "EPSG:3338",
     fig_res = 300)
 }
+
+
+nbs_files <- list.files(path = here::here("output", "NBS"),
+                        full.names = TRUE,
+                        pattern = "gapindex")
+
+
+for(jj in 1:length(nbs_files)) {
+  group_cpue <- readRDS(file = nbs_files[jj])$cpue
+  
+  plot_cpue_maps(
+    gapindex_cpue = group_cpue,
+    crs = "EPSG:3338",
+    fig_res = 300)
+}
