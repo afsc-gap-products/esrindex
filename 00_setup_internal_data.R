@@ -82,7 +82,7 @@ classy <- unique(rbind(taxonomic_classification, code_changes))
 groups <- data.frame(
   group_name = c(
     "Sponges", "Jellyfish", "Sea anemones", "Eelpouts", "Poachers", "Echinoderms",
-    "Shrimps", "Pricklebacks", "Sandlances", "Capelin", "Eulachon", "Pacific herring",
+    "Shrimps", "Pricklebacks", "Sand lances", "Capelin", "Eulachon", "Pacific herring",
     "Pacific sandfish", "Sea stars", "Myctophids", "Corals", "Sea pens"
   ),
   sci_name = c(
@@ -119,7 +119,7 @@ chapter_settings <- list(
     misc_species = list(group_name = c("Eelpouts", "Poachers", "Shrimps", "Sea stars")),
     jellyfish = list(group_name = c("Jellyfish")),
     structural_epifauna = list(group_name = c("Sponges", "Sea anemones", "Corals", "Sea pens")),
-    forage_fish = list(group_name = c("Pacific herring", "Capelin", "Eulachon", "Sandlances", "Myctophids", "Pacific sandfish", "Pricklebacks"))
+    forage_fish = list(group_name = c("Pacific herring", "Capelin", "Eulachon", "Sand lances", "Myctophids", "Pacific sandfish", "Pricklebacks"))
   ),
   AI = list(
     misc_species = list(group_name = c("Eelpouts", "Poachers", "Shrimps", "Sea stars")),
