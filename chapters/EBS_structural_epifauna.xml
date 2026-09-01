@@ -7,7 +7,7 @@
 	<authors>Thaddaeus Buser</authors>
 	<contactEmail>thaddaeus.buser@noaa.gov</contactEmail>
 	<authorAffiliations>Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center National Marine Fisheries Service, NOAA</authorAffiliations>
-	<lastUpdate>September 2025</lastUpdate>
+	<lastUpdate>September 2026</lastUpdate>
 </header>
 <body>
 	<indicatorDescription>
@@ -15,21 +15,24 @@ Groups considered to be structural epifauna include: sea pens, corals, anemones,
 
 Since 1982, the RACE Groundfish Assessment Program (GAP) and Shellfish Assessment Program (SAP) have conducted annual fishery-independent summer bottom trawl surveys on the EBS shelf using standardized trawl gear and methods. Biomass index trends from the survey are likely to reflect changes in the abundance of species and life history stages that are available to the survey, especially if trends are sustained over time.
 
-Regional and stratum indices of abundance (biomass in kilotons) and confidence intervals were estimated for each taxonomic group by fitting a multivariate random effects model (REM) to stratum-level design-based abundance index time series calculated from AFSC summer bottom trawl survey catch and effort data. Indices were calculated for the standardized survey time series (EBS: 1982 to 2025, NBS: 2010 to 2025). Design-based indices of abundance were calculated using the _gapindex_ R package [@gapindex] and REM were fitted to survey time series using the _rema_ R package [@rema]. Code and data used to produce these indicators are provided in the _esrindex_ R package and repository [@esrindex].
+Regional and stratum indices of abundance (biomass in kilotons) and confidence intervals were estimated for each taxonomic group by fitting a multivariate random effects model (REM) to stratum-level design-based abundance index time series calculated from AFSC summer bottom trawl survey catch and effort data. Indices were calculated for the standardized survey time series (EBS: 1982 to 2026, NBS: 2010 to 2025). Design-based indices of abundance were calculated using the _gapindex_ R package [@gapindex] and REM were fitted to survey time series using the _rema_ R package [@rema]. Code and data used to produce these indicators are provided in the _esrindex_ R package and repository [@esrindex].
 	</indicatorDescription>
 	<methodologicalChanges>NA</methodologicalChanges>
 	<statusAndTrends>
-
-
 	_Eastern Bering Sea:_ 
 
-Sponges have undergone cyclical variability in abundance throughout the time series (Figure STEP1). The biomass of sponges (Porifera) in 2024 remains >1 standard deviation below the time series average, which is a continuation of  the extremely low biomass level observed since 2021. Similarly low biomass was also observed intermittently early in the time series, 1984–1992. Sponges have primarily been observed in Stratum 30, the southern middle shelf, at 50–100 m bottom depth (Figure STEP2).
+Sponges have undergone cyclical variability in abundance throughout the time series (Figure STEP1). The biomass of sponges (Porifera) in 2025 remains >1 standard deviation below the time series average, which is a continuation of the extremely low biomass level observed since 2021. Similarly low biomass was also observed intermittently early in the time series, 1984–1992. Sponges have primarily been observed in Stratum 30, the southern middle shelf, at 50–100 m bottom depth (Figure STEP2).
 
-The biomass of sea anemones (Actiniaria) has been above average from  2022-2024, similar to 2010–2015. The recent period of above-average biomass contrasts with the period of near-average biomass observed from 2016–2021. Sea anemones are regularly encountered in all EBS survey strata, except Stratum 20, the inner shelf (< 50 m) north-northwest of Kuskokwim Bay, near Nunivak Island.
-Sea pen (Pennatulacea) biomass has increased since 2019 and has remained above the time series average since 2019. Sea pens are most abundant on the outer shelf (100-200 m bottom depth) in Strata 50 and 60. 
+The biomass of sea anemones (Actiniaria) has been above average from 2022-2025, similar to 2010–2015. The recent period of above-average biomass contrasts with the period of near-average biomass observed from 2016–2021. Sea anemones are regularly encountered in all EBS survey strata, except Stratum 20, the inner shelf (< 50 m) north-northwest of Kuskokwim Bay, near Nunivak Island. Sea pen (Pennatulacea) biomass has increased since 2019 and has remained above the time series average since 2019. The 2025 estimate is >1 standard deviation from the overall series mean, similar to recent estimates in 2021 and 2023. Sea pens are most abundant on the outer shelf (100-200 m bottom depth) in Strata 50 and 60.
+
 
 
 	_Northern Bering Sea:_ 
+
+The estimated biomass of sponges in the NBS is highly variable across the time series, with high relative biomass in 2010, 2017, 2022, and 2023 and low relative biomass in 2019 and 2021 (Figure STEP3). The 2025 estimate is >1 standard deviation above the overall time series mean, but the broad 95% confidence interval on this estimate shows that any interpretation of this estimate should be made with appropriate caution. Sponges are predominantly encountered in stratum 71 (Figure STEP4).
+The biomass estimates of sea anemones are relatively consistent across the time series except for that of 2022, which was much larger than all other years. The 2025 estimate is similar to that of 2023, which is approximately one standard deviation higher than the overall time series mean. Sea anemones are encountered throughout the survey area but are most abundant in stratum 71 (Figure STEP4).
+Sea pens (Pennatulacea) are not encountered in the NBS and are therefore not reported here.
+
 
 	</statusAndTrends>
 	<factorsInfluencingTrends>Further research in several areas would facilitate the interpretation of structural epifauna trends including systematics and taxonomy of Bering Sea shelf invertebrates, better characterization of survey gear efficiency, and the life history characteristics of the epibenthic organisms captured by the survey trawl.</factorsInfluencingTrends>
@@ -41,12 +44,12 @@ Sea pen (Pennatulacea) biomass has increased since 2019 and has remained above t
 	<fig>
 		<figureNumber>1</figureNumber>
 		<figurePath>EBS_rema_structural_epifauna_full_region_ze.png</figurePath>
-		<figureCaption>Biomass index of Structural Epifauna (sponges, sea anemones, and sea pens; kilotons) estimated from AFSC/RACE summer bottom trawl surveys of the eastern Bering Sea continental shelf from 1982 to 2024. Panels show the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.</figureCaption>
+		<figureCaption>Biomass index of Structural Epifauna (sponges, sea anemones, and sea pens; kilotons) estimated from AFSC/RACE summer bottom trawl surveys of the eastern Bering Sea continental shelf from 1982 to 2026. Panels show the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>2</figureNumber>
 		<figurePath>EBS_rema_structural_epifauna_subarea_bar.png</figurePath>
-		<figureCaption>Biomass index of Structural Epifauna (sponges, sea anemones, and sea pens; kilotons) in eastern Bering Sea continental shelf survey strata 10-60 estimated from RACE Groundfish Assessment Program and Shellfish Assessment Program summer bottom trawl survey data from 1982 to 2024.</figureCaption>
+		<figureCaption>Biomass index of Structural Epifauna (sponges, sea anemones, and sea pens; kilotons) in eastern Bering Sea continental shelf survey strata 10-60 estimated from RACE Groundfish Assessment Program and Shellfish Assessment Program summer bottom trawl survey data from 1982 to 2026.</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>3</figureNumber>

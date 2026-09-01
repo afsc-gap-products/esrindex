@@ -7,14 +7,14 @@
 	<authors>Thaddaeus Buser</authors>
 	<contactEmail>thaddaeus.buser@noaa.gov</contactEmail>
 	<authorAffiliations>Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center National Marine Fisheries Service, NOAA</authorAffiliations>
-	<lastUpdate>September 2025</lastUpdate>
+	<lastUpdate>September 2026</lastUpdate>
 </header>
 <body>
-	<indicatorDescription>The index of abundance time series for jellyfishes (Scyphozoa, but primarily _Chrysaora melanaster_) was updated for 2025 from the eastern Bering Sea shelf and northern Bering Sea surveys (Figures JELLY1 and JELLY2).
+	<indicatorDescription>The index of abundance time series for jellyfishes (Scyphozoa, but primarily _Chrysaora melanaster_) was updated for 2026 from the eastern Bering Sea shelf and northern Bering Sea surveys (Figures JELLY1 and JELLY2).
 
 Since 1982, the RACE Groundfish Assessment Program (GAP) and Shellfish Assessment Program (SAP) have conducted annual fishery-independent summer bottom trawl surveys on the EBS shelf using standardized trawl gear and methods. Biomass index trends from the survey are likely to reflect changes in the abundance of species and life history stages that are available to the survey, especially if trends are sustained over time. 
 
-Regional and stratum indices of abundance (biomass in kilotons) and confidence intervals were estimated for jellyfish by fitting a multivariate random effects model (REM) to stratum-level design-based abundance index time series calculated from GAP summer bottom trawl survey catch and effort data. The index was calculated for the entire standardized survey time series (EBS: 1982 to 2025, NBS: 2010 to 2025). The design-based index of abundance were calculated using the _gapindex_ R package [@gapindex] and REM were fitted to survey time series using the _rema_ R package [@rema]. Code and methods to calculate these indicators are provided in the _esrindex_ R package and repository [@esrindex].
+Regional and stratum indices of abundance (biomass in kilotons) and confidence intervals were estimated for jellyfish by fitting a multivariate random effects model (REM) to stratum-level design-based abundance index time series calculated from GAP summer bottom trawl survey catch and effort data. The index was calculated for the entire standardized survey time series (EBS: 1982 to 2026, NBS: 2010 to 2025). The design-based index of abundance were calculated using the _gapindex_ R package [@gapindex] and REM were fitted to survey time series using the _rema_ R package [@rema]. Code and methods to calculate these indicators are provided in the _esrindex_ R package and repository [@esrindex].
 	</indicatorDescription>
 	<methodologicalChanges>NA</methodologicalChanges>
 	<statusAndTrends>
@@ -22,15 +22,17 @@ Regional and stratum indices of abundance (biomass in kilotons) and confidence i
 
 	_Eastern Bering Sea:_
 
-The abundance of jellyfishes in the eastern Bering Sea in 2024 was near the time series average and similar to estimates from 2022 and 2023 (Figure JELLY1). There is an apparent pattern of cyclical rise and fall in jellyfish abundance throughout the time series. The relatively low abundance estimated from 1982 to 1988  was followed by a period of increasing biomass throughout the 1990s. A second period of relatively low biomass from 2001 to 2008 was followed by a period with relatively high abundance from 2009 to 2015. Jellyfish occur throughout the survey area, but their biomass is highest in Strata 10 (southern inner shelf at bottom depth < 50 m), 30 (southern middle shelf at 50-100 m), 40 (northern middle shelf at 50-100 m), and 60 (northern outer shelf at 100-200 m; Figure JELLY2).
+The abundance of jellyfishes in the eastern Bering Sea in 2025 was near (within 1SD) of the overall time series mean and similar to estimates from the previous three years (2022-2024; Figure JELLY1). While there has been relative stability in the estimate recently, there is an apparent pattern of cyclical rise and fall in jellyfish abundance throughout the time series. The relatively low abundance estimated from 1982 to 1988 was followed by a period of increasing biomass throughout the 1990s. A second period of relatively low biomass from 2001 to 2008 was followed by a period with relatively high abundance from 2009 to 2015. Jellyfish occur throughout the survey area, but their biomass is highest in Strata 10 (southern inner shelf at bottom depth < 50 m), 30 (southern middle shelf at 50-100 m), 40 (northern middle shelf at 50-100 m), and 60 (northern outer shelf at 100-200 m; Figure JELLY2).
 
 
 	_Northern Bering Sea:_ 
 	
+The abundance of jellyfishes in 2025 is similar to what was estimated in 2023- close to the overall time series mean (Figure JELLY3). However, while an apparent pattern of cyclical rise and fall of jellyfish CPUE values exists in the EBS time series, gaps in sampling years across the northern Bering Sea time series makes identifying multi-year trends difficult. In 2025, jellyfish were found throughout the NBS and had roughly equal relative biomass in all three strata (Figure JELLY4).
+	
 </statusAndTrends>
 	<factorsInfluencingTrends>Cyclic fluctuations in jellyfish abundance in the EBS are associated with jellyfish biomass during the preceding year and environmental and climatological factors, including the timing of sea ice retreat, sea surface temperature, wind mixing, and currents [@Brodeur2008; @Decker2023].
 </factorsInfluencingTrends>
-	<implications>Jellyfishes are pelagic consumers of zooplankton, larval and juvenile fishes, and small forage fishes. At high levels of abundance, jellyfishes can limit fish productivity through competition for prey and predation on larval fish [@Purcell2001]. ECOTRAN model suggests that the predominant jellyfish species in the EBS, Chrysaora melanaster, utilized 1% of consumer production over the middle shelf (51–100 m) during a period of high abundance (2009–2014; @Ruzicka2020). This level of consumption corresponds with roughly a quarter of production required to support predominant forage fish in the EBS (age-0 walleye pollock, age-0 Pacific cod, Pacific herring, capelin; @Ruzicka2020).
+	<implications>Jellyfishes are pelagic consumers of zooplankton, larval and juvenile fishes, and small forage fishes. At high levels of abundance, jellyfishes can limit fish productivity through competition for prey and predation on larval fish [@Purcell2001]. ECOTRAN model suggests that the predominant jellyfish species in the EBS, _Chrysaora melanaster_, utilized 1% of consumer production over the middle shelf (51–100 m) during a period of high abundance (2009–2014; @Ruzicka2020). This level of consumption corresponds with roughly a quarter of production required to support predominant forage fish in the EBS (age-0 walleye pollock, age-0 Pacific cod, Pacific herring, capelin; @Ruzicka2020).
 </implications>
 	<researchPriorities>The bottom trawl survey uses standardized survey protocols aimed at ensuring consistent sampling efficiency. However, additional research is needed to better characterize the catchability and selectivity of jellyfish by the bottom trawl survey.
 </researchPriorities>
@@ -39,12 +41,12 @@ The abundance of jellyfishes in the eastern Bering Sea in 2024 was near the time
 	<fig>
 		<figureNumber>1</figureNumber>
 		<figurePath>EBS_rema_jellyfish_full_region_ze.png</figurePath>
-		<figureCaption>Biomass index of jellyfish (kilotons) from AFSC/RACE summer bottom trawl surveys of the eastern Bering Sea continental shelf from 1982 to 2025 showing the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.</figureCaption>
+		<figureCaption>Biomass index of jellyfish (kilotons) from AFSC/RACE summer bottom trawl surveys of the eastern Bering Sea continental shelf from 1982 to 2026 showing the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>2</figureNumber>
 		<figurePath>EBS_rema_jellyfish_subarea_bar.png</figurePath>
-		<figureCaption>Biomass index of jellyfish (kilotons) in eastern Bering Sea survey strata 10-60 estimated from RACE Groundfish Assessment Program and Shellfish Assessment Program summer bottom trawl survey data from 1982 to 2025</figureCaption>
+		<figureCaption>Biomass index of jellyfish (kilotons) in eastern Bering Sea survey strata 10-60 estimated from RACE Groundfish Assessment Program and Shellfish Assessment Program summer bottom trawl survey data from 1982 to 2026</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>3</figureNumber>

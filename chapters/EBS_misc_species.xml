@@ -7,14 +7,14 @@
 	<authors>Thaddaeus Buser</authors>
 	<contactEmail>thaddaeus.buser@noaa.gov</contactEmail>
 	<authorAffiliations>Resource Assessment and Conservation Engineering Division, Alaska Fisheries Science Center National Marine Fisheries Service, NOAA</authorAffiliations>
-	<lastUpdate>September 2025</lastUpdate>
+	<lastUpdate>September 2026</lastUpdate>
 </header>
 <body>
-	<indicatorDescription>‘Miscellaneous’ species fall into three groups: eelpouts (fishes of the Family Zoarcidae), poachers (fishes of the Family Agonidae), and sea stars (Class Asteroidea). The three species comprising the bulk of the eelpout group are the wattled eelpout (_Lycodes palearis_) and shortfin eelpout (_L. brevipes_) and to a lesser extent the marbled eelpout (_L. raridens_). The biomass of poachers is dominated by the sturgeon poacher (_Podothecus accipenserinus_) and to a lesser extent the sawback poacher (_Leptagonus frenatus_). The composition of sea stars is dominated by the purple-orange sea star (_Asterias amurensis_), found primarily in the inner/middle shelf (Strata 10–40), and the common mud star (_Ctenodiscus crispatus_), primarily in the outer shelf (Strata 50 and 60). 
+	<indicatorDescription>‘Miscellaneous’ benthic fauna fall into three groups: eelpouts (fishes of the Family Zoarcidae), poachers (fishes of the Family Agonidae), and sea stars (Class Asteroidea). The three species comprising the bulk of the eelpout group are the wattled eelpout (_Lycodes palearis_) and shortfin eelpout (_L. brevipes_) and to a lesser extent the marbled eelpout (_L. raridens_). The biomass of poachers is dominated by the sturgeon poacher (_Podothecus accipenserinus_) and to a lesser extent the sawback poacher (_Leptagonus frenatus_). The composition of sea stars is dominated by the purple-orange sea star (_Asterias amurensis_), found primarily in the inner/middle shelf (Strata 10–40), and the common mud star (_Ctenodiscus crispatus_), primarily in the outer shelf (Strata 50 and 60). 
 	
 Since 1982, the RACE Groundfish Assessment Program (GAP) and Shellfish Assessment Program (SAP) have conducted annual fishery-independent summer bottom trawl surveys on the EBS shelf using standardized trawl gear and methods. Biomass index trends from the survey are likely to reflect changes in the abundance of species and life history stages that are available to the survey, especially if trends are sustained over time. 
 
-Regional and stratum indices of abundance (biomass in kilotons) and confidence intervals were estimated for each taxonomic group by fitting a multivariate random effects model (REM) to stratum-level design-based abundance index time series calculated from AFSC summer bottom trawl survey catch and effort data. Indices were calculated for the standardized survey time series (EBS: 1982 to 2025, NBS: 2010 to 2025). Design-based indices of abundance were calculated using the _gapindex_ R package [@gapindex] and REM were fitted to survey time series using the _rema_ R package [@rema]. Code and data used to produce these indicators are provided in the _esrindex_ R package and repository [@esrindex].
+Regional and stratum indices of abundance (biomass in kilotons) and confidence intervals were estimated for each taxonomic group by fitting a multivariate random effects model (REM) to stratum-level design-based abundance index time series calculated from AFSC summer bottom trawl survey catch and effort data. Indices were calculated for the standardized survey time series (EBS: 1982 to 2026, NBS: 2010 to 2025). Design-based indices of abundance were calculated using the _gapindex_ R package [@gapindex] and REM were fitted to survey time series using the _rema_ R package [@rema]. Code and data used to produce these indicators are provided in the _esrindex_ R package and repository [@esrindex].
 	</indicatorDescription>
 	<methodologicalChanges>NA</methodologicalChanges>
 	<statusAndTrends>
@@ -22,17 +22,24 @@ Regional and stratum indices of abundance (biomass in kilotons) and confidence i
 
 	_Eastern Bering Sea:_ 
 
-The 2024 biomass estimate for eelpouts increased from 2023, continuing an increasing trend that began in 2021 (Figure MBF1). The 2024 estimate is >1 standard deviation above the time series average and represents the largest biomass estimate since 1983. Eelpout biomass is concentrated on the outer shelf in Strata 50 and 60 (100-200 m bottom depth) and southern middle shelf in Stratum 30 (50-100 m bottom depth; Figure MBF2). 
+The 2025 biomass estimate for eelpouts increased from 2024, continuing an increasing trend that began in 2021 (Figure MBF1). The 2025 estimate is >1 standard deviation above the overall time series mean and represents the largest biomass estimate since 1983. Eelpout biomass is concentrated on the outer shelf in Strata 50 and 60 (100-200 m bottom depth) and southern middle shelf in Stratum 30 (50-100 m bottom depth; Figure MBF2).
 
-Poacher biomass increased from 2023 and is near the time series average (Figure MBF1). Poacher biomass is concentrated in inner (< 50 m) and middle (50-100 m) shelf strata (10-40), although lower abundances of deeper species are encountered in strata 50 and 60 (Figure MBF2). 
+Poacher biomass increased from 2024 and is >1 standard deviation higher than the time series average, which is an estimated abundance not seen since 2015 (Figure MBF1). Poacher biomass is concentrated in inner (< 50 m) and middle (50-100 m) shelf strata (10-40), although lower abundances of deeper species are encountered in strata 50 and 60 (Figure MBF2).
 
-The biomass for sea stars in 2024 was similar to 2023, which marked the apparent end of a multi-year period of above average biomass from  2017 to 2022. The 2023 and 2024 sea star biomass estimates are near the time series average and are a return to levels last seen in 2016 (Figure MBF1). Sea stars are observed in all survey strata, although their biomass in Stratum 50 is much lower than in other strata. 
+The biomass for sea stars in 2025 was similar to 2023 and 2024, which marked the apparent end of a multi-year period of above average biomass from 2017 to 2022. The 2023- 2025 sea star biomass estimates are near the time series average and are a return to levels last seen in 2016 (Figure MBF1). Sea stars are observed in all survey strata, although their biomass in Stratum 50 is much lower than in other strata.
 
 
 	_Northern Bering Sea:_ 
+	
+The 2025 biomass estimate of eelpouts is close to the overall time series average and similar to those estimated since 2019 (Figure MBF3). These recent year estimates are much lower than those of 2010 and 2017. However, whether this indicates a trend is unclear given the gaps in sampling years. Eelpouts were predominantly found in strata 71 and 81 (Figure MBF4).
+
+For poachers, the biomass estimate for 2025 was likewise near the overall time series average (Figure MBF3). This follows a period of relatively low abundance estimated from 2021-2023. Poacher  relative biomass was consistently highest in stratum 70, with lower relative biomass in strata 71 and 81 (Figure MBF4).
+
+The biomass estimate for sea stars in 2025 is >1 standard deviation lower than the overall series average and marks an all-time low for sea stars in the NBS (Figure MBF3). However, the gaps in sampling years make it difficult to confidently identify trends in the data at this point. Sea stars biomass was highest in strata 70 and 71 (Figure MBF4).
+
 
 	</statusAndTrends>
-	<factorsInfluencingTrends> It is difficult to identify trends. Determining whether, for example, the low abundance after 2018 in poachers represent changes in abundance, demographic structure, distributional changes, or selectivity will require more specific research on survey trawl gear selectivity relative to interannual differences in bottom temperatures and on the life history characteristics of these epibenthic species.
+	<factorsInfluencingTrends> It is difficult to identify factors that influence the observed trends. Determining whether, for example, the low abundance after 2018 in poachers represent changes in abundance, demographic structure, distributional changes, or selectivity will require more specific research on survey trawl gear selectivity relative to interannual differences in bottom temperatures and on the life history characteristics of these epibenthic species.
 </factorsInfluencingTrends>
 	<implications>Eelpouts, poachers, and sea stars have important roles in the energy flow within benthic communities. For example, eelpouts are a common prey item of arrowtooth flounder (_Atheresthes stomias_). However, it is not known at present whether these changes in CPUE are related to changes in energy flow.</implications>
 	<researchPriorities>The bottom trawl survey uses standardized survey protocols aimed at ensuring consistent sampling efficiency. However, additional research is needed to better characterize the catchability and selectivity of structural epifauna groups by the bottom trawl survey.</researchPriorities>
@@ -41,12 +48,12 @@ The biomass for sea stars in 2024 was similar to 2023, which marked the apparent
 	<fig>
 		<figureNumber>1</figureNumber>
 		<figurePath>EBS_rema_misc_species_full_region_ze.png</figurePath>
-		<figureCaption>Biomass index of Miscellaneous Benthic Fauna (eelpouts, poachers, sea stars; kilotons) estimated from AFSC/RACE summer bottom trawl surveys of the eastern Bering Sea continental shelf from 1982 to 2025. Panels show the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.</figureCaption>
+		<figureCaption>Biomass index of Miscellaneous Benthic Fauna (eelpouts, poachers, sea stars; kilotons) estimated from AFSC/RACE summer bottom trawl surveys of the eastern Bering Sea continental shelf from 1982 to 2026. Panels show the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>2</figureNumber>
 		<figurePath>EBS_rema_misc_species_subarea_bar.png</figurePath>
-		<figureCaption>Biomass index of Miscellaneous Benthic Fauna (eelpouts, poachers, sea stars; kilotons) in eastern Bering Sea continental shelf survey strata 10-60 estimated from RACE Groundfish Assessment Program and Shellfish Assessment Program summer bottom trawl survey data from 1982 to 2025.</figureCaption>
+		<figureCaption>Biomass index of Miscellaneous Benthic Fauna (eelpouts, poachers, sea stars; kilotons) in eastern Bering Sea continental shelf survey strata 10-60 estimated from RACE Groundfish Assessment Program and Shellfish Assessment Program summer bottom trawl survey data from 1982 to 2026.</figureCaption>
 	</fig>
 	<fig>
 		<figureNumber>3</figureNumber>
