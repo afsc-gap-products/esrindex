@@ -38,6 +38,7 @@ fit_rema_region <- function(x, zero_assumption = "na", rema_by_stratum = TRUE) {
     
     dat <- dplyr::filter(dat, AREA_ID %in% sufficient_data)
     
+    message("fit_rema_region: Running rema for ", unique_group_name[ii], "...")
     rema_out <- try(run_rema(x = dat, 
                              region = region, 
                              group_name = unique_group_name[ii], 

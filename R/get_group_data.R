@@ -31,6 +31,12 @@ get_group_data <- function(region,
                            channel = NULL,
                            zero_assumption = "na",
                            rema_by_stratum = TRUE) {
+  
+  region = "nbs"
+  channel = NULL
+  zero_assumption = "na"
+  rema_by_stratum = TRUE
+  
   region <- toupper(region)
 
   channel <- get_connected(channel = channel, schema = "AFSC")
@@ -90,11 +96,13 @@ get_group_data <- function(region,
       dat <- poststratify_goa_hauls(gapdata = dat)
     }
 
-    subareas <- dplyr::select(dat$subarea, AREA_ID, AREA_NAME, DESCRIPTION)
+    subareas <- dplyr::select(dat$subarea, AREA_ID, AREA_NAME, DESCRIPTION) |>
+      unique()
     
-    strata <- dplyr::select(dat$strata, AREA_ID = STRATUM, AREA_NAME, DESCRIPTION)
+    strata <- dplyr::select(dat$strata, AREA_ID = STRATUM, AREA_NAME) |>
+      unique()
     
-    strata_subareas <- rbind(subareas, strata)
+    strata_subareas <- dplyr::bind_rows(subareas, strata)
 
     cpue <- gapindex::calc_cpue(gapdata = dat)
 
@@ -243,7 +251,7 @@ get_group_data <- function(region,
   mean_sd$MEAN_MINUS1 <- ifelse(mean_sd$MEAN_MINUS1 < 0, 0, mean_sd$MEAN_MINUS1)
   mean_sd$MEAN_MINUS2 <- ifelse(mean_sd$MEAN_MINUS2 < 0, 0, mean_sd$MEAN_MINUS2)
 
-  # Fit random effects model to time series using the rema packakge
+  # Fit random effects model to time series using the rema package
   rema_fit <- fit_rema_region(
     x = timeseries[timeseries$YEAR >= min_rema_year, ],
     zero_assumption = zero_assumption,

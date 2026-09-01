@@ -13,9 +13,13 @@ plot_cpue_maps <- function(gapindex_cpue, crs = "EPSG:3338", breaks = NULL, fig_
   # Default break values for CPUE maps, by region
   cpue_breaks <- list(
     EBS = list(
+      Capelin = c(-1, 0, 100, 500, 1000, 5000, 7000),
       Eelpouts = c(-1, 0, 50, 100, 500, 1000, 2000),
+      Eulachon = c(-1, 0, 100, 500, 1000, 5000, 7000),
       Jellyfish = c(-1, 0, 100, 500, 1000, 10000, 20000),
+      `Pacific herring` = c(-1, 0, 100, 500, 1000, 10000, 15000),
       Poachers = c(-1, 0, 50, 100, 500, 1000, 2000),
+      Pricklebacks = c(-1, 0, 50, 100, 500, 1000, 2000),
       `Sea anemones` = c(-1, 0, 100, 500, 1000, 5000, 10000),
       `Sea pens` = c(-1, 0, 50, 100, 250, 500, 600),
       `Sea stars` = c(-1, 0, 100, 1000, 5000, 10000, 15000),

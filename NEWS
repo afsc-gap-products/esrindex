@@ -1,3 +1,20 @@
+esrindex 1.2.7 (August 31, 2026)
+----------------------------------------------------------------
+
+BUG FIX
+
+- Fix error where get_group_data() did not correctly 2025 NBS
+  design year with seven missing stations.
+- Add 2026 AI and EBS data; update figures.
+
+esrindex 1.2.6 (February 27, 2026)
+----------------------------------------------------------------
+
+DATA UPDATE 
+
+- Add EBS forage fish for testing.
+
+
 esrindex 1.2.5 (September 26, 2025)
 ----------------------------------------------------------------
 
