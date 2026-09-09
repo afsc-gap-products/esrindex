@@ -53,4 +53,9 @@ The abundance of jellyfishes in 2025 is similar to what was estimated in 2023- c
 		<figurePath>NBS_rema_jellyfish_full_region_ze.png</figurePath>
 		<figureCaption>Biomass index of jellyfish (kilotons) estimated from AFSC/RACE summer bottom trawl surveys of the northern Bering sea from 2010 to 2025. Panels show the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.</figureCaption>
 	</fig>
+	<fig>
+		<figureNumber>4</figureNumber>
+		<figurePath>NBS_rema_jellyfish_subarea_bar.png</figurePath>
+		<figureCaption>Biomass index of jellyfish (kilotons) in northern Bering Sea survey strata 70, 71, and 81, estimated from RACE Groundfish Assessment Program and Shellfish Assessment Program summer bottom trawl survey data from 2010 to 2025.</figureCaption>
+	</fig>
 </figures>

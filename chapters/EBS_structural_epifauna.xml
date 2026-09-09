@@ -56,4 +56,8 @@ Sea pens (Pennatulacea) are not encountered in the NBS and are therefore not rep
 		<figurePath>NBS_rema_structural_epifauna_full_region_ze.png</figurePath>
 		<figureCaption>Biomass index of Structural Epifauna (sponges, sea anemones, and sea pens; kilotons) estimated from AFSC/RACE summer bottom trawl surveys of the eastern Bering Sea continental shelf from 2010 to 2025. Panels show the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.</figureCaption>
 	</fig>
+			<figureNumber>4</figureNumber>
+		<figurePath>NBS_rema_structural_epifauna_subarea_bar.png</figurePath>
+		<figureCaption>Biomass index (kilotons) of Structural Epifauna (sponges and sea anemones; kilotons) in northern Bering Sea survey strata 70, 71, and 81, estimated from RACE Groundfish Assessment Program and Shellfish Assessment Program summer bottom trawl survey data from 2010 to 2025.</figureCaption>
+	</fig>
 </figures>

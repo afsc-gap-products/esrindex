@@ -151,7 +151,7 @@ plot_subarea_rema <- function(x,
     
     fill_label <- "Subarea"
     
-    if(region %in% "EBS") {
+    if(region %in% c("EBS", "NBS")) {
       fill_label <- "Stratum"
     }
     

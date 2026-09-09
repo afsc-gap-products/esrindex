@@ -60,4 +60,9 @@ The biomass estimate for sea stars in 2025 is >1 standard deviation lower than t
 		<figurePath>NBS_rema_misc_species_full_region_ze.png</figurePath>
 		<figureCaption>Biomass index of Miscellaneous Benthic Fauna (eelpouts, poachers, sea stars; kilotons) estimated from AFSC/RACE summer bottom trawl surveys of the northern Bering sea from 2010 to 2025. Panels show the observed survey biomass index mean (blue points), random effects model fitted mean (solid black line), 95% confidence interval (gray shading), overall time series mean (solid gray line), and horizontal dashed gray lines representing one standard deviation from the mean.</figureCaption>
 	</fig>
+	<fig>
+		<figureNumber>4</figureNumber>
+		<figurePath>NBS_rema_misc_species_subarea_bar.png</figurePath>
+		<figureCaption>Biomass index (kilotons) of Miscellaneous Benthic Fauna (eelpouts, poachers, sea stars; kilotons) in northern Bering Sea survey strata 70, 71, and 81, estimated from RACE Groundfish Assessment Program and Shellfish Assessment Program summer bottom trawl survey data from 2010 to 2025.</figureCaption>
+	</fig>
 </figures>
