@@ -16,6 +16,7 @@ export(plot_region_db)
 export(plot_region_rema)
 export(plot_subarea_db)
 export(plot_subarea_rema)
+export(plot_top_biomass)
 export(read_esr_xml)
 export(replace_lines)
 export(run_rema)
@@ -37,17 +38,26 @@ import(rmarkdown)
 import(scales)
 import(sf)
 import(utils)
-importFrom(RODBC,odbcConnect)
-importFrom(gapindex,calc_biomass_stratum)
-importFrom(gapindex,calc_biomass_subarea)
-importFrom(gapindex,calc_cpue)
-importFrom(gapindex,get_data)
+importFrom(RODBC,
+  odbcConnect,
+  sqlQuery
+)
+importFrom(gapindex,
+  calc_biomass_stratum,
+  calc_biomass_subarea,
+  calc_cpue,
+  get_data
+)
 importFrom(getPass,getPass)
-importFrom(grDevices,colorRampPalette)
-importFrom(grDevices,dev.off)
-importFrom(grDevices,pdf)
-importFrom(grDevices,png)
+importFrom(grDevices,
+  colorRampPalette,
+  dev.off,
+  pdf,
+  png
+)
 importFrom(methods,is)
-importFrom(stats,quantile)
-importFrom(stats,sd)
+importFrom(stats,
+  quantile,
+  sd
+)
 importFrom(utils,packageVersion)
