@@ -1,14 +1,19 @@
-esrindex 1.3.1 (September 15, 2026)
+esrindex 1.3.0 (September 15, 2026)
+----------------------------------------------------------------
+
+NEW FUNCTIONALITY
+
+- plot_top_biomass() function to generate top 7 species biomass plots.
+
+esrindex 1.2.8 (September 8, 2026)
 ----------------------------------------------------------------
 
 BUG FIX
 
 - Fix legend title for NBS plots and add figure 4.
 
-NEW FUNCTIONALITY
-- plot_top_biomass() function to generate top 7 species biomass plots.
 
-esrindex 1.3.0 (August 31, 2026)
+esrindex 1.2.7 (August 31, 2026)
 ----------------------------------------------------------------
 
 BUG FIX
