@@ -11,8 +11,8 @@ The esrindex package is used to estimate bottom trawl survey abundance indices f
 
 | Contribution | AI | GOA | EBS/NBS |
 |--------------|------------------|----------------|----------------------------------------|
-| Forage Fish | NA | [Megsie Siple](https://github.com/margaret-siple-noaa) | NA |
-| Jellyfish | [Ned Laman](https://github.com/ned-laman-noaa) | [Alexandra Dowlin](https://github.com/orgs/afsc-gap-products/people/AlexandraDowlin-NOAA) | [Thaddaeus Buser](https://github.com/ThaddaeusBuser-NOAA) |
+| Forage Fish | NA | TBD | NA |
+| Jellyfish | [Alexandra Dowlin](https://github.com/orgs/afsc-gap-products/people/AlexandraDowlin-NOAA) | [Alexandra Dowlin](https://github.com/orgs/afsc-gap-products/people/AlexandraDowlin-NOAA) | [Thaddaeus Buser](https://github.com/ThaddaeusBuser-NOAA) |
 | Miscellaneous Benthic Fauna | [Sarah Friedman](https://github.com/SarahFriedman-NOAA) | [Sarah Friedman](https://github.com/SarahFriedman-NOAA) | [Thaddaeus Buser](https://github.com/ThaddaeusBuser-NOAA) | 
 | Structural Epifauna | [Christina Conrath](https://github.com/orgs/afsc-gap-products/people/Conrathcl) | [Christina Conrath](https://github.com/orgs/afsc-gap-products/people/Conrathcl) | [Thaddaeus Buser](https://github.com/ThaddaeusBuser-NOAA) |
 
